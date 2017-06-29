@@ -46,6 +46,7 @@ public class NurseActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String[] protectArea = getResources().getStringArray(R.array.protectArea);
+
                 Toast.makeText(NurseActivity.this, "你点击的是:"+protectArea[position], Toast.LENGTH_SHORT).show();
             }
 
@@ -105,7 +106,7 @@ public class NurseActivity extends AppCompatActivity {
                 bundle.putString("Nurse_name", nurse.getNurseName());
                 bundle.putInt("Nurse_age", nurse.getNurseAge());
                 bundle.putString("Nurse_Area", nurse.getNurseArea());
-                bundle.putString("Nurse_sex", nurse.getNurseSex());
+                bundle.putInt("Nurse_sex", nurse.getNurseSex());
                 bundle.putInt("Nurse_price", nurse.getNursePrice());
                 bundle.putInt("Nurse_evaluate", nurse.getNurseEvaluate());
                 Intent intent = new Intent(NurseActivity.this,NurseDetailActivity.class);
@@ -120,11 +121,14 @@ public class NurseActivity extends AppCompatActivity {
 
     public void getdata(){
         for(int i=0;i<2;i++){
-            Nurse nurse1 = new Nurse("春梅",18,"女","汕头",80,220);
+            String[] str1 = {"内科护理","外科护理"};
+            String[] str2 = {"临时看护","天天护（标准）"};
+            String[] str3 = {"内科护理","天天护（严重）"};
+            Nurse nurse1 = new Nurse("春梅",18,1,"汕头",80,220,str1);
             NurseList.add(nurse1);
-            Nurse nurse2 = new Nurse("牛大春",28,"男","湖南",90,210);
+            Nurse nurse2 = new Nurse("牛大春",28,0,"湖南",90,210,str2);
             NurseList.add(nurse2);
-            Nurse nurse3 = new Nurse("牛欢喜",42,"女","河南",78,440);
+            Nurse nurse3 = new Nurse("牛欢喜",42,1,"河南",78,440,str3);
             NurseList.add(nurse3);
 
         }

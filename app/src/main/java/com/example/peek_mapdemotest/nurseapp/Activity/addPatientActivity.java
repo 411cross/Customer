@@ -28,8 +28,8 @@ public class addPatientActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_patient);
 
         add_Button = (Button)findViewById(R.id.button12);
-        patientList.add(new Patient("张","1233"));
-        patientList.add(new Patient("赵","1234"));
+        patientList.add(new Patient(1233,"张三","123",1,"有病","小张","13318311111"));
+        patientList.add(new Patient(1234,"李四","123",1,"有病","小李","13318311122"));
         PatientAdapter PatientAdapter = new PatientAdapter(addPatientActivity.this, R.layout.patient_item,patientList);
         ListView listView1 = (ListView) findViewById(R.id.listview_patient);
         listView1.setAdapter(PatientAdapter);

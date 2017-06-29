@@ -7,19 +7,21 @@ package com.example.peek_mapdemotest.nurseapp.Entity;
 public class Nurse {
     private String NurseName;
     private int NurseAge;
-    private String NurseSex;
+    private int NurseSex;
     private String NurseArea;
     private int NurseEvaluate;
     private int NursePrice;
+    private String[] NurseProtectArea;
 
 
-    public  Nurse(String NurseName,int NurseAge,String NurseSex,String NurseArea,int NurseEvaluate,int price){
+    public  Nurse(String NurseName,int NurseAge,int NurseSex,String NurseArea,int NurseEvaluate,int price,String[]NurseProtectArea){
         this.NurseAge=NurseAge;
         this.NurseName=NurseName;
         this.NurseSex=NurseSex;
         this.NurseArea=NurseArea;
         this.NurseEvaluate=NurseEvaluate;
         this.NursePrice=price;
+        this.NurseProtectArea=NurseProtectArea;
     }
 
     public String getNurseName() {
@@ -38,11 +40,11 @@ public class Nurse {
         NurseAge = nurseAge;
     }
 
-    public String getNurseSex() {
+    public int getNurseSex() {
         return NurseSex;
     }
 
-    public void setNurseSex(String nurseSex) {
+    public void setNurseSex(int nurseSex) {
         NurseSex = nurseSex;
     }
 
@@ -68,5 +70,13 @@ public class Nurse {
 
     public void setNursePrice(int nursePrice) {
         NursePrice = nursePrice;
+    }
+
+    public String[] getNurseProtectArea() {
+        return NurseProtectArea;
+    }
+
+    public void setNurseProtectArea(String[] nurseProtectArea) {
+        NurseProtectArea = nurseProtectArea;
     }
 }
