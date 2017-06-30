@@ -39,8 +39,8 @@ public class NurseActivity extends AppCompatActivity {
         initFindByID();
         spinner1Data = this.getResources().getStringArray(R.array.protectArea);
         spinner2Data = this.getResources().getStringArray(R.array.protectYear);
-        spinner3Data = this.getResources().getStringArray(R.array.level);
-        spinner4Data = this.getResources().getStringArray(R.array.choose);
+        spinner3Data = this.getResources().getStringArray(R.array.sex);
+        spinner4Data = this.getResources().getStringArray(R.array.evaluation);
         getdata();
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -72,7 +72,7 @@ public class NurseActivity extends AppCompatActivity {
         spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String[] level = getResources().getStringArray(R.array.level);
+                String[] level = getResources().getStringArray(R.array.sex);
                 Toast.makeText(NurseActivity.this, "你点击的是:"+level[position], Toast.LENGTH_SHORT).show();
             }
 
@@ -85,7 +85,7 @@ public class NurseActivity extends AppCompatActivity {
         spinner4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String[] choose = getResources().getStringArray(R.array.choose);
+                String[] choose = getResources().getStringArray(R.array.evaluation);
                 Toast.makeText(NurseActivity.this, "你点击的是:"+choose[position], Toast.LENGTH_SHORT).show();
             }
 

@@ -37,7 +37,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:entries="@array/level"
+        android:entries="@array/sex"
         android:paddingBottom="0dp"
         android:paddingTop="0dp"
         >
@@ -50,7 +50,7 @@
         android:id="@+id/Spinner4"
         android:paddingTop="0dp"
         android:paddingBottom="0dp"
-        android:entries="@array/choose"
+        android:entries="@array/evaluation"
         style="@android:style/Widget.Material.Spinner.Underlined"
 
         >

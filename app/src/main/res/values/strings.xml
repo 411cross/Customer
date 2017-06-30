@@ -1,28 +1,23 @@
 <resources>
     <string name="app_name">nurseapp</string>
-    <string-array name="choose">
-        <item>筛选</item>
-        <item>筛选一</item>
-        <item>筛选二</item>
-        <item>筛选三</item>
-        <item>筛选四</item>
-        <item>筛选五</item>
-        <item>筛选六</item>
+    <string-array name="evaluation">
+        <item>评分</item>
+        <item>0-60</item>
+        <item>60-70</item>
+        <item>70-80</item>
+        <item>80-90</item>
+        <item>90-100</item>
     </string-array>
-    <string-array name="level">
-        <item>级别</item>
-        <item>一星</item>
-        <item>二星</item>
-        <item>三星</item>
-        <item>四星</item>
-        <item>五星</item>
+    <string-array name="sex">
+        <item>性别</item>
+        <item>男</item>
+        <item>女</item>
     </string-array>
     <string-array name="protectYear">
         <item>护龄</item>
         <item>1-3</item>
         <item>4-6</item>
-        <item>6-8</item>
-        <item>8-10</item>
+        <item>7-9</item>
         <item>10以上</item>
     </string-array>
     <string-array name="protectArea">
@@ -33,8 +28,5 @@
         <item>天天护（标准）</item>
         <item>天天护（重症）</item>
     </string-array>
-    <string name="protectArea_prompt">护理范围</string>
-    <string name="protectYear_prompt">护龄</string>
-    <string name="level_prompt">级别</string>
-    <string name="choose_prompt">筛选</string>
+
 </resources>

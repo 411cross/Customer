@@ -30,7 +30,7 @@ public class PatientAdapter extends ArrayAdapter<Patient> {
         TextView name = (TextView)view.findViewById(R.id.textView7);
         TextView no = (TextView)view.findViewById(R.id.textView4);
         name.setText(pg.getName());
-        no.setText(pg.getNo());
+        no.setText(pg.getId());
         return view;
     }
 }
