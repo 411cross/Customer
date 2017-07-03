@@ -26,7 +26,7 @@
         <activity android:name=".Activity.ChirurgeryActivity" />
         <activity android:name=".Activity.GynaecologyActivity" />
         <activity android:name=".Activity.addPatientActivity" />
-
+        <activity android:name=".Activity.ModifyMessageActivity"></activity>
     </application>
 
 </manifest>
