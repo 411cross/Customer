@@ -36,26 +36,27 @@
         android:layout_alignEnd="@+id/imageButton_head" />
 
     <TextView
-        android:id="@+id/textView_tel"
+        android:id="@+id/textView_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView_name"
         android:layout_alignStart="@+id/textView_name"
         android:layout_below="@+id/textView_name"
         android:layout_marginTop="32dp"
-        android:text="电    话:"
+        android:text="密    码:"
+        android:inputType=""
         android:layout_toStartOf="@+id/editText_name"
         android:layout_toLeftOf="@+id/editText_name" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/editText_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_alignBaseline="@+id/textView_tel"
-        android:layout_alignBottom="@+id/textView_tel"
-        android:layout_toRightOf="@+id/textView_tel"
+        android:inputType="textPassword"
+        android:layout_alignBaseline="@+id/textView_password"
+        android:layout_alignBottom="@+id/textView_password"
+        android:layout_toRightOf="@+id/textView_password"
         android:layout_alignRight="@+id/editText_name"
         android:layout_alignEnd="@+id/editText_name" />
 

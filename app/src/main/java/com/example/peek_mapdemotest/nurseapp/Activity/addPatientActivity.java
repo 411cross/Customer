@@ -6,6 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.peek_mapdemotest.nurseapp.Adapter.PatientAdapter;
 import com.example.peek_mapdemotest.nurseapp.Entity.Patient;
+import com.example.peek_mapdemotest.nurseapp.Operation.PatientList;
 import com.example.peek_mapdemotest.nurseapp.R;
 
 import java.util.ArrayList;
@@ -22,6 +24,8 @@ public class addPatientActivity extends AppCompatActivity {
     private ListView listview;
     private Button add_Button;
     private ArrayList<Patient> patientList = new ArrayList<>();
+    private PatientList p = new PatientList();
+    private ArrayAdapter PatientAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +33,9 @@ public class addPatientActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_patient);
 
         add_Button = (Button)findViewById(R.id.button12);
-        patientList.add(new Patient(1233,"张三","123",1,"有病","小张","13318311111"));
-        patientList.add(new Patient(1234,"李四","123",1,"有病","小李","13318311122"));
-        PatientAdapter PatientAdapter = new PatientAdapter(addPatientActivity.this, R.layout.patient_item,patientList);
+        patientList= p.getPatientList();//测试数据
+
+        PatientAdapter = new PatientAdapter(addPatientActivity.this, R.layout.patient_item,patientList);
         ListView listView1 = (ListView) findViewById(R.id.listview_patient);
         listView1.setAdapter(PatientAdapter);
         add_Button.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +50,9 @@ public class addPatientActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 EditText ED1 = (EditText) myLoginView.findViewById(R.id.patient_no);
-                                Toast.makeText(addPatientActivity.this,ED1.getText().toString(),Toast.LENGTH_SHORT).show();
+                                int n = Integer.valueOf(ED1.getText().toString());
+                                p.addPatirnt(n);
+                                PatientAdapter.notifyDataSetChanged();
                                 //提交病人编号
                             }
                         }).setNegativeButton("取消", new DialogInterface.OnClickListener() {

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.peek_mapdemotest.nurseapp.Entity.User;
 import com.example.peek_mapdemotest.nurseapp.R;
 
 public class HomeActivity extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button b4;
     private Button NurseBt;
     private Button OrderBt;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +36,13 @@ public class HomeActivity extends AppCompatActivity {
         OrderBt = (Button) findViewById(R.id.CheckOrder);
 
         Intent intent = getIntent();
-        final String account = intent.getStringExtra("account");
-        tv1.setText(account);
+        user = (User)intent.getSerializableExtra("User");
+        tv1.setText("用户名:"+user.getName());
         ib1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, UserHomeActivity.class);
-                intent.putExtra("account",account);
+                intent.putExtra("User",user);
                 startActivity(intent);
             }
         });

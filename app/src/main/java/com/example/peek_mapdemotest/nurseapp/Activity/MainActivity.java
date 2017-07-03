@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.peek_mapdemotest.nurseapp.Entity.User;
 import com.example.peek_mapdemotest.nurseapp.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private Button b2;
     private EditText et1;
     private EditText et2;
-
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
                 account = et1.getText().toString();
                 password = et2.getText().toString();
                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                intent.putExtra("account",account);
+                user = new User(et1.getText().toString(),et2.getText().toString(),"隔壁老王");
+                intent.putExtra("User",user);
                 startActivity(intent);
 //                Toast.makeText(MainActivity.this, password, Toast.LENGTH_SHORT).show();
             }

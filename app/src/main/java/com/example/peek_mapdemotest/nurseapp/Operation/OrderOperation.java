@@ -80,6 +80,4 @@ public class OrderOperation {
         okhttpT.postTools(URL, Json);
         return okhttpT.getResponse();
     }
-
-
 }
