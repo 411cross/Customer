@@ -121,14 +121,14 @@ public class NurseActivity extends AppCompatActivity {
 
     public void getdata(){
         for(int i=0;i<2;i++){
-            String[] str1 = {"内科护理","外科护理"};
-            String[] str2 = {"临时看护","天天护（标准）"};
-            String[] str3 = {"内科护理","天天护（严重）"};
-            Nurse nurse1 = new Nurse("春梅",18,1,"汕头",80,220,str1);
+            ArrayList<Integer> pa = new ArrayList<>();
+            pa.add(1);
+            pa.add(2);
+            Nurse nurse1 = new Nurse("春梅",1,18,1,"汕头",80,220,pa,163,200,"A","汉族","440622213781236123","双鱼","鼠","厉害姐,就是我","13318311622");
             NurseList.add(nurse1);
-            Nurse nurse2 = new Nurse("牛大春",28,0,"湖南",90,210,str2);
+            Nurse nurse2 = new Nurse("牛春",0,28,2,"龙洞",80,220,pa,163,200,"A","汉族","440622213781236123","双鱼","鼠","厉害姐,就是我","13318311622");
             NurseList.add(nurse2);
-            Nurse nurse3 = new Nurse("牛欢喜",42,1,"河南",78,440,str3);
+            Nurse nurse3 = new Nurse("羊梅",1,38,3,"飞盘",80,220,pa,163,200,"A","汉族","440622213781236123","双鱼","鼠","厉害姐,就是我","13318311622");
             NurseList.add(nurse3);
 
         }

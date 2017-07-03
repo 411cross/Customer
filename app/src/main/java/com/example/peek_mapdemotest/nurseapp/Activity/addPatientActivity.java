@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.peek_mapdemotest.nurseapp.Adapter.PatientAdapter;
 import com.example.peek_mapdemotest.nurseapp.Entity.Patient;
@@ -44,15 +45,15 @@ public class addPatientActivity extends AppCompatActivity {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                // TODO Auto-generated method stub
                                 EditText ED1 = (EditText) myLoginView.findViewById(R.id.patient_no);
+                                Toast.makeText(addPatientActivity.this,ED1.getText().toString(),Toast.LENGTH_SHORT).show();
                                 //提交病人编号
                             }
                         }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
+                        //取消操作
                     }
                 }).
                         create();

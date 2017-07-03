@@ -49,4 +49,11 @@ public class User {
         this.name=name;
 
     }
+
+    public User(String id, String password, String name, String avatar) {
+        this.id = id;
+        this.password = password;
+        this.name = name;
+        this.avatar = avatar;
+    }
 }
