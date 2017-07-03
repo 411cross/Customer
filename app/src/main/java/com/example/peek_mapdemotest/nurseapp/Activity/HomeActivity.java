@@ -20,6 +20,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button b3;
     private Button b4;
     private Button NurseBt;
+    private User user;
     private Button OrderBt;
     private User user;
     @Override
@@ -33,7 +34,6 @@ public class HomeActivity extends AppCompatActivity {
         b3 = (Button)findViewById(R.id.button5);
         b4 = (Button)findViewById(R.id.button6);
         NurseBt = (Button) findViewById(R.id.NurseListBt);
-        OrderBt = (Button) findViewById(R.id.CheckOrder);
 
         Intent intent = getIntent();
         user = (User)intent.getSerializableExtra("User");
