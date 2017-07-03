@@ -5,7 +5,6 @@ import com.example.peek_mapdemotest.nurseapp.Entity.Patient;
 import com.example.peek_mapdemotest.nurseapp.Entity.User;
 import com.example.peek_mapdemotest.nurseapp.Okhttp_tools.okHttpTools;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,6 +26,8 @@ public class UserOperation {
     public static ArrayList<Nurse> nurseList = null;
     //客户端需要维护的PatientList         （作为Lisview数据源）
     public static ArrayList<Patient> patientList = null;
+
+    public static int p_id ;
 
 
     /**

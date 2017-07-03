@@ -16,6 +16,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activity.CheckOrderActivity"
+            android:label="查询订单">
+
+        </activity>
+
+        <activity
+            android:name=".Activity.checkActivity"
+            android:label="查询结果" />
+        <activity
+            android:name=".Activity.OrderDetailActivity"
+            android:screenOrientation="portrait"
+            android:label="订单详情" />
+
+        <activity
+            android:name=".Activity.payActivity"
+            android:screenOrientation="portrait"
+            android:label="支付服务"
+            />
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"/>
+
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"/>
         <activity android:name=".Activity.NurseActivity" />
         <activity android:name=".Activity.NurseDetailActivity" />
         <activity android:name=".Activity.AppointmentActivity" />

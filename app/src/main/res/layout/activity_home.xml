@@ -78,4 +78,14 @@
         android:layout_marginTop="79dp"
         android:id="@+id/NurseListBt"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/NurseListBt"
+        android:layout_alignLeft="@+id/NurseListBt"
+        android:layout_alignStart="@+id/NurseListBt"
+        android:layout_marginTop="45dp"
+        android:id="@+id/CheckOrder"
+        android:text="查询订单"/>
+
 </RelativeLayout>

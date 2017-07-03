@@ -19,6 +19,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button b3;
     private Button b4;
     private Button NurseBt;
+    private Button OrderBt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,7 @@ public class HomeActivity extends AppCompatActivity {
         b3 = (Button)findViewById(R.id.button5);
         b4 = (Button)findViewById(R.id.button6);
         NurseBt = (Button) findViewById(R.id.NurseListBt);
+        OrderBt = (Button) findViewById(R.id.CheckOrder);
 
         Intent intent = getIntent();
         final String account = intent.getStringExtra("account");
@@ -76,6 +78,14 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, NurseActivity.class);
                 startActivity(intent);
+            }
+        });
+        OrderBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, CheckOrderActivity.class);
+                startActivity(intent);
+
             }
         });
     }
