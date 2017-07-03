@@ -32,8 +32,8 @@ public class OrderOperation {
         JSONArray jsonArray = object.getJSONArray("data");
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject ordersData = (JSONObject) jsonArray.get(i);
-            String nurseName = nursesData.getString("nurseName");
-            int nurseSex = nursesData.getInt("nurseSex");
+//            String nurseName = nursesData.getString("nurseName");
+//            int nurseSex = nursesData.getInt("nurseSex");
 
         }
 
