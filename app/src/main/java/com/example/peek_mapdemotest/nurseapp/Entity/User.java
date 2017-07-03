@@ -1,10 +1,12 @@
 package com.example.peek_mapdemotest.nurseapp.Entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2017/6/29.
  */
 
-public class User {
+public class User implements Serializable{
     private String id;
     private String password;
     private String name;
