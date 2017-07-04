@@ -187,6 +187,7 @@ public class NurseActivity extends AppCompatActivity {
             }
         });
         NuAdapter = new NurseAdapter(NurseActivity.this,R.layout.nurse_item, UserOperation.nurseListAll);
+        System.out.println(UserOperation.nurseList.size());
         NurseListView.setAdapter(NuAdapter);
         NurseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

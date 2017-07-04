@@ -42,7 +42,7 @@ public class NurseOperation {
                 ArrayList<Integer> nurseProtectArea = new ArrayList<Integer>();
                 JSONArray nurseProtectAreaList = nursesData.getJSONArray("nurseProtectArea");
                 for (int j = 0; j < nurseProtectAreaList.length(); j++) {
-                    nurseProtectArea.add(nurseProtectAreaList.getInt(i));
+                    nurseProtectArea.add(nurseProtectAreaList.getInt(j));
 
                 }
                 int nurseHeight = nursesData.getInt("nurseHeight");
