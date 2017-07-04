@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.example.peek_mapdemotest.nurseapp.Entity.User;
 import com.example.peek_mapdemotest.nurseapp.R;
 
+import static com.example.peek_mapdemotest.nurseapp.Operation.UserOperation.user;
+
 public class HomeActivity extends AppCompatActivity {
 
     private TextView tv1;
