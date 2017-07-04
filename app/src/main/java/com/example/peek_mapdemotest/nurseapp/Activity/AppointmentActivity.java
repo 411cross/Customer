@@ -52,7 +52,7 @@ public class AppointmentActivity extends AppCompatActivity {
         final Bundle bundle = this.getIntent().getExtras();
         NameTv.setText(bundle.getString("Nurse_name"));
         AgeTv.setText(bundle.getInt("Nurse_age")+"岁");
-        SexTv.setText(bundle.getString("Nurse_sex"));
+        SexTv.setText(bundle.getInt("Nurse_sex")+"");
         AreaTv.setText(bundle.getString("Nurse_Area"));
         PriceTv.setText(bundle.getInt("Nurse_price")+"元/每天");
         EvaluateTv.setText("好评率："+bundle.getInt("Nurse_evaluate"));

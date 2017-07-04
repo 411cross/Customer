@@ -24,7 +24,7 @@ import java.util.concurrent.ExecutionException;
 
 
 public class NurseActivity extends AppCompatActivity {
-     NurseAdapter NuAdapter;
+    private NurseAdapter NuAdapter;
     private ListView NurseListView;
     private Spinner spinner1;
     private Spinner spinner2;
@@ -35,6 +35,8 @@ public class NurseActivity extends AppCompatActivity {
     private String[] spinner2Data;
     private String[] spinner3Data;
     private String[] spinner4Data;
+
+    private ArrayList<Nurse> list = new ArrayList<>();
 
 
     @Override
@@ -64,8 +66,9 @@ public class NurseActivity extends AppCompatActivity {
                 try {
                     ArrayList resp = NurseOperation.filterNurseList(filter,position);
                     if(Integer.parseInt((String) resp.get(0))==200){
-                        NuAdapter = new NurseAdapter(NurseActivity.this,R.layout.nurse_item, UserOperation.nurseList);
-                        NurseListView.setAdapter(NuAdapter);
+                        list.clear();
+                        list.addAll( UserOperation.nurseList);
+                        NuAdapter.notifyDataSetChanged();
 
                     }else{
                         String data = (String) resp.get(1);
@@ -97,9 +100,9 @@ public class NurseActivity extends AppCompatActivity {
                 try {
                     ArrayList resp = NurseOperation.filterNurseList(filter,position);
                     if(Integer.parseInt((String) resp.get(0))==200){
-                        NuAdapter = new NurseAdapter(NurseActivity.this,R.layout.nurse_item, UserOperation.nurseList);
+                        list.clear();
+                        list.addAll( UserOperation.nurseList);
                         NuAdapter.notifyDataSetChanged();
-                        NurseListView.setAdapter(NuAdapter);
 
                     }else{
                         String data = (String) resp.get(1);
@@ -129,8 +132,9 @@ public class NurseActivity extends AppCompatActivity {
                 try {
                     ArrayList resp = NurseOperation.filterNurseList(filter,position);
                     if(Integer.parseInt((String) resp.get(0))==200){
-                        NuAdapter = new NurseAdapter(NurseActivity.this,R.layout.nurse_item, UserOperation.nurseList);
-                        NurseListView.setAdapter(NuAdapter);
+                        list.clear();
+                        list.addAll( UserOperation.nurseList);
+                        NuAdapter.notifyDataSetChanged();
 
 
                     }else{
@@ -161,9 +165,9 @@ public class NurseActivity extends AppCompatActivity {
                 try {
                     ArrayList resp = NurseOperation.filterNurseList(filter,position);
                     if(Integer.parseInt((String) resp.get(0))==200){
-                        NuAdapter = new NurseAdapter(NurseActivity.this,R.layout.nurse_item, UserOperation.nurseList);
-
-                        NurseListView.setAdapter(NuAdapter);
+                        list.clear();
+                        list.addAll( UserOperation.nurseList);
+                        NuAdapter.notifyDataSetChanged();
 
                     }else{
                         String data = (String) resp.get(1);
@@ -186,8 +190,9 @@ public class NurseActivity extends AppCompatActivity {
 
             }
         });
-        NuAdapter = new NurseAdapter(NurseActivity.this,R.layout.nurse_item, UserOperation.nurseListAll);
-        System.out.println(UserOperation.nurseList.size());
+        list.clear();
+        list.addAll( UserOperation.nurseListAll);
+        NuAdapter = new NurseAdapter(NurseActivity.this,R.layout.nurse_item,list);
         NurseListView.setAdapter(NuAdapter);
         NurseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -200,7 +205,17 @@ public class NurseActivity extends AppCompatActivity {
                 bundle.putString("Nurse_Area", nurse.getNurseArea());
                 bundle.putInt("Nurse_sex", nurse.getNurseSex());
                 bundle.putInt("Nurse_price", nurse.getNursePrice());
+                bundle.putInt("Nurse_work_age", nurse.getNurseWorkAge());
                 bundle.putInt("Nurse_evaluate", nurse.getNurseEvaluate());
+                bundle.putString("Nurse_phone", nurse.getNursePhone());
+                bundle.putInt("Nurse_height", nurse.getNurseHeight());
+                bundle.putInt("Nurse_weight", nurse.getNurseWeight());
+                bundle.putString("Nurse_blood", nurse.getNurseBloodType());
+                bundle.putString("Nurse_nation", nurse.getNurseNation());
+                bundle.putString("Nurse_identity", nurse.getNurseIdentity());
+                bundle.putString("Nurse_Constellation", nurse.getNurseConstellation());
+                bundle.putString("Nurse_Animal", nurse.getNurseAnimal());
+                bundle.putString("Nurse_Description", nurse.getNurseDescription());
                 Intent intent = new Intent(NurseActivity.this,NurseDetailActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);

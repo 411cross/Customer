@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:text="名字"
         android:textSize="30dp"
-        android:id="@+id/NurseNameD"
+        android:id="@+id/NurseNameI"
         android:layout_marginLeft="11dp"
         android:layout_marginStart="11dp"
         android:layout_alignTop="@+id/NurseIcon"
@@ -35,10 +35,10 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/NurseNameD"
+        android:layout_below="@+id/NurseNameI"
         android:layout_marginTop="11dp"
-        android:layout_alignLeft="@+id/NurseNameD"
-        android:layout_alignStart="@+id/NurseNameD"
+        android:layout_alignLeft="@+id/NurseNameI"
+        android:layout_alignStart="@+id/NurseNameI"
         android:id="@+id/linearLayout">
 
         <TextView
@@ -162,10 +162,10 @@
             android:layout_marginTop="12dp">
 
             <TextView
-                android:id="@+id/Nursedegree"
+                android:id="@+id/Nursework"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="学历" />
+                android:text="工龄" />
 
             <View
                 android:layout_width="1dp"
@@ -192,10 +192,10 @@
                 android:layout_marginBottom="2dp" />
 
             <TextView
-                android:id="@+id/NurseMarry"
+                android:id="@+id/Nursephone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="血型" />
+                android:text="电话" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -222,7 +222,7 @@
                 android:layout_marginBottom="2dp" />
 
             <TextView
-                android:id="@+id/NurseRat"
+                android:id="@+id/NurseAnimal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="生肖" />
@@ -237,12 +237,12 @@
             android:layout_toEndOf="@+id/imageView"
             android:layout_marginLeft="36dp"
             android:layout_marginStart="36dp">
+
             <TextView
+                android:id="@+id/Nurseheight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="身高"
-                android:id="@+id/NurseTall"
-                />
+                android:text="身高" />
 
             <View
                 android:layout_width="1dp"
@@ -254,10 +254,10 @@
                 android:layout_marginBottom="2dp" />
 
             <TextView
+                android:id="@+id/NurseWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="体重"
-                android:id="@+id/NurseWeigeht"/>
+                android:text="体重" />
 
             <View
                 android:layout_width="1dp"
@@ -267,11 +267,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp" />
+
             <TextView
+                android:id="@+id/NurseBlood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="血型"
-                android:id="@+id/NurseBread"/>
+                android:text="血型" />
         </LinearLayout>
         <ImageView
             android:layout_width="20dp"
@@ -311,15 +312,16 @@
             android:layout_below="@+id/imageView"
             android:layout_alignLeft="@+id/imageView"
             android:layout_alignStart="@+id/imageView" />
+
         <TextView
+            android:id="@+id/NurseIDentity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/NurseIDNumber"
-            android:text="123123123123"
-            android:layout_below="@+id/linearLayout2"
             android:layout_alignLeft="@+id/linearLayout2"
             android:layout_alignStart="@+id/linearLayout2"
-            android:layout_marginTop="15dp" />
+            android:layout_below="@+id/linearLayout2"
+            android:layout_marginTop="15dp"
+            android:text="123123123123" />
 
     </RelativeLayout>
     <Button
@@ -333,15 +335,16 @@
         android:layout_alignParentStart="true" />
 
     <TextView
+        android:id="@+id/NurseDescription"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:layout_marginBottom="26dp"
-        android:text="简单介绍"
-        android:layout_marginRight="41dp"
-        android:layout_marginEnd="41dp"
         android:layout_above="@+id/appointmentbutton"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginBottom="26dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginRight="41dp"
+        android:text="简单介绍" />
 
 
 
