@@ -34,9 +34,11 @@ public class ModifyMessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user.setName(name.getText().toString());
+                if(password.getText().toString().isEmpty());
+                else
                 user.setPassword(password.getText().toString());
                 Intent intent = new Intent();
-                intent.putExtra("name",name.getText().toString());
+                intent.putExtra("User",user);
                 setResult(RESULT_OK,intent);
                 finish();
             }
