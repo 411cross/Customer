@@ -22,7 +22,7 @@ public class ModifyMessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_message);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         user = (User)intent.getSerializableExtra("User");
         name = (EditText)findViewById(R.id.editText_name);
         password = (EditText)findViewById(R.id.editText_password);
@@ -34,9 +34,13 @@ public class ModifyMessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user.setName(name.getText().toString());
+                if(password.getText().toString().isEmpty());
+                else
                 user.setPassword(password.getText().toString());
-                Toast.makeText(ModifyMessageActivity.this,"修改成功",Toast.LENGTH_SHORT).show();
-                onBackPressed();
+                Intent intent = new Intent();
+                intent.putExtra("User",user);
+                setResult(RESULT_OK,intent);
+                finish();
             }
         });
     }

@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.peek_mapdemotest.nurseapp.Operation.CheckAdapter;
+import com.example.peek_mapdemotest.nurseapp.Adapter.CheckAdapter;
 import com.example.peek_mapdemotest.nurseapp.R;
 
 import java.util.ArrayList;

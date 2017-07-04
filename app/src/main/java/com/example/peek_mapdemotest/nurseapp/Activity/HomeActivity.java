@@ -21,7 +21,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button b4;
     private Button NurseBt;
     private Button OrderBt;
-    private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, UserHomeActivity.class);
                 intent.putExtra("User",user);
-                startActivity(intent);
+                startActivityForResult(intent,1);
             }
         });
 
@@ -85,9 +85,17 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, CheckOrderActivity.class);
-                startActivity(intent);
-
+                startActivityForResult(intent,1);
             }
         });
     }
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        if(requestCode == 1 && resultCode == UserHomeActivity.RESULT_OK){
+            Bundle bundle = data.getExtras();
+            user = (User)bundle.get("User");
+            tv1.setText("用户名:"+user.getName());
+        }
+    }
+
 }
