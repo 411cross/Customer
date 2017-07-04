@@ -33,9 +33,16 @@ public class UserHomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent1 = new Intent(UserHomeActivity.this,ModifyMessageActivity.class);
                 intent1.putExtra("User",user);
-                startActivity(intent1);
+                startActivityForResult(intent1,1);
             }
         });
-
+    }
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        if(requestCode == 1 && resultCode == ModifyMessageActivity.RESULT_OK){
+            Bundle bundle = data.getExtras();
+            String name = bundle.getString("name");
+            tv1.setText(name);
+        }
     }
 }
