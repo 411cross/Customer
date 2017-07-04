@@ -20,10 +20,11 @@ import java.util.List;
 public class NurseAdapter  extends ArrayAdapter<Nurse> {
 
      private int resource;
-
+     private List<Nurse> list;
     public NurseAdapter(Context context, int resourceID,List<Nurse> objects) {
         super(context, resourceID, objects);
         resource = resourceID;
+        list=objects;
     }
 
     @Override
@@ -48,5 +49,11 @@ public class NurseAdapter  extends ArrayAdapter<Nurse> {
 
     }
 
+    public List<Nurse> getList() {
+        return list;
+    }
 
+    public void setList(List<Nurse> list) {
+        this.list = list;
+    }
 }
