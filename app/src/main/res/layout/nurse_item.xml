@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="名字"
         android:textSize="30dp"
-        android:id="@+id/NurseNameD"
+        android:id="@+id/NurseNameI"
         android:layout_marginLeft="11dp"
         android:layout_marginStart="11dp"
         android:layout_alignTop="@+id/NurseIcon"
@@ -25,17 +25,17 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/NurseNameD"
+        android:layout_below="@+id/NurseNameI"
         android:layout_marginTop="11dp"
-        android:layout_alignLeft="@+id/NurseNameD"
-        android:layout_alignStart="@+id/NurseNameD"
+        android:layout_alignLeft="@+id/NurseNameI"
+        android:layout_alignStart="@+id/NurseNameI"
         android:id="@+id/linearLayout">
+
         <TextView
+            android:id="@+id/NurseSexI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="性别"
-            android:id="@+id/NurseSex"
-            />
+            android:text="性别" />
 
         <View
             android:layout_width="1dp"
@@ -47,10 +47,10 @@
             android:layout_marginBottom="2dp" />
 
         <TextView
+            android:id="@+id/NurseAgeI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="年龄"
-            android:id="@+id/NurseAge"/>
+            android:text="年龄" />
 
         <View
             android:layout_width="1dp"
@@ -60,23 +60,24 @@
             android:layout_marginRight="4dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp" />
+
         <TextView
+            android:id="@+id/NurseAreaI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="地区"
-            android:id="@+id/NurseArea"/>
+            android:text="地区" />
     </LinearLayout>
 
     <TextView
+        android:id="@+id/NursePriceI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="价格"
-        android:layout_marginRight="29dp"
-        android:layout_marginEnd="29dp"
-        android:layout_alignTop="@+id/NurseNameD"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/NursePrice"/>
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/NurseNameI"
+        android:layout_marginEnd="29dp"
+        android:layout_marginRight="29dp"
+        android:text="价格" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -86,7 +87,7 @@
         android:layout_alignLeft="@+id/linearLayout"
         android:layout_alignStart="@+id/linearLayout"
         android:layout_marginTop="15dp"
-        android:id="@+id/NurseEvaluateD" />
+        android:id="@+id/NurseEvaluateI" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -114,10 +115,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1234"
+
+
+        android:id="@+id/textView3"
         android:layout_alignBaseline="@+id/textView2"
         android:layout_alignBottom="@+id/textView2"
-        android:layout_toLeftOf="@+id/NurseEvaluateD"
-        android:layout_toStartOf="@+id/NurseEvaluateD"
-        android:id="@+id/textView3" />
+        android:layout_toLeftOf="@+id/NurseEvaluateI"
+        android:layout_toStartOf="@+id/NurseEvaluateI" />
 
 </RelativeLayout>

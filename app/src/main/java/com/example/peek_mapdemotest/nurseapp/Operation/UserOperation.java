@@ -25,11 +25,11 @@ public class UserOperation {
     public static User user = null;
     private String data;
     //客户端需要维护的NurseList 全部    （作为Lisview数据源）
-    public static ArrayList<Nurse> nurseListAll = null;
+    public static ArrayList<Nurse> nurseListAll = new ArrayList<>();
     //客户端需要维护的NurseList 筛选后  （作为Lisview数据源）
-    public static ArrayList<Nurse> nurseList = null;
+    public static ArrayList<Nurse> nurseList = new ArrayList<>();
     //客户端需要维护的PatientList         （作为Lisview数据源）
-    public static ArrayList<Patient> patientList = null;
+    public static ArrayList<Patient> patientList = new ArrayList<>();
 
     public static int p_id ;
 

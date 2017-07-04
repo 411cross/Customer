@@ -26,39 +26,41 @@ public class NurseOperation {
         okHttpTools okhttpT = new okHttpTools();
         String URL = "http://139.199.226.190:8888/NurseApp/getnurselist";
         okhttpT.postTools(URL, "");
-        String data = (String) okhttpT.getResponse().get(1);
-        JSONObject object = new JSONObject(data);
-        JSONArray jsonArray = object.getJSONArray("data");
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject nursesData = (JSONObject) jsonArray.get(i);
-            String nurseName = nursesData.getString("nurseName");
-            int nurseSex = nursesData.getInt("nurseSex");
-            int nurseAge = nursesData.getInt("nurseAge");
-            int nurseWorkAge = nursesData.getInt("nurseWorkAge");
-            String nurseArea = nursesData.getString("nurseArea");
-            int nurseEvaluate = nursesData.getInt("nurseWorkAge");
-            int nursePrice = nursesData.getInt("nurseWorkAge");
-            ArrayList<Integer> nurseProtectArea = new ArrayList<Integer>();
-            JSONArray nurseProtectAreaList = nursesData.getJSONArray("nurseProtectArea");
-            for (int j = 0; j < nurseProtectAreaList.length(); j++) {
-                nurseProtectArea.add(nurseProtectAreaList.getInt(i));
+        if(Integer.parseInt((String) okhttpT.getResponse().get(0))==200){
+            String data = (String) okhttpT.getResponse().get(1);
+            JSONObject object = new JSONObject(data);
+            JSONArray jsonArray = object.getJSONArray("data");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject nursesData = (JSONObject) jsonArray.get(i);
+                String nurseName = nursesData.getString("nurseName");
+                int nurseSex = nursesData.getInt("nurseSex");
+                int nurseAge = nursesData.getInt("nurseAge");
+                int nurseWorkAge = nursesData.getInt("nurseWorkAge");
+                String nurseArea = nursesData.getString("nurseArea");
+                int nurseEvaluate = nursesData.getInt("nurseEvaluate");
+                int nursePrice = nursesData.getInt("nursePrice");
+                ArrayList<Integer> nurseProtectArea = new ArrayList<Integer>();
+                JSONArray nurseProtectAreaList = nursesData.getJSONArray("nurseProtectArea");
+                for (int j = 0; j < nurseProtectAreaList.length(); j++) {
+                    nurseProtectArea.add(nurseProtectAreaList.getInt(j));
+
+                }
+                int nurseHeight = nursesData.getInt("nurseHeight");
+                int nurseWeight = nursesData.getInt("nurseWeight");
+                String nurseBloodType = nursesData.getString("nurseBloodType");
+                String nurseNation = nursesData.getString("nurseNation");
+                String nurseIdentity = nursesData.getString("nurseIdentity");
+                String nurseConstellation = nursesData.getString("nurseConstellation");
+                String nurseAnimal = nursesData.getString("nurseAnimal");
+                String nurseDescription = nursesData.getString("nurseDescription");
+                String nursePhone = nursesData.getString("nursePhone");
+                Nurse nurse1 = new Nurse(nurseName, nurseSex, nurseAge, nurseWorkAge, nurseArea, nurseEvaluate, nursePrice, nurseProtectArea, nurseHeight, nurseWeight, nurseBloodType, nurseNation, nurseIdentity, nurseConstellation, nurseAnimal, nurseDescription, nursePhone);
+                list.add(nurse1);
 
             }
-            int nurseHeight = nursesData.getInt("nurseHeight");
-            int nurseWeight = nursesData.getInt("nurseWeight");
-            String nurseBloodType = nursesData.getString("nurseBloodType");
-            String nurseNation = nursesData.getString("nurseNation");
-            String nurseIdentity = nursesData.getString("nurseIdentity");
-            String nurseConstellation = nursesData.getString("nurseConstellation");
-            String nurseAnimal = nursesData.getString("nurseAnimal");
-            String nurseDescription = nursesData.getString("nurseDescription");
-            String nursePhone = nursesData.getString("nursePhone");
-            Nurse nurse1 = new Nurse(nurseName, nurseSex, nurseAge, nurseWorkAge, nurseArea, nurseEvaluate, nursePrice, nurseProtectArea, nurseHeight, nurseWeight, nurseBloodType, nurseNation, nurseIdentity, nurseConstellation, nurseAnimal, nurseDescription, nursePhone);
-            list.add(nurse1);
+            UserOperation.nurseListAll = list;
 
         }
-        UserOperation.nurseListAll = list;
-
         return okhttpT.getResponse();
     }
 
@@ -77,39 +79,41 @@ public class NurseOperation {
         jsonObject.put("position", position);
         String json = jsonObject.toString();
         okhttpT.postTools(URL, json);
-        String data = (String) okhttpT.getResponse().get(1);
-        JSONObject object = new JSONObject(data);
-        JSONArray jsonArray = object.getJSONArray("data");
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject nursesData = (JSONObject) jsonArray.get(i);
-            String nurseName = nursesData.getString("nurseName");
+        if(Integer.parseInt((String) okhttpT.getResponse().get(0))==200){
+            String data = (String) okhttpT.getResponse().get(1);
+            JSONObject object = new JSONObject(data);
+            JSONArray jsonArray = object.getJSONArray("data");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject nursesData = (JSONObject) jsonArray.get(i);
+                String nurseName = nursesData.getString("nurseName");
+                int nurseSex = nursesData.getInt("nurseSex");
+                int nurseAge = nursesData.getInt("nurseAge");
+                int nurseWorkAge = nursesData.getInt("nurseWorkAge");
+                String nurseArea = nursesData.getString("nurseArea");
+                int nurseEvaluate = nursesData.getInt("nurseEvaluate");
+                int nursePrice = nursesData.getInt("nursePrice");
+                ArrayList<Integer> nurseProtectArea = new ArrayList<Integer>();
+                JSONArray nurseProtectAreaList = nursesData.getJSONArray("nurseProtectArea");
+                for (int j = 0; j < nurseProtectAreaList.length(); j++) {
+                    nurseProtectArea.add(nurseProtectAreaList.getInt(j));
 
-            int nurseSex = nursesData.getInt("nurseSex");
-            int nurseAge = nursesData.getInt("nurseAge");
-            int nurseWorkAge = nursesData.getInt("nurseWorkAge");
-            String nurseArea = nursesData.getString("nurseArea");
-            int nurseEvaluate = nursesData.getInt("nurseWorkAge");
-            int nursePrice = nursesData.getInt("nurseWorkAge");
-            ArrayList<Integer> nurseProtectArea = new ArrayList<Integer>();
-            JSONArray nurseProtectAreaList = nursesData.getJSONArray("nurseProtectArea");
-            for (int j = 0; j < nurseProtectAreaList.length(); j++) {
-                nurseProtectArea.add(nurseProtectAreaList.getInt(i));
+                }
+                int nurseHeight = nursesData.getInt("nurseHeight");
+                int nurseWeight = nursesData.getInt("nurseWeight");
+                String nurseBloodType = nursesData.getString("nurseBloodType");
+                String nurseNation = nursesData.getString("nurseNation");
+                String nurseIdentity = nursesData.getString("nurseIdentity");
+                String nurseConstellation = nursesData.getString("nurseConstellation");
+                String nurseAnimal = nursesData.getString("nurseAnimal");
+                String nurseDescription = nursesData.getString("nurseDescription");
+                String nursePhone = nursesData.getString("nursePhone");
+                Nurse nurse1 = new Nurse(nurseName, nurseSex, nurseAge, nurseWorkAge, nurseArea, nurseEvaluate, nursePrice, nurseProtectArea, nurseHeight, nurseWeight, nurseBloodType, nurseNation, nurseIdentity, nurseConstellation, nurseAnimal, nurseDescription, nursePhone);
+                list.add(nurse1);
 
             }
-            int nurseHeight = nursesData.getInt("nurseHeight");
-            int nurseWeight = nursesData.getInt("nurseWeight");
-            String nurseBloodType = nursesData.getString("nurseBloodType");
-            String nurseNation = nursesData.getString("nurseNation");
-            String nurseIdentity = nursesData.getString("nurseIdentity");
-            String nurseConstellation = nursesData.getString("nurseConstellation");
-            String nurseAnimal = nursesData.getString("nurseAnimal");
-            String nurseDescription = nursesData.getString("nurseDescription");
-            String nursePhone = nursesData.getString("nursePhone");
-            Nurse nurse1 = new Nurse(nurseName, nurseSex, nurseAge, nurseWorkAge, nurseArea, nurseEvaluate, nursePrice, nurseProtectArea, nurseHeight, nurseWeight, nurseBloodType, nurseNation, nurseIdentity, nurseConstellation, nurseAnimal, nurseDescription, nursePhone);
-            list.add(nurse1);
-
+            UserOperation.nurseList = list;
         }
-        UserOperation.nurseList = list;
+
         return okhttpT.getResponse();
 
     }
