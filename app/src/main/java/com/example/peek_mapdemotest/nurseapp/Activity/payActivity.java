@@ -37,33 +37,35 @@ public class payActivity extends AppCompatActivity implements View.OnClickListen
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what) {
-                case SDK_PAY_FLAG:
-                    PayResult payResult = new PayResult((Map<String, String>) msg.obj);
-                    //同步获取结果
+                    try {
+                        PayResult payResult = new PayResult((Map<String, String>) msg.obj);
+                        //同步获取结果
                     String resultInfo = payResult.getResult();
                     Log.i("Pay", "Pay:" + resultInfo);
                     String resultStatus = payResult.getResultStatus();
+
                     // 判断resultStatus 为9000则代表支付成功
                     Intent intent =getIntent();
                     Bundle bundle = new Bundle();
                     if (TextUtils.equals(resultStatus, "9000")) {
                         Toast.makeText(payActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
-                        bundle.putString("Status","success");
+                        bundle.putString("Status","SUCCESS");
                     } else {
                         Toast.makeText(payActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
-                        bundle.putString("Status","fail");
+                        bundle.putString("Status","FAIL");
                     }
                     intent.putExtras(bundle);
                     setResult(RESULT_OK,intent);
-                    finish();
-                    break;
-            }
+                        payActivity.this.finish();
+                    }
+                    catch(Exception e)
+                    {
+                        btnPay.setText(e.toString());
+
+                    }
+
         }
     };
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,12 +79,15 @@ public class payActivity extends AppCompatActivity implements View.OnClickListen
         {
             public void onClick( View view)
             {
+
+                Toast.makeText(payActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
                 Intent intent =getIntent();
                 Bundle bundle = new Bundle();
-                bundle.putString("Status","cancel");
+                bundle.putString("Status","CANCEL");
                 intent.putExtras(bundle);
                 setResult(RESULT_OK,intent);
-                finish();
+                payActivity.this.finish();
+                //onBackPressed();
             }
         });
         initView();
@@ -97,39 +102,41 @@ public class payActivity extends AppCompatActivity implements View.OnClickListen
 
         subject="仁爱护工费用";
         body="订单编号 "+bundle.getString("id");
-        switch (v.getId()) {
-            case R.id.button:
-                //秘钥验证的类型 true:RSA2 false:RSA
-                boolean rsa = false;
-                //构造支付订单参数列表 参数1：支付宝上APP的ID 参数2：false 参数3：金额 参数4：商品名称  参数5：商品描述
-                Map<String, String> params = OrderInfoUtil2_0.buildOrderParamMap(APPID, rsa,money,subject,body);
-                //构造支付订单参数信息
-                String orderParam = OrderInfoUtil2_0.buildOrderParam(params);
-                //对支付参数信息进行签名
-                String sign = OrderInfoUtil2_0.getSign(params, RSA_PRIVATE, rsa);
-                //订单信息
-                final String orderInfo = orderParam + "&" + sign;
-                //异步处理
-                Runnable payRunnable = new Runnable() {
 
-                    @Override
-                    public void run() {
-                        //新建任务
-                        PayTask alipay = new PayTask(payActivity.this);
-
-                        //获取支付结果
-                        Map<String, String> result = alipay.payV2(orderInfo, true);
-                        Message msg = new Message();
-                        msg.what = SDK_PAY_FLAG;
-                        msg.obj = result;
-                        mHandler.sendMessage(msg);
-                    }
-                };
-                // 必须异步调用
-                Thread payThread = new Thread(payRunnable);
-                payThread.start();
-                break;
+        try {
+            //秘钥验证的类型 true:RSA2 false:RSA
+            boolean rsa = false;
+            //构造支付订单参数列表 参数1：支付宝上APP的ID 参数2：false 参数3：金额 参数4：商品名称  参数5：商品描述
+            Map<String, String> params = OrderInfoUtil2_0.buildOrderParamMap(APPID, rsa, money, subject, body);
+            //构造支付订单参数信息
+            String orderParam = OrderInfoUtil2_0.buildOrderParam(params);
+            //对支付参数信息进行签名
+            String sign = OrderInfoUtil2_0.getSign(params, RSA_PRIVATE, rsa);
+            //订单信息
+            final String orderInfo = orderParam + "&" + sign;
+            //异步处理
+            Runnable payRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    //新建任务
+                    PayTask alipay = new PayTask(payActivity.this);
+                    //获取支付结果
+                    Map<String, String> result = alipay.payV2(orderInfo, true);
+                    Message msg = new Message();
+                    msg.what = SDK_PAY_FLAG;
+                    msg.obj = result;
+                    mHandler.sendMessage(msg);
+                }
+            };
+            // 必须异步调用
+            Thread payThread = new Thread(payRunnable);
+            payThread.start();
         }
+        catch(Exception e)
+        {
+       btnPay.setText("error");
+        }
+
     }
 
 

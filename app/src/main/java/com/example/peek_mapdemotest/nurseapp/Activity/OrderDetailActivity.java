@@ -10,9 +10,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.peek_mapdemotest.nurseapp.R;
 
@@ -125,34 +127,34 @@ public class OrderDetailActivity extends AppCompatActivity {
    //对支付返回进行确认，支付成功，支付失败，取消支付
     protected void onActivityResult( int requestCode, int resultCode, Intent data) {
         Bundle bundle = data.getExtras();
+        AlertDialog.Builder builder=null;
+        Button bt =(Button) findViewById(R.id.buttonPay);
         String text = bundle.getString("Status");
-        if(text.contains("success"))//支付成功
-        {
-            builder2.setTitle("支付结果")
-                    .setMessage("支付成功！")
-                    .setPositiveButton("确定", null)
-                    .show();
-            buttonpay.setText("已付款");
-            buttonpay.setBackgroundColor(Color.parseColor("#cccccc"));
-            buttonpay.setEnabled(false);
-        }
-        else if(text.contains("cancel"))//取消支付
-        {
-            builder2.setTitle("支付结果")
-                    .setMessage("支付取消")
-                    .setPositiveButton("确定", null)
-                    .show();
-        }
-        else//支付失败
-        {
-            builder2.setTitle("支付结果")
-                    .setMessage("支付失败！（测试作为成功）")
-                    .setPositiveButton("确定", null)
-                    .show();
-            buttonpay.setText("已付款");
-            buttonpay.setBackgroundColor(Color.parseColor("#cccccc"));
-            buttonpay.setEnabled(false);
-        }
+        bt.setText(text);
 
+        try {
+            if(text.equals("FAIL"))//支付失败
+            {
+                Toast.makeText(OrderDetailActivity.this, "测试作为成功", Toast.LENGTH_SHORT).show();
+                bt.setText("已付款");
+                bt.setBackgroundColor(Color.parseColor("#cccccc"));
+                bt.setEnabled(false);
+            }
+            if (text.equals("CANCEL"))//取消支付
+            {
+                Toast.makeText(OrderDetailActivity.this, "支付取消", Toast.LENGTH_SHORT).show();
+            }
+             if (text.equals("SUCCESS"))//支付成功
+            {
+                Toast.makeText(OrderDetailActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+                bt.setText("已付款");
+                bt.setBackgroundColor(Color.parseColor("#cccccc"));
+                bt.setEnabled(false);
+            }
+        }
+        catch(Exception e)
+        {
+
+        }
     }
 }
