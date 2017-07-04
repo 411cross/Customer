@@ -31,19 +31,19 @@ public class NurseAdapter  extends ArrayAdapter<Nurse> {
     public View getView(int position, View convertView, ViewGroup parent) {
         Nurse nurse = getItem(position);
         View view = LayoutInflater.from(getContext()).inflate(resource, parent, false);
-        TextView nurse_name = (TextView) view.findViewById(R.id.NurseNameD);
+        TextView nurse_name = (TextView) view.findViewById(R.id.NurseNameI);
         ImageView nurse_icon = (ImageView) view.findViewById(R.id.NurseIcon);
-        TextView nurse_age = (TextView) view.findViewById(R.id.NurseAge);
-        TextView nurse_area = (TextView) view.findViewById(R.id.NurseArea);
-        TextView nurse_Sex = (TextView) view.findViewById(R.id.NurseSex);
-        TextView nurse_evaluate = (TextView) view.findViewById(R.id.NurseEvaluateD);
-        TextView nurse_price = (TextView) view.findViewById(R.id.NursePrice);
+        TextView nurse_age = (TextView) view.findViewById(R.id.NurseAgeI);
+        TextView nurse_area = (TextView) view.findViewById(R.id.NurseAreaI);
+        TextView nurse_Sex = (TextView) view.findViewById(R.id.NurseSexI);
+        TextView nurse_evaluate = (TextView) view.findViewById(R.id.NurseEvaluateI);
+        TextView nurse_price = (TextView) view.findViewById(R.id.NursePriceI);
         nurse_name.setText(nurse.getNurseName());
         nurse_icon.setImageResource(R.mipmap.ic_launcher);
         nurse_age.setText(nurse.getNurseAge()+"岁");
         nurse_area.setText(nurse.getNurseArea());
         nurse_Sex.setText(nurse.getNurseSex()+"");
-        nurse_price.setText(nurse.getNursePrice()+"元/每天");
+        nurse_price.setText(nurse.getNursePrice()+"元/天");
         nurse_evaluate.setText("好评率："+nurse.getNurseEvaluate());
         return view;
 

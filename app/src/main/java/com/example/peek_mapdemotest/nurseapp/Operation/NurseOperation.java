@@ -86,17 +86,16 @@ public class NurseOperation {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject nursesData = (JSONObject) jsonArray.get(i);
                 String nurseName = nursesData.getString("nurseName");
-
                 int nurseSex = nursesData.getInt("nurseSex");
                 int nurseAge = nursesData.getInt("nurseAge");
                 int nurseWorkAge = nursesData.getInt("nurseWorkAge");
                 String nurseArea = nursesData.getString("nurseArea");
-                int nurseEvaluate = nursesData.getInt("nurseWorkAge");
-                int nursePrice = nursesData.getInt("nurseWorkAge");
+                int nurseEvaluate = nursesData.getInt("nurseEvaluate");
+                int nursePrice = nursesData.getInt("nursePrice");
                 ArrayList<Integer> nurseProtectArea = new ArrayList<Integer>();
                 JSONArray nurseProtectAreaList = nursesData.getJSONArray("nurseProtectArea");
                 for (int j = 0; j < nurseProtectAreaList.length(); j++) {
-                    nurseProtectArea.add(nurseProtectAreaList.getInt(i));
+                    nurseProtectArea.add(nurseProtectAreaList.getInt(j));
 
                 }
                 int nurseHeight = nursesData.getInt("nurseHeight");
