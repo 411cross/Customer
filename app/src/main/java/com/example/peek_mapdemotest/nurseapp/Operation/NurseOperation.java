@@ -24,7 +24,7 @@ public class NurseOperation {
     public static ArrayList getNurseList() throws JSONException, ExecutionException, InterruptedException {
         ArrayList<Nurse> list = new ArrayList<Nurse>();
         okHttpTools okhttpT = new okHttpTools();
-        String URL = "http://139.199.226.190:8080/api/v1/register";
+        String URL = "http://139.199.226.190:8888/NurseApp/getnurselist";
         okhttpT.postTools(URL, "");
         String data = (String) okhttpT.getResponse().get(1);
         JSONObject object = new JSONObject(data);
@@ -71,7 +71,7 @@ public class NurseOperation {
     public static ArrayList filterNurseList(int filter, int position) throws JSONException, ExecutionException, InterruptedException {
         ArrayList<Nurse> list = new ArrayList<Nurse>();
         okHttpTools okhttpT = new okHttpTools();
-        String URL = "http://139.199.226.190:8080/api/v1/register";
+        String URL = "http://139.199.226.190:8888/NurseApp/nursefilter";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("filter", filter);
         jsonObject.put("position", position);

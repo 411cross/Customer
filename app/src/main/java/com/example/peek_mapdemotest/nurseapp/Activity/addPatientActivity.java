@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.peek_mapdemotest.nurseapp.Adapter.PatientAdapter;
 import com.example.peek_mapdemotest.nurseapp.Entity.Patient;
@@ -31,6 +30,7 @@ public class addPatientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_patient);
+
 
         add_Button = (Button)findViewById(R.id.button12);
         patientList= p.getPatientList();//测试数据

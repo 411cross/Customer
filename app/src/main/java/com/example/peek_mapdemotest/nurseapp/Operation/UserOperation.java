@@ -1,5 +1,7 @@
 package com.example.peek_mapdemotest.nurseapp.Operation;
 
+import android.util.Log;
+
 import com.example.peek_mapdemotest.nurseapp.Entity.Nurse;
 import com.example.peek_mapdemotest.nurseapp.Entity.Patient;
 import com.example.peek_mapdemotest.nurseapp.Entity.User;
@@ -10,6 +12,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by Administrator on 2017/7/3.
@@ -39,13 +43,13 @@ public class UserOperation {
     public static ArrayList UserLogin(String id, String pass) throws JSONException, ExecutionException, InterruptedException {
 
         okHttpTools okht = new okHttpTools();
-        String URL = "http://139.199.226.190:8080/api/v1/getInfo";
+        String URL = "http://139.199.226.190:8888/NurseApp/userlogin";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id", id);
         jsonObject.put("password", pass);
         String json = jsonObject.toString();
+        Log.i(TAG, "UserLogin: "+json);
         okht.postTools(URL, json);
-
 
         ArrayList responseList = okht.getResponse();
         if (Integer.parseInt((String) okht.getResponse().get(0)) == 200) {
@@ -75,7 +79,7 @@ public class UserOperation {
         jObject.put("password", pass);
         jObject.put("name", name);
         String userRegJson = jObject.toString();
-        String URL = "http://139.199.226.190:8080/api/v1/register";
+        String URL = "http://139.199.226.190:8888/NurseApp/register";
         okhttpT.postTools(URL, userRegJson);
         return okhttpT.getResponse();
     }
@@ -94,7 +98,7 @@ public class UserOperation {
         jObject.put("name", name);
         jObject.put("avatar", avatar);
         String Json = jObject.toString();
-        String URL = "http://139.199.226.190:8080/api/v1/register";
+        String URL = "http://139.199.226.190:8888/NurseApp/modifyuserinformation";
         okhttpT.postTools(URL, Json);
         if (Integer.parseInt((String) okhttpT.getResponse().get(0)) == 200) {
             UserOperation.user.setName(name);
