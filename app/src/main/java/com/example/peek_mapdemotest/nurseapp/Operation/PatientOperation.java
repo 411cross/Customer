@@ -29,7 +29,7 @@ public class PatientOperation {
         jObject.put("u_id", UserOperation.user.getId());
         jObject.put("p_id", p_id);
         String Json = jObject.toString();
-        String URL = "http://139.199.226.190:8080/api/v1/register";
+        String URL = "http://139.199.226.190:8888/NurseApp/addrelation";
         okhttpT.postTools(URL, Json);
 
         return okhttpT.getResponse();
@@ -47,7 +47,7 @@ public class PatientOperation {
         JSONObject jObject = new JSONObject();
         jObject.put("id", UserOperation.user.getId());
         String Json = jObject.toString();
-        String URL = "http://139.199.226.190:8080/api/v1/register";
+        String URL = "http://139.199.226.190:8888/NurseApp/getpatient";
         okhttpT.postTools(URL, Json);
         String data = (String) okhttpT.getResponse().get(1);
         JSONObject object = new JSONObject(data);

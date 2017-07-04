@@ -31,7 +31,7 @@ public class OrderOperation {
         jObject.put("id", UserOperation.user.getId());
         jObject.put("situation", situation1);
         String Json = jObject.toString();
-        String URL = "http://139.199.226.190:8080/api/v1/register";
+        String URL = "http://139.199.226.190:8888/NurseApp/getorder";
         okhttpT.postTools(URL, Json);
         String data = (String) okhttpT.getResponse().get(1);
         JSONObject object = new JSONObject(data);
@@ -76,7 +76,7 @@ public class OrderOperation {
         JSONObject jObject = new JSONObject();
         jObject.put("order", order);
         String Json = jObject.toString();
-        String URL = "http://139.199.226.190:8080/api/v1/register";
+        String URL = "http://139.199.226.190:8888/NurseApp/createorder";
         okhttpT.postTools(URL, Json);
         return okhttpT.getResponse();
 

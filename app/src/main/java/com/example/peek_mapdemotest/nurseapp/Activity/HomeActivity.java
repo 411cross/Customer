@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.peek_mapdemotest.nurseapp.Entity.User;
+import com.example.peek_mapdemotest.nurseapp.Operation.UserOperation;
 import com.example.peek_mapdemotest.nurseapp.R;
 
 public class HomeActivity extends AppCompatActivity {
@@ -35,14 +36,11 @@ public class HomeActivity extends AppCompatActivity {
         b4 = (Button)findViewById(R.id.button6);
         NurseBt = (Button) findViewById(R.id.NurseListBt);
         OrderBt = (Button) findViewById(R.id.CheckOrder);
-        Intent intent = getIntent();
-        user = (User)intent.getSerializableExtra("User");
-        tv1.setText("用户名:"+user.getName());
+        tv1.setText("用户名:"+ UserOperation.user.getName());
         ib1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, UserHomeActivity.class);
-                intent.putExtra("User",user);
                 startActivity(intent);
             }
         });
