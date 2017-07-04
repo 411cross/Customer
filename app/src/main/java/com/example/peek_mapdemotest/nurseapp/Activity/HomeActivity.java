@@ -84,9 +84,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, CheckOrderActivity.class);
-                startActivity(intent);
-
+                startActivityForResult(intent,1);
             }
         });
     }
+    protected void onRestart() {
+        super.onRestart();
+        tv1.setText("用户名:"+ UserOperation.user.getName());
+
+    }
+
 }
