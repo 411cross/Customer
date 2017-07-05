@@ -192,6 +192,7 @@ public class NurseActivity extends AppCompatActivity {
         });
         list.clear();
         list.addAll( UserOperation.nurseListAll);
+        System.out.println(UserOperation.nurseListAll.get(1).getNurseId());
         NuAdapter = new NurseAdapter(NurseActivity.this,R.layout.nurse_item,list);
         NurseListView.setAdapter(NuAdapter);
         NurseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -200,6 +201,7 @@ public class NurseActivity extends AppCompatActivity {
                 Nurse nurse = NuAdapter.getList().get(position);
                 Bundle bundle = new Bundle();
                 bundle.putInt("Nurse_id", nurse.getNurseId());
+                System.out.println("check nurse id" + nurse.getNurseId());
                 bundle.putString("Nurse_name", nurse.getNurseName());
                 bundle.putInt("Nurse_age", nurse.getNurseAge());
                 bundle.putString("Nurse_Area", nurse.getNurseArea());

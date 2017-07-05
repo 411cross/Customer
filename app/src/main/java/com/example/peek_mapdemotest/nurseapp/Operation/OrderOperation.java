@@ -4,6 +4,7 @@ import com.example.peek_mapdemotest.nurseapp.Entity.Nurse;
 import com.example.peek_mapdemotest.nurseapp.Entity.Order;
 import com.example.peek_mapdemotest.nurseapp.Entity.Patient;
 import com.example.peek_mapdemotest.nurseapp.Okhttp_tools.okHttpTools;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -76,9 +77,11 @@ public class OrderOperation {
      */
     public static ArrayList createOrder(Order order) throws JSONException, ExecutionException, InterruptedException {
         okHttpTools okhttpT = new okHttpTools();
-        JSONObject jObject = new JSONObject();
-        jObject.put("order", order);
-        String Json = jObject.toString();
+//        JSONObject jObject = new JSONObject();
+//        jObject.put("order", order);
+        Gson gson = new Gson();
+        String Json = "{\"order\":" + gson.toJson(order) + "}";
+        System.out.println(Json);
         String URL = "http://139.199.226.190:8888/NurseApp/createorder";
         okhttpT.postTools(URL, Json);
         return okhttpT.getResponse();

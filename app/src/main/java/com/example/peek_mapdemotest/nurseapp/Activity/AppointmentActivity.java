@@ -55,6 +55,7 @@ public class AppointmentActivity extends AppCompatActivity {
     private RelativeLayout ChoosePatientLayout;
 
     private int type=0;
+    private String serviceTime = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +94,7 @@ public class AppointmentActivity extends AppCompatActivity {
 
 
         SimpleDateFormat formattery = new SimpleDateFormat("yyyy");
-        Date curDate = new Date(System.currentTimeMillis());
+        final Date curDate = new Date(System.currentTimeMillis());
         String stry = formattery.format(curDate);
         final int y = Integer.parseInt(stry);
         SimpleDateFormat formatterm = new SimpleDateFormat("MM");
@@ -117,6 +118,7 @@ public class AppointmentActivity extends AppCompatActivity {
 
                         ChooseDate.setText(String.format("%d-%d-%d", year, monthOfYear + 1, dayOfMonth));
                         ChooseDate.setTextColor(Color.rgb(0, 0, 0));
+                        serviceTime = year + "-" + monthOfYear + "-" + dayOfMonth;
                     }
 
                 }, y, m - 1, d);
@@ -224,18 +226,24 @@ public class AppointmentActivity extends AppCompatActivity {
         ConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int totalPrice = Integer.parseInt((String) AppointmentMoney1Tv.getText());
-                String createTime = "111";
-                String serviceTime = "122";
-
-                int situation = 1; //订单状态: 0.未付款 1.已付款 2.已取消 3.已完成 4.进行中 5.已提醒付款
+                int totalPrice = bundle.getInt("Nurse_price");
+                SimpleDateFormat currentDateFormat = new SimpleDateFormat("yyyy-M-d");
+                String createTime = currentDateFormat.format(curDate);
+                int situation = 0; //订单状态: 0.未付款 1.已付款 2.已取消 3.已完成 4.进行中 5.已提醒付款
                 int choseNurse = 1;
                 User user = UserOperation.user;
-                Nurse nurse = new Nurse(bundle.getString("Nurse_name"), bundle.getInt("Nurse_sex"), bundle.getInt("Nurse_age"), bundle.getInt("Nurse_work_age"), bundle.getString("Nurse_Area"), bundle.getInt("Nurse_evaluate"), bundle.getInt("Nurse_price"), bundle.getIntegerArrayList("nurseProtectArea"), bundle.getInt("Nurse_height"), bundle.getInt("Nurse_weight"), bundle.getString("Nurse_blood"), bundle.getString("Nurse_nation"), bundle.getString("Nurse_identity"), bundle.getString("Nurse_Constellation"), bundle.getString("Nurse_Animal"), bundle.getString("Nurse_Description"), bundle.getString("Nurse_phone"));
+                Nurse nurse = new Nurse(bundle.getString("Nurse_name"), bundle.getInt("Nurse_id"), bundle.getInt("Nurse_sex"), bundle.getInt("Nurse_age"), bundle.getInt("Nurse_work_age"), bundle.getString("Nurse_Area"), bundle.getInt("Nurse_evaluate"), bundle.getInt("Nurse_price"), bundle.getIntegerArrayList("nurseProtectArea"), bundle.getInt("Nurse_height"), bundle.getInt("Nurse_weight"), bundle.getString("Nurse_blood"), bundle.getString("Nurse_nation"), bundle.getString("Nurse_identity"), bundle.getString("Nurse_Constellation"), bundle.getString("Nurse_Animal"), bundle.getString("Nurse_Description"), bundle.getString("Nurse_phone"));
                 Patient patient = UserOperation.patient;
                 Order order = new Order(totalPrice, createTime, serviceTime, type, situation, choseNurse, nurse, patient, user);
                 try {
                     ArrayList resp = OrderOperation.createOrder(order);
+                    if (Integer.parseInt((String) resp.get(0)) == 200) {
+                        Toast.makeText(AppointmentActivity.this, "订单创建成功", Toast.LENGTH_SHORT).show();
+                    } else {
+                        JSONObject object = new JSONObject((String) resp.get(1));
+                        String message = object.getString("data");
+                        Toast.makeText(AppointmentActivity.this, message, Toast.LENGTH_SHORT).show();
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {

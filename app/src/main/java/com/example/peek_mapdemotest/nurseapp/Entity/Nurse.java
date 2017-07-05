@@ -29,6 +29,27 @@ public class Nurse {
 
     }
 
+    public Nurse(String nurseName, int nurseId, int nurseSex, int nurseAge, int nurseWorkAge, String nurseArea, int nurseEvaluate, int nursePrice, ArrayList<Integer> nurseProtectArea, int nurseHeight, int nurseWeight, String nurseBloodType, String nurseNation, String nurseIdentity, String nurseConstellation, String nurseAnimal, String nurseDescription, String nursePhone) {
+        this.nurseName = nurseName;
+        this.nurseId = nurseId;
+        this.nurseSex = nurseSex;
+        this.nurseAge = nurseAge;
+        this.nurseWorkAge = nurseWorkAge;
+        this.nurseArea = nurseArea;
+        this.nurseEvaluate = nurseEvaluate;
+        this.nursePrice = nursePrice;
+        this.nurseProtectArea = nurseProtectArea;
+        this.nurseHeight = nurseHeight;
+        this.nurseWeight = nurseWeight;
+        this.nurseBloodType = nurseBloodType;
+        this.nurseNation = nurseNation;
+        this.nurseIdentity = nurseIdentity;
+        this.nurseConstellation = nurseConstellation;
+        this.nurseAnimal = nurseAnimal;
+        this.nurseDescription = nurseDescription;
+        this.nursePhone = nursePhone;
+    }
+
     public Nurse(String nurseName, int nurseSex, int nurseAge, int nurseWorkAge, String nurseArea, int nurseEvaluate, int nursePrice, ArrayList<Integer> nurseProtectArea, int nurseHeight, int nurseWeight, String nurseBloodType, String nurseNation, String nurseIdentity, String nurseConstellation, String nurseAnimal, String nurseDescription, String nursePhone) {
         this.setNurseName(nurseName);
         this.setNurseSex(nurseSex);
