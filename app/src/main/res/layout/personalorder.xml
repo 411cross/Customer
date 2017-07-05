@@ -15,33 +15,61 @@
         app:srcCompat="@mipmap/shenjing" />
 
     <TextView
+        android:id="@+id/textViewId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textViewIdTag"
+        android:text="201706271708" />
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textViewDateTag"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBottom="@+id/imageView1"
+        android:text="2017.06.27" />
+
+    <TextView
         android:id="@+id/textViewMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewId"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/textViewMoneyTag"
+        android:layout_marginLeft="10dp"
+        android:text="666" />
+
+    <TextView
+        android:id="@+id/textViewIdTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/imageView1"
+        android:text="订单编号" />
+
+    <TextView
+        android:id="@+id/textViewDateTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imageView1"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBottom="@+id/imageView1"
+        android:text="创建时间" />
+
+    <TextView
+        android:id="@+id/textViewMoneyTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewId"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/imageView1"
         android:layout_marginLeft="10dp"
-        android:text="订单金额：666.666" />
+        android:text="订单金额" />
 
-    <TextView
-        android:id="@+id/textViewId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentTop="true"
-        android:text="订单编号：201706271708" />
-
-    <TextView
-        android:id="@+id/textViewDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/imageView1"
-        android:layout_marginLeft="10dp"
-
-
-        android:layout_alignBottom="@+id/imageView1"
-        android:text="创建时间：2017.06.27" />
     <TextView
         android:id="@+id/textViewStatus"
         android:layout_width="wrap_content"
@@ -50,19 +78,16 @@
         android:layout_marginRight="20dp"
         android:textSize="20dp"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:textColor="#ff0000"
         android:text="未付款"
         />
 
-    <TextView
-        android:id="@+id/textView"
+    <Space
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textViewDate"
+        android:layout_height="10dp"
         android:layout_below="@+id/textViewDate"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:textSize="7sp"
-        android:text="  " />
+        android:layout_alignLeft="@id/imageView1"
+         />
 
 </RelativeLayout>

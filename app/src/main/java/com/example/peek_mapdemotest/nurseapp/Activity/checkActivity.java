@@ -33,7 +33,7 @@ public class checkActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.checkorder);
-        listView = (ListView)findViewById(R.id.list1);
+        listView = (ListView)findViewById(R.id.new_order_list);
         textView = (TextView) findViewById(R.id.textView2);
 
         Bundle bundle = this.getIntent().getExtras();

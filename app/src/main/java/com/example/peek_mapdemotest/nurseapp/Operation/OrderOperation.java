@@ -48,7 +48,7 @@ public class OrderOperation {
                 int situation = ordersData.getInt("situation");
                 int choseNurse = ordersData.getInt("choseNurse");
                 Nurse nurse = new Nurse();
-                JSONObject nurseJsonArray = object.getJSONObject("Nurse");
+                JSONObject nurseJsonArray = ordersData.getJSONObject("nurse");
                 String nurseName = nurseJsonArray.getString("nurseName");
                 String nursePhone = nurseJsonArray.getString("nursePhone");
                 int nurseEvaluate = nurseJsonArray.getInt("nurseEvaluate");
@@ -56,7 +56,7 @@ public class OrderOperation {
                 nurse.setNursePhone(nursePhone);
                 nurse.setNurseEvaluate(nurseEvaluate);
                 Patient patient = new Patient();
-                JSONObject patientJsonArray = object.getJSONObject("Patient");
+                JSONObject patientJsonArray = ordersData.getJSONObject("patient");
                 String patientName = patientJsonArray.getString("name");
                 String bedNumber = patientJsonArray.getString("bedNumber");
                 patient.setName(patientName);

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.peek_mapdemotest.nurseapp">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 在SDCard中创建与删除文件权限 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
@@ -27,34 +28,28 @@
         </activity>
         <activity
             android:name=".Activity.CheckOrderActivity"
-            android:label="查询订单">
-
-        </activity>
-
+            android:label="查询订单"></activity>
         <activity
             android:name=".Activity.checkActivity"
             android:label="查询结果" />
         <activity
             android:name=".Activity.OrderDetailActivity"
-            android:screenOrientation="portrait"
-            android:label="订单详情" />
-
+            android:label="订单详情"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.payActivity"
-            android:screenOrientation="portrait"
             android:label="支付服务"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
-            android:screenOrientation="behind"/>
-
+            android:screenOrientation="behind" />
         <activity
             android:name="com.alipay.sdk.auth.AuthActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
-            android:screenOrientation="behind"/>
+            android:screenOrientation="behind" />
         <activity android:name=".Activity.NurseActivity" />
         <activity android:name=".Activity.NurseDetailActivity" />
         <activity android:name=".Activity.AppointmentActivity" />
@@ -65,7 +60,8 @@
         <activity android:name=".Activity.ChirurgeryActivity" />
         <activity android:name=".Activity.GynaecologyActivity" />
         <activity android:name=".Activity.addPatientActivity" />
-        <activity android:name=".Activity.ModifyMessageActivity"></activity>
+        <activity android:name=".Activity.ModifyMessageActivity" />
+        <activity android:name=".Activity.ByAreaActivity"></activity>
     </application>
 
 </manifest>
