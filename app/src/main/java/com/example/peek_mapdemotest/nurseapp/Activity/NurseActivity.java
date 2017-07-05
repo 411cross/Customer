@@ -216,6 +216,7 @@ public class NurseActivity extends AppCompatActivity {
                 bundle.putString("Nurse_Constellation", nurse.getNurseConstellation());
                 bundle.putString("Nurse_Animal", nurse.getNurseAnimal());
                 bundle.putString("Nurse_Description", nurse.getNurseDescription());
+                bundle.putIntegerArrayList("nurseProtectArea",nurse.getNurseProtectArea());
                 Intent intent = new Intent(NurseActivity.this,NurseDetailActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);

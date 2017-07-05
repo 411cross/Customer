@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.demon.myapplication.OrderDetailActivity">
+    tools:context="com.example.peek_mapdemotest.nurseapp.Activity.OrderDetailActivity"
+    >
 
     <ImageView
         android:id="@+id/imageView"
@@ -13,6 +14,7 @@
         android:scaleType="fitXY"
         app:srcCompat="@mipmap/background"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/order_status"
         android:layout_marginTop="10dp"
         />
@@ -23,6 +25,7 @@
         android:text="订单编号：20170627094200"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         />
     <TextView
         android:id="@+id/order_money"
@@ -31,8 +34,11 @@
         android:text="TextView"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        />
     <TextView
         android:id="@+id/order_status"
         android:layout_width="wrap_content"
@@ -42,8 +48,11 @@
         android:textSize="20sp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_below="@+id/order_id"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        />
 
     <TextView
         android:id="@+id/textView3"
@@ -52,6 +61,7 @@
         android:layout_below="@+id/imageView"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:text="被护理人" />
 
     <TextView
@@ -61,7 +71,9 @@
         android:layout_below="@+id/imageView"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/textView3"
+        android:layout_toRightOf="@+id/textView3"
         android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:textStyle="bold"
         android:text="牛大力" />
 
@@ -72,6 +84,7 @@
         android:layout_below="@+id/textPatient"
         android:layout_marginTop="10dp"
         android:layout_marginStart="11dp"
+        android:layout_marginLeft="11dp"
         android:text="床       位" />
 
     <TextView
@@ -82,7 +95,9 @@
         android:layout_alignBaseline="@+id/textView5"
         android:layout_alignBottom="@+id/textView5"
         android:layout_toEndOf="@+id/textView5"
+        android:layout_toRightOf="@+id/textView5"
         android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
         android:textStyle="bold"
         />
 
@@ -101,6 +116,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView2"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:text="联  系  人" />
 
@@ -111,7 +127,9 @@
         android:layout_below="@+id/imageView2"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/textView7"
+        android:layout_toRightOf="@+id/textView7"
         android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:textStyle="bold"
         android:text="牛上天"
         />
@@ -123,6 +141,7 @@
         android:layout_below="@+id/textView7"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:text="联系电话" />
 
     <TextView
@@ -131,8 +150,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textLinkman"
         android:layout_toEndOf="@+id/textView9"
+        android:layout_toRightOf="@+id/textView9"
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:textStyle="bold"
         android:text="18819266666"
         />
@@ -142,6 +163,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_below="@+id/textView10"
         android:layout_marginTop="10dp"
         android:text="护理类型" />
@@ -152,8 +174,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView9"
         android:layout_toEndOf="@+id/textView11"
+        android:layout_toRightOf="@+id/textView11"
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:textStyle="bold"
         android:text="外科护理" />
 
@@ -163,6 +187,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView11"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:text="护理时间" />
 
@@ -171,6 +196,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView12"
+        android:layout_alignLeft="@+id/textView12"
         android:layout_below="@+id/textView12"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
@@ -191,6 +217,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
         android:scaleType="fitXY"
         app:srcCompat="@mipmap/touxiang"
         android:layout_below="@+id/imageView3" />
@@ -201,7 +228,9 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/imageHeadPortrait"
         android:layout_toEndOf="@+id/imageHeadPortrait"
+        android:layout_toRightOf="@+id/imageHeadPortrait"
         android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:text="护工姓名" />
 
     <TextView
@@ -209,7 +238,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/textView4"
+        android:layout_toRightOf="@+id/textView4"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:text="放牛娃"
         android:layout_alignTop="@+id/textView4" />
 
@@ -220,7 +251,9 @@
         android:layout_below="@+id/textView4"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/imageHeadPortrait"
+        android:layout_toRightOf="@+id/imageHeadPortrait"
         android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:text="评        价" />
 
     <TextView
@@ -228,6 +261,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView16"
+        android:layout_alignLeft="@+id/textView16"
         android:layout_below="@+id/textView16"
         android:layout_marginTop="8dp"
         android:text="身高" />
@@ -237,8 +271,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/textView17"
+        android:layout_toRightOf="@+id/textView17"
         android:layout_below="@+id/textView16"
         android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="8dp"
         android:text="体重" />
 
@@ -249,7 +285,9 @@
         android:layout_below="@+id/textView16"
         android:layout_marginTop="8dp"
         android:layout_toEndOf="@+id/textView18"
+        android:layout_toRightOf="@+id/textView18"
         android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:text="血型" />
     <ImageView
         android:id="@+id/imageView4"
@@ -289,6 +327,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginBottom="5dp"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         />
 
 </RelativeLayout>

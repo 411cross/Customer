@@ -12,6 +12,8 @@ import com.example.peek_mapdemotest.nurseapp.Entity.User;
 import com.example.peek_mapdemotest.nurseapp.Operation.UserOperation;
 import com.example.peek_mapdemotest.nurseapp.R;
 
+import static com.example.peek_mapdemotest.nurseapp.Operation.UserOperation.user;
+
 public class HomeActivity extends AppCompatActivity {
 
     private TextView tv1;
@@ -21,7 +23,6 @@ public class HomeActivity extends AppCompatActivity {
     private Button b3;
     private Button b4;
     private Button NurseBt;
-    private User user;
     private Button OrderBt;
 
     @Override

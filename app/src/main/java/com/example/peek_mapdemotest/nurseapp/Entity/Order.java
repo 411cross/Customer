@@ -46,6 +46,18 @@ public class Order {
         this.patient = patient;
     }
 
+    public Order(int totalPrice, String createTime, String serviceTime, int type, int situation, int choseNurse, Nurse nurse, Patient patient, User user) {
+        this.totalPrice = totalPrice;
+        this.createTime = createTime;
+        this.serviceTime = serviceTime;
+        this.type = type;
+        this.situation = situation;
+        this.choseNurse = choseNurse;
+        this.nurse = nurse;
+        this.patient = patient;
+        this.user = user;
+    }
+
     public int getId() {
         return id;
     }

@@ -5,160 +5,167 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.peek_mapdemotest.nurseapp.Activity.NurseDetailActivity">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/Relative1"
-    android:background="#4fa645"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true">
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:src="@mipmap/ic_launcher"
-        android:id="@+id/NurseIcon"/>
-    <TextView
-        android:layout_width="wrap_content"
+
+    <RelativeLayout
+        android:id="@+id/Relative1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="名字"
-        android:textSize="30dp"
-        android:id="@+id/NurseNameI"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        android:layout_alignTop="@+id/NurseIcon"
-        android:layout_toRightOf="@+id/NurseIcon"
-        android:layout_toEndOf="@+id/NurseIcon"
-        android:layout_marginTop="8dp" />
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/NurseNameI"
-        android:layout_marginTop="11dp"
-        android:layout_alignLeft="@+id/NurseNameI"
-        android:layout_alignStart="@+id/NurseNameI"
-        android:id="@+id/linearLayout">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#4fa645">
+
+        <ImageView
+            android:id="@+id/NurseIcon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/NurseSexD"
+            android:id="@+id/NurseNameI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="性别" />
+            android:layout_alignTop="@+id/NurseIcon"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/NurseIcon"
+            android:layout_toRightOf="@+id/NurseIcon"
+            android:text="名字"
+            android:textSize="30dp" />
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:src="#909090"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp" />
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/NurseNameI"
+            android:layout_alignStart="@+id/NurseNameI"
+            android:layout_below="@+id/NurseNameI"
+            android:layout_marginTop="11dp">
+
+            <TextView
+                android:id="@+id/NurseSexD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="性别" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="2dp"
+                android:src="#909090" />
+
+            <TextView
+                android:id="@+id/NurseAgeD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="年龄" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="2dp"
+                android:src="#909090" />
+
+            <TextView
+                android:id="@+id/NurseAreaD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地区" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/NurseAgeD"
+            android:id="@+id/NursePriceD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="年龄" />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:src="#909090"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp" />
+            android:layout_above="@+id/linearLayout"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="6dp"
+            android:layout_marginRight="6dp"
+            android:text="价格" />
 
         <TextView
-            android:id="@+id/NurseAreaD"
+            android:id="@+id/NurseEvaluateD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="地区" />
-    </LinearLayout>
+            android:layout_alignLeft="@+id/linearLayout"
+            android:layout_alignStart="@+id/linearLayout"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginTop="15dp"
+            android:text="好评率：" />
 
-    <TextView
-        android:id="@+id/NursePriceD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="价格"
-        android:layout_above="@+id/linearLayout"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="6dp"
-        android:layout_marginEnd="6dp" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/NurseIcon"
+            android:layout_alignStart="@+id/NurseIcon"
+            android:layout_below="@+id/NurseIcon"
+            android:layout_marginLeft="7dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="9dp"
+            android:text="护理范围" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="好评率："
-        android:layout_marginTop="15dp"
-        android:id="@+id/NurseEvaluateD"
-        android:layout_below="@+id/linearLayout"
-        android:layout_alignLeft="@+id/linearLayout"
-        android:layout_alignStart="@+id/linearLayout" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="护理范围"
-        android:id="@+id/textView2"
-        android:layout_marginTop="9dp"
-        android:layout_below="@+id/NurseIcon"
-        android:layout_alignLeft="@+id/NurseIcon"
-        android:layout_alignStart="@+id/NurseIcon"
-        android:layout_marginLeft="7dp"
-        android:layout_marginStart="7dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_alignEnd="@+id/linearLayout"
+            android:layout_alignRight="@+id/linearLayout"
+            android:layout_marginEnd="31dp"
+            android:layout_marginRight="31dp"
+            android:text="1234" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1234"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignRight="@+id/linearLayout"
-        android:layout_alignEnd="@+id/linearLayout"
-        android:layout_marginRight="31dp"
-        android:layout_marginEnd="31dp" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView2"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_toLeftOf="@+id/NurseEvaluateD"
+            android:layout_toStartOf="@+id/NurseEvaluateD"
+            android:text="1234" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1234"
-        android:layout_alignBaseline="@+id/textView2"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_toLeftOf="@+id/NurseEvaluateD"
-        android:layout_toStartOf="@+id/NurseEvaluateD"
-        android:id="@+id/textView3" />
+    </RelativeLayout>
 
-</RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ccc8c8"
-        android:layout_alignBottom="@+id/Relative1">
+        android:layout_alignBottom="@+id/Relative1"
+        android:background="#ccc8c8">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="基本情况："
-            android:textSize="16dp"
-            android:layout_marginLeft="10dp"/>
+            android:textSize="16dp" />
     </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/Relative1"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Relative1">
 
         <LinearLayout
+            android:id="@+id/linearLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/linearLayout1"
-            android:layout_below="@+id/linearLayout3"
             android:layout_alignLeft="@+id/linearLayout3"
             android:layout_alignStart="@+id/linearLayout3"
+            android:layout_below="@+id/linearLayout3"
             android:layout_marginTop="12dp">
 
             <TextView
@@ -170,11 +177,11 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:src="#909090"
+                android:layout_marginBottom="2dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp" />
+                android:src="#909090" />
 
             <TextView
                 android:id="@+id/NurseNation"
@@ -185,11 +192,11 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:src="#909090"
+                android:layout_marginBottom="2dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp" />
+                android:src="#909090" />
 
             <TextView
                 android:id="@+id/Nursephone"
@@ -197,13 +204,14 @@
                 android:layout_height="wrap_content"
                 android:text="电话" />
         </LinearLayout>
+
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/linearLayout2"
-            android:layout_below="@+id/linearLayout1"
             android:layout_alignLeft="@+id/linearLayout1"
             android:layout_alignStart="@+id/linearLayout1"
+            android:layout_below="@+id/linearLayout1"
             android:layout_marginTop="15dp">
 
             <TextView
@@ -215,11 +223,11 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:src="#909090"
+                android:layout_marginBottom="2dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp" />
+                android:src="#909090" />
 
             <TextView
                 android:id="@+id/NurseAnimal"
@@ -228,15 +236,16 @@
                 android:text="生肖" />
 
         </LinearLayout>
+
         <LinearLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/linearLayout3"
             android:layout_above="@+id/imageView2"
-            android:layout_toRightOf="@+id/imageView"
+            android:layout_marginLeft="6dp"
+            android:layout_marginStart="6dp"
             android:layout_toEndOf="@+id/imageView"
-            android:layout_marginLeft="36dp"
-            android:layout_marginStart="36dp">
+            android:layout_toRightOf="@+id/imageView">
 
             <TextView
                 android:id="@+id/Nurseheight"
@@ -247,11 +256,11 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:src="#909090"
+                android:layout_marginBottom="2dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp" />
+                android:src="#909090" />
 
             <TextView
                 android:id="@+id/NurseWeight"
@@ -262,11 +271,11 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:src="#909090"
+                android:layout_marginBottom="2dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp" />
+                android:src="#909090" />
 
             <TextView
                 android:id="@+id/NurseBlood"
@@ -274,44 +283,48 @@
                 android:layout_height="wrap_content"
                 android:text="血型" />
         </LinearLayout>
+
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="@color/colorAccent"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_marginLeft="18dp"
             android:layout_marginStart="18dp"
             android:layout_marginTop="38dp"
-            android:id="@+id/imageView" />
+            android:background="@color/colorAccent" />
+
         <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="@color/colorAccent"
-            android:id="@+id/imageView3"
-            android:layout_below="@+id/imageView5"
             android:layout_alignLeft="@+id/imageView2"
             android:layout_alignStart="@+id/imageView2"
-            android:layout_marginTop="38dp" />
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@color/colorAccent"
+            android:layout_below="@+id/imageView5"
             android:layout_marginTop="38dp"
-            android:id="@+id/imageView5"
-            android:layout_below="@+id/imageView2"
-            android:layout_alignLeft="@+id/imageView3"
-            android:layout_alignStart="@+id/imageView3" />
+            android:background="@color/colorAccent" />
+
         <ImageView
+            android:id="@+id/imageView5"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="@color/colorAccent"
-            android:layout_marginTop="114dp"
+            android:layout_alignLeft="@+id/imageView3"
+            android:layout_alignStart="@+id/imageView3"
+            android:layout_below="@+id/imageView2"
+            android:layout_marginTop="38dp"
+            android:background="@color/colorAccent" />
+
+        <ImageView
             android:id="@+id/imageView2"
-            android:layout_below="@+id/imageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignLeft="@+id/imageView"
-            android:layout_alignStart="@+id/imageView" />
+            android:layout_alignStart="@+id/imageView"
+            android:layout_below="@+id/imageView"
+            android:layout_marginTop="114dp"
+            android:background="@color/colorAccent" />
 
         <TextView
             android:id="@+id/NurseIDentity"
@@ -323,29 +336,43 @@
             android:layout_marginTop="15dp"
             android:text="123123123123" />
 
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="个人简介："
+            android:layout_above="@+id/imageView5"
+            android:layout_toRightOf="@+id/imageView2"
+            android:layout_toEndOf="@+id/imageView2"
+            android:layout_marginLeft="6dp"
+            android:layout_marginStart="6dp" />
+
+
+        <TextView
+            android:id="@+id/NurseDescription"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:text="简单介绍"
+
+            android:layout_alignBaseline="@+id/textView20"
+            android:layout_alignBottom="@+id/textView20"
+            android:layout_toRightOf="@+id/NurseIDentity"
+            android:layout_toEndOf="@+id/NurseIDentity" />
     </RelativeLayout>
+
+
+
+
     <Button
+        android:id="@+id/appointmentbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="立即预约"
-        android:id="@+id/appointmentbutton"
-        android:background="#4fa645"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:id="@+id/NurseDescription"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_above="@+id/appointmentbutton"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="26dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginRight="41dp"
-        android:text="简单介绍" />
-
+        android:layout_alignParentStart="true"
+        android:background="#4fa645"
+        android:text="立即预约" />
 
 
 </RelativeLayout>
+
