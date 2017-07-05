@@ -32,4 +32,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile files('libs/alipaySdk-20170623-proguard.jar')
     compile files('libs/gson-2.8.0.jar')
+    compile files('libs/sun.misc.BASE64Decoder.jar')
 }
