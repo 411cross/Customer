@@ -42,9 +42,13 @@ public class NurseAdapter  extends ArrayAdapter<Nurse> {
         nurse_icon.setImageResource(R.mipmap.ic_launcher);
         nurse_age.setText(nurse.getNurseAge()+"岁");
         nurse_area.setText(nurse.getNurseArea());
-        nurse_Sex.setText(nurse.getNurseSex()+"");
+        if (nurse.getNurseSex() == 0) {
+            nurse_Sex.setText("男");
+        } else {
+            nurse_Sex.setText("女");
+        }
         nurse_price.setText(nurse.getNursePrice()+"元/天");
-        nurse_evaluate.setText("好评率："+nurse.getNurseEvaluate());
+        nurse_evaluate.setText("评分: "+nurse.getNurseEvaluate());
         return view;
 
     }

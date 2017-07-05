@@ -29,7 +29,29 @@ public class PatientOperation {
         jObject.put("u_id", UserOperation.user.getId());
         jObject.put("p_id", p_id);
         String Json = jObject.toString();
+        System.out.println(Json);
         String URL = "http://139.199.226.190:8888/NurseApp/addrelation";
+        okhttpT.postTools(URL, Json);
+
+        return okhttpT.getResponse();
+
+    }
+
+    /**
+     * 删除用户家属关系
+     * 输入  p_id  病人的ID
+     * 输出 状态码和返回信息
+     */
+    public static ArrayList DeleteFamilyRelation(int p_id) throws JSONException, ExecutionException, InterruptedException {
+
+
+        okHttpTools okhttpT = new okHttpTools();
+        JSONObject jObject = new JSONObject();
+        jObject.put("u_id", UserOperation.user.getId());
+        jObject.put("p_id", p_id);
+        String Json = jObject.toString();
+        System.out.println(Json);
+        String URL = "http://139.199.226.190:8888/NurseApp/deleterelation";
         okhttpT.postTools(URL, Json);
 
         return okhttpT.getResponse();
