@@ -33,10 +33,10 @@ public class CheckAdapter extends ArrayAdapter<Order> {
         TextView textdate=(TextView)view.findViewById(R.id.textViewDate);
         TextView textstatus=(TextView)view.findViewById(R.id.textViewStatus);
       //  ImageView image=(ImageView) view.findViewById(R.id.imageView1);
-//        textid.setText(to.getID());
-//        textmoney.setText(to.getMoney());
-//        textdate.setText(to.getDate());
-//        textstatus.setText(to.getStatus());
+        textid.setText(to.getId()+"");
+        textmoney.setText(to.getTotalPrice()+"元");
+        textdate.setText(to.getCreateTime());
+        textstatus.setText(to.getSituation()+"状态");
         return view;
     }
 }

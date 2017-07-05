@@ -66,8 +66,8 @@ public class checkActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(checkActivity.this, OrderDetailActivity.class);
-                textorders to1 = arr_List.get(i);
-                intent.putExtra("textorders",to1);
+                Order to1 = UserOperation.orderList.get(i);
+                intent.putExtra("order",to1);
                 startActivity(intent);
             }
         });
