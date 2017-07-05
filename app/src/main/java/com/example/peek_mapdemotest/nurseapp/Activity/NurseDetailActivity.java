@@ -58,8 +58,8 @@ public class NurseDetailActivity extends AppCompatActivity {
         PriceTv.setText(bundle.getInt("Nurse_price") + "元/天");
         EvaluateTv.setText("好评率：" + bundle.getInt("Nurse_evaluate"));
         WorkAgeTv.setText(bundle.getInt("Nurse_work_age")+"年");
-        HeightTv.setText(bundle.getInt("Nurse_height"));
-        WeightTv.setText(bundle.getInt("Nurse_weight"));
+        HeightTv.setText(String.valueOf(bundle.getInt("Nurse_height")));
+        WeightTv.setText(String.valueOf(bundle.getInt("Nurse_weight")));
         BloodTv.setText(bundle.getString("Nurse_blood")+"型");
         NationTv.setText(bundle.getString("Nurse_nation"));
         IdentityTv.setText(bundle.getString("Nurse_identity"));
