@@ -1,9 +1,11 @@
 package com.example.peek_mapdemotest.nurseapp.Entity;
 
+import java.io.Serializable;
+
 /**
  * Created by derrickJ on 2017/6/29.
  */
-public class Order {
+public class Order implements Serializable {
 
     private int id;
     private int totalPrice;

@@ -4,6 +4,7 @@ import com.example.peek_mapdemotest.nurseapp.Entity.Nurse;
 import com.example.peek_mapdemotest.nurseapp.Entity.Order;
 import com.example.peek_mapdemotest.nurseapp.Entity.Patient;
 import com.example.peek_mapdemotest.nurseapp.Okhttp_tools.okHttpTools;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,35 +34,38 @@ public class OrderOperation {
         String Json = jObject.toString();
         String URL = "http://139.199.226.190:8888/NurseApp/getorder";
         okhttpT.postTools(URL, Json);
-        String data = (String) okhttpT.getResponse().get(1);
-        JSONObject object = new JSONObject(data);
-        JSONArray jsonArray = object.getJSONArray("data");
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject ordersData = (JSONObject) jsonArray.get(i);
-            int id = ordersData.getInt("id");
-            int totalPrice = ordersData.getInt("totalPrice");
-            String createTime = ordersData.getString("createTime");
-            String serviceTime = ordersData.getString("serviceTime");
-            int type = ordersData.getInt("type");
-            int situation = ordersData.getInt("situation");
-            int choseNurse = ordersData.getInt("choseNurse");
-            Nurse nurse = new Nurse();
-            JSONObject nurseJsonArray = object.getJSONObject("Nurse");
-            String nurseName = nurseJsonArray.getString("nurseName");
-            String nursePhone = nurseJsonArray.getString("nursePhone");
-            int nurseEvaluate = nurseJsonArray.getInt("nurseEvaluate");
-            nurse.setNurseName(nurseName);
-            nurse.setNursePhone(nursePhone);
-            nurse.setNurseEvaluate(nurseEvaluate);
-            Patient patient = new Patient();
-            JSONObject patientJsonArray = object.getJSONObject("Patient");
-            String patientName = patientJsonArray.getString("name");
-            String bedNumber = patientJsonArray.getString("bedNumber");
-            patient.setName(patientName);
-            patient.setBedNumber(bedNumber);
-            Order order = new Order(id,totalPrice,createTime,serviceTime,type,situation,choseNurse,nurse,patient);
-            list.add(order);
+        if(Integer.parseInt((String) okhttpT.getResponse().get(0))==200){
+            String data = (String) okhttpT.getResponse().get(1);
+            JSONObject object = new JSONObject(data);
+            JSONArray jsonArray = object.getJSONArray("data");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject ordersData = (JSONObject) jsonArray.get(i);
+                int id = ordersData.getInt("id");
+                int totalPrice = ordersData.getInt("totalPrice");
+                String createTime = ordersData.getString("createTime");
+                String serviceTime = ordersData.getString("serviceTime");
+                int type = ordersData.getInt("type");
+                int situation = ordersData.getInt("situation");
+                int choseNurse = ordersData.getInt("choseNurse");
+                Nurse nurse = new Nurse();
+                JSONObject nurseJsonArray = ordersData.getJSONObject("nurse");
+                String nurseName = nurseJsonArray.getString("nurseName");
+                String nursePhone = nurseJsonArray.getString("nursePhone");
+                int nurseEvaluate = nurseJsonArray.getInt("nurseEvaluate");
+                nurse.setNurseName(nurseName);
+                nurse.setNursePhone(nursePhone);
+                nurse.setNurseEvaluate(nurseEvaluate);
+                Patient patient = new Patient();
+                JSONObject patientJsonArray = ordersData.getJSONObject("patient");
+                String patientName = patientJsonArray.getString("name");
+                String bedNumber = patientJsonArray.getString("bedNumber");
+                patient.setName(patientName);
+                patient.setBedNumber(bedNumber);
+                Order order = new Order(id,totalPrice,createTime,serviceTime,type,situation,choseNurse,nurse,patient);
+                list.add(order);
+            }
         }
+        UserOperation.orderList=list;
         return okhttpT.getResponse();
 
     }
@@ -73,9 +77,11 @@ public class OrderOperation {
      */
     public static ArrayList createOrder(Order order) throws JSONException, ExecutionException, InterruptedException {
         okHttpTools okhttpT = new okHttpTools();
-        JSONObject jObject = new JSONObject();
-        jObject.put("order", order);
-        String Json = jObject.toString();
+//        JSONObject jObject = new JSONObject();
+//        jObject.put("order", order);
+        Gson gson = new Gson();
+        String Json = "{\"order\":" + gson.toJson(order) + "}";
+        System.out.println(Json);
         String URL = "http://139.199.226.190:8888/NurseApp/createorder";
         okhttpT.postTools(URL, Json);
         return okhttpT.getResponse();

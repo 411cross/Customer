@@ -32,6 +32,7 @@ public class NurseOperation {
             JSONArray jsonArray = object.getJSONArray("data");
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject nursesData = (JSONObject) jsonArray.get(i);
+                int nurseId = nursesData.getInt("nurseId");
                 String nurseName = nursesData.getString("nurseName");
                 int nurseSex = nursesData.getInt("nurseSex");
                 int nurseAge = nursesData.getInt("nurseAge");
@@ -54,7 +55,7 @@ public class NurseOperation {
                 String nurseAnimal = nursesData.getString("nurseAnimal");
                 String nurseDescription = nursesData.getString("nurseDescription");
                 String nursePhone = nursesData.getString("nursePhone");
-                Nurse nurse1 = new Nurse(nurseName, nurseSex, nurseAge, nurseWorkAge, nurseArea, nurseEvaluate, nursePrice, nurseProtectArea, nurseHeight, nurseWeight, nurseBloodType, nurseNation, nurseIdentity, nurseConstellation, nurseAnimal, nurseDescription, nursePhone);
+                Nurse nurse1 = new Nurse(nurseName, nurseId, nurseSex, nurseAge, nurseWorkAge, nurseArea, nurseEvaluate, nursePrice, nurseProtectArea, nurseHeight, nurseWeight, nurseBloodType, nurseNation, nurseIdentity, nurseConstellation, nurseAnimal, nurseDescription, nursePhone);
                 list.add(nurse1);
 
             }
