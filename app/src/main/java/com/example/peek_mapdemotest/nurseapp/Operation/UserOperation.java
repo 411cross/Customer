@@ -31,7 +31,7 @@ public class UserOperation {
     //客户端需要维护的PatientList         （作为Lisview数据源）
     public static ArrayList<Patient> patientList = new ArrayList<>();
 
-    public static int p_id ;
+    public static Patient patient = new Patient() ;
 
 
     /**

@@ -49,24 +49,27 @@ public class PatientOperation {
         String Json = jObject.toString();
         String URL = "http://139.199.226.190:8888/NurseApp/getpatient";
         okhttpT.postTools(URL, Json);
-        String data = (String) okhttpT.getResponse().get(1);
-        JSONObject object = new JSONObject(data);
-        JSONArray jsonArray = object.getJSONArray("data");
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject patientsData = (JSONObject) jsonArray.get(i);
-            int id = patientsData.getInt("id");
-            String bedNumber = patientsData.getString("bedNumber");
-            String name = patientsData.getString("name");
-            int sex = patientsData.getInt("sex");
-            String disease = patientsData.getString("disease");
-            String contactName = patientsData.getString("contactName");
-            String contactPhone = patientsData.getString("contactPhone");
-            Patient patient = new Patient(id, name, bedNumber, sex, disease, contactName, contactPhone);
-            list.add(patient);
+        if(Integer.parseInt((String) okhttpT.getResponse().get(0))==200){
+            String data = (String) okhttpT.getResponse().get(1);
+            JSONObject object = new JSONObject(data);
+            JSONArray jsonArray = object.getJSONArray("data");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject patientsData = (JSONObject) jsonArray.get(i);
+                int id = patientsData.getInt("id");
+                String bedNumber = patientsData.getString("bedNumber");
+                String name = patientsData.getString("name");
+                int sex = patientsData.getInt("sex");
+                String disease = patientsData.getString("disease");
+                String contactName = patientsData.getString("contactName");
+                String contactPhone = patientsData.getString("contactPhone");
+                Patient patient = new Patient(id, name, bedNumber, sex, disease, contactName, contactPhone);
+                list.add(patient);
 
 
+            }
+            UserOperation.patientList = list;
         }
-        UserOperation.patientList = list;
+
         return okhttpT.getResponse();
 
 
