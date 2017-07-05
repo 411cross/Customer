@@ -49,21 +49,30 @@ public class HomeActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("area", 1);
                 Intent intent = new Intent(HomeActivity.this, InternalMedicineActivity.class);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("area", 2);
                 Intent intent = new Intent(HomeActivity.this, ChirurgeryActivity.class);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("area", 3);
                 Intent intent = new Intent(HomeActivity.this, GynaecologyActivity.class);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
