@@ -53,10 +53,14 @@ public class NurseDetailActivity extends AppCompatActivity {
         final Bundle bundle = this.getIntent().getExtras();
         NameTv.setText(bundle.getString("Nurse_name"));
         AgeTv.setText(bundle.getInt("Nurse_age") + "岁");
-        SexTv.setText(bundle.getInt("Nurse_sex") + "");
+        if (bundle.getInt("Nurse_sex") == 0) {
+            SexTv.setText("男");
+        } else {
+            SexTv.setText("女");
+        }
         AreaTv.setText(bundle.getString("Nurse_Area"));
         PriceTv.setText(bundle.getInt("Nurse_price") + "元/天");
-        EvaluateTv.setText("好评率：" + bundle.getInt("Nurse_evaluate"));
+        EvaluateTv.setText("评分: " + bundle.getInt("Nurse_evaluate"));
         WorkAgeTv.setText(bundle.getInt("Nurse_work_age")+"年");
         HeightTv.setText(bundle.getInt("Nurse_height")+"");
         WeightTv.setText(bundle.getInt("Nurse_weight")+"");
