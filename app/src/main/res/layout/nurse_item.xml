@@ -93,7 +93,7 @@
         android:layout_height="wrap_content"
         android:text="护理范围"
         android:id="@+id/textView2"
-        android:layout_marginTop="9dp"
+        android:paddingBottom="8dp"
         android:layout_below="@+id/NurseIcon"
         android:layout_alignLeft="@+id/NurseIcon"
         android:layout_alignStart="@+id/NurseIcon"

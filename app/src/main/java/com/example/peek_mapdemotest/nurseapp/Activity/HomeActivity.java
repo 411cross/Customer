@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.peek_mapdemotest.nurseapp.Entity.User;
@@ -17,7 +18,7 @@ import static com.example.peek_mapdemotest.nurseapp.Operation.UserOperation.user
 public class HomeActivity extends AppCompatActivity {
 
     private TextView tv1;
-    private ImageButton ib1;
+    private ImageView ib1;
     private Button b1;
     private Button b2;
     private Button b3;
@@ -32,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         tv1 = (TextView)findViewById(R.id.textView);
-        ib1 = (ImageButton)findViewById(R.id.imageButton);
+        ib1 = (ImageView)findViewById(R.id.imageButton);
         b1 = (Button)findViewById(R.id.button3);
         b2 = (Button)findViewById(R.id.button4);
         b3 = (Button)findViewById(R.id.button5);

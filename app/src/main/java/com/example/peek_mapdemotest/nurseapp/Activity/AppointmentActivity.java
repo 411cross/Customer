@@ -200,10 +200,10 @@ public class AppointmentActivity extends AppCompatActivity {
                         list_single[i] = "临时看护";
                     }
                     if (al.get(i) == 4) {
-                        list_single[i] = "天天护（标准）";
+                        list_single[i] = "标准护理";
                     }
                     if (al.get(i) == 5) {
-                        list_single[i] = "天天护（严重）";
+                        list_single[i] = "严重护理";
                     }
 
                 }
