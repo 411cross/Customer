@@ -27,6 +27,8 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
     private Button b1;
     private Button b2;
     private Button b3;
+    private Button standardBtn;
+    private Button seriousBtn;
     private Button b4;
     private Button NurseBt;
     private Button OrderBt;
@@ -72,6 +74,8 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
         b1 = (Button)findViewById(R.id.button3);
         b2 = (Button)findViewById(R.id.button4);
         b3 = (Button)findViewById(R.id.button5);
+        standardBtn = (Button) findViewById(R.id.standard_btn);
+        seriousBtn = (Button) findViewById(R.id.serious_btn);
         b4 = (Button)findViewById(R.id.button6);
         NurseBt = (Button) findViewById(R.id.NurseListBt);
         OrderBt = (Button) findViewById(R.id.CheckOrder);
@@ -154,7 +158,7 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("area", 1);
-                Intent intent = new Intent(HomeActivity.this, InternalMedicineActivity.class);
+                Intent intent = new Intent(HomeActivity.this, ByAreaActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -164,7 +168,7 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("area", 2);
-                Intent intent = new Intent(HomeActivity.this, ChirurgeryActivity.class);
+                Intent intent = new Intent(HomeActivity.this, ByAreaActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -174,7 +178,27 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("area", 3);
-                Intent intent = new Intent(HomeActivity.this, GynaecologyActivity.class);
+                Intent intent = new Intent(HomeActivity.this, ByAreaActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        standardBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("area", 4);
+                Intent intent = new Intent(HomeActivity.this, ByAreaActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        seriousBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("area", 5);
+                Intent intent = new Intent(HomeActivity.this, ByAreaActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

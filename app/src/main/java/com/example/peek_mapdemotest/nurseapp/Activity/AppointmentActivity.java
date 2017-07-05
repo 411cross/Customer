@@ -63,7 +63,7 @@ public class AppointmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment);
 
-        NameTv = (TextView) findViewById(R.id.AppointmentNurseName);
+        NameTv = (TextView) findViewById(R.id.type);
         AgeTv = (TextView) findViewById(R.id.AppointmentNurseAge);
         SexTv = (TextView) findViewById(R.id.AppointmentNurseSex);
         AreaTv = (TextView) findViewById(R.id.AppointmentNurseArea);
@@ -92,6 +92,8 @@ public class AppointmentActivity extends AppCompatActivity {
         EvaluateTv.setText("好评率：" + bundle.getInt("Nurse_evaluate"));
         AppointmentConNameTv.setText(UserOperation.user.getName());
         AppointmentConPhoneTv.setText(UserOperation.user.getId());
+        AppiontmentMoneyTv.setText(bundle.getInt("Nurse_price")+"￥");
+        AppointmentMoney1Tv.setText(bundle.getInt("Nurse_price")+"￥");
 
 
         SimpleDateFormat formattery = new SimpleDateFormat("yyyy");
@@ -140,7 +142,7 @@ public class AppointmentActivity extends AppCompatActivity {
                 try {
                     ArrayList resp = PatientOperation.getFamilyRelation();
                     if (Integer.parseInt((String) resp.get(0)) == 200) {
-                        final ArrayList<String> single_list = new ArrayList<String>();
+                        final ArrayList<String> single_list = new ArrayList<>();
                         for (int i = 0; i < UserOperation.patientList.size(); i++) {
                             single_list.add(UserOperation.patientList.get(i).getName());
                         }

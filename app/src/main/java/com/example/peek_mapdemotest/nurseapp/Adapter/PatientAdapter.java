@@ -15,9 +15,15 @@ import android.widget.Toast;
 
 import com.example.peek_mapdemotest.nurseapp.Activity.addPatientActivity;
 import com.example.peek_mapdemotest.nurseapp.Entity.Patient;
+import com.example.peek_mapdemotest.nurseapp.Operation.PatientOperation;
 import com.example.peek_mapdemotest.nurseapp.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Administrator on 2017/6/28.
@@ -62,6 +68,22 @@ public class PatientAdapter extends ArrayAdapter<Patient> {
                                     }
                                 }
                                 //确认解绑逻辑
+                                try {
+                                    ArrayList resp = PatientOperation.DeleteFamilyRelation(pt.getId());
+                                    if (Integer.parseInt((String) resp.get(0)) == 200) {
+                                        Toast.makeText(getContext(), "病人解绑成功", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        JSONObject object = new JSONObject((String) resp.get(1));
+                                        String message = object.getString("message");
+                                        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                } catch (ExecutionException e) {
+                                    e.printStackTrace();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         });
                 builder.setNegativeButton("取消",
