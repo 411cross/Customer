@@ -3,6 +3,7 @@ package com.example.peek_mapdemotest.nurseapp.Operation;
 import android.util.Log;
 
 import com.example.peek_mapdemotest.nurseapp.Entity.Nurse;
+import com.example.peek_mapdemotest.nurseapp.Entity.Order;
 import com.example.peek_mapdemotest.nurseapp.Entity.Patient;
 import com.example.peek_mapdemotest.nurseapp.Entity.User;
 import com.example.peek_mapdemotest.nurseapp.Okhttp_tools.okHttpTools;
@@ -30,6 +31,8 @@ public class UserOperation {
     public static ArrayList<Nurse> nurseList = new ArrayList<>();
     //客户端需要维护的PatientList         （作为Lisview数据源）
     public static ArrayList<Patient> patientList = new ArrayList<>();
+    //客户端需要维护的OrderList         （作为Lisview数据源）
+    public static ArrayList<Order> orderList = new ArrayList<>();
 
     public static Patient patient = new Patient() ;
 
