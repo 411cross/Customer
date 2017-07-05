@@ -62,15 +62,15 @@ public class checkActivity extends AppCompatActivity {
         CheckAdapter ccadapter =new CheckAdapter(checkActivity.this,R.layout.personalorder, UserOperation.orderList);
        listView.setAdapter(ccadapter);
         //listView 点击事件，点击某一行获取当中的信息并且传递给订单详细信息界面
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent intent = new Intent(checkActivity.this, OrderDetailActivity.class);
-//                textorders to1 = arr_List.get(i);
-//                intent.putExtra("textorders",to1);
-//                startActivity(intent);
-//            }
-//        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(checkActivity.this, OrderDetailActivity.class);
+                Order to1 = UserOperation.orderList.get(i);
+                intent.putExtra("order",to1);
+                startActivity(intent);
+            }
+        });
 
 
     }
