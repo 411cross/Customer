@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -69,8 +70,13 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
         tv1 = (TextView)findViewById(R.id.textView);
         ib1 = (ImageView) findViewById(R.id.imageButton);
+        ib1 = (ImageView)findViewById(R.id.imageButton);
         b1 = (Button)findViewById(R.id.button3);
         b2 = (Button)findViewById(R.id.button4);
         b3 = (Button)findViewById(R.id.button5);
@@ -320,10 +326,10 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
 
     protected void onRestart() {
         super.onRestart();
-        tv1.setText("用户名:"+ UserOperation.user.getName());
-        if(UserOperation.bitmap!=null){
-            ib1.setImageBitmap(UserOperation.bitmap);
-        }
+//        tv1.setText("用户名:"+ UserOperation.user.getName());
+//        if(UserOperation.bitmap!=null){
+//            ib1.setImageBitmap(UserOperation.bitmap);
+//        }
 
 
     }

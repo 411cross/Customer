@@ -86,7 +86,11 @@ public class AppointmentActivity extends AppCompatActivity {
         final Bundle bundle = this.getIntent().getExtras();
         NameTv.setText(bundle.getString("Nurse_name"));
         AgeTv.setText(bundle.getInt("Nurse_age") + "岁");
-        SexTv.setText(bundle.getInt("Nurse_sex") + "");
+        if (bundle.getInt("Nurse_sex") == 0) {
+            SexTv.setText("男");
+        } else {
+            SexTv.setText("女");
+        }
         AreaTv.setText(bundle.getString("Nurse_Area"));
         PriceTv.setText(bundle.getInt("Nurse_price") + "元/天");
         EvaluateTv.setText("好评率：" + bundle.getInt("Nurse_evaluate"));
@@ -201,10 +205,10 @@ public class AppointmentActivity extends AppCompatActivity {
                         list_single[i] = "临时看护";
                     }
                     if (al.get(i) == 4) {
-                        list_single[i] = "天天护（标准）";
+                        list_single[i] = "标准护理";
                     }
                     if (al.get(i) == 5) {
-                        list_single[i] = "天天护（严重）";
+                        list_single[i] = "严重护理";
                     }
 
                 }
@@ -241,10 +245,25 @@ public class AppointmentActivity extends AppCompatActivity {
                 try {
                     ArrayList resp = OrderOperation.createOrder(order);
                     if (Integer.parseInt((String) resp.get(0)) == 200) {
+                        String data = (String)  resp.get(1);
+                        JSONObject object = new JSONObject(data);
+                        int id =object.getInt("data");
+                        //开启支付宝
+                        Intent intent = new Intent(AppointmentActivity.this,payActivity.class);
+
+                        Bundle bundle = new Bundle();
+                        //获取订单金额
+
+
+                        bundle.putString("money",totalPrice+"");
+                        //模拟订单ID 201707050000
+                        bundle.putString("id",id+"");
+                        intent.putExtras(bundle);
+                        startActivityForResult(intent,0);
                         Toast.makeText(AppointmentActivity.this, "订单创建成功", Toast.LENGTH_SHORT).show();
                     } else {
                         JSONObject object = new JSONObject((String) resp.get(1));
-                        String message = object.getString("data");
+                        String message = object.getString("message");
                         Toast.makeText(AppointmentActivity.this, message, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
@@ -256,18 +275,7 @@ public class AppointmentActivity extends AppCompatActivity {
                 }
 
 
-                //开启支付宝
-                Intent intent = new Intent(AppointmentActivity.this,payActivity.class);
 
-                Bundle bundle = new Bundle();
-                //获取订单金额
-                String Money ="88";
-
-                bundle.putString("money",Money);
-                //模拟订单ID 201707050000
-                bundle.putString("id","201707050000");
-                intent.putExtras(bundle);
-                startActivityForResult(intent,0);
             }
         });
     }

@@ -53,7 +53,9 @@
         <activity android:name=".Activity.NurseActivity" />
         <activity android:name=".Activity.NurseDetailActivity" />
         <activity android:name=".Activity.AppointmentActivity" />
-        <activity android:name=".Activity.HomeActivity" />
+        <activity
+            android:name=".Activity.HomeActivity"
+            android:theme="@style/NoBarAppTheme" />
         <activity android:name=".Activity.UserHomeActivity" />
         <activity android:name=".Activity.RegisterActivity" />
         <activity android:name=".Activity.InternalMedicineActivity" />

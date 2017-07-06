@@ -27,51 +27,53 @@
                 android:entries="@array/protectArea"
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
-                style="@android:style/Widget.Material.Spinner.Underlined"
-
-                >
-            </Spinner>
-            <Spinner
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/Spinner2"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                android:entries="@array/protectYear"
-                style="@android:style/Widget.Material.Spinner.Underlined"
-
-                >
-
-            </Spinner>
-
-            <Spinner
-                android:id="@+id/Spinner3"
-                style="@android:style/Widget.Material.Spinner.Underlined"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:entries="@array/sex"
-                android:paddingBottom="0dp"
-                android:paddingTop="0dp"
-                >
-
-            </Spinner>
-            <Spinner
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/Spinner4"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                android:entries="@array/evaluation"
-                style="@android:style/Widget.Material.Spinner.Underlined"
-
-                >
-            </Spinner>
 
 
-        </LinearLayout>
+            ></Spinner>
+
+        <Spinner
+            android:id="@+id/Spinner2"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:entries="@array/protectYear"
+            android:paddingBottom="0dp"
+            android:paddingTop="0dp"
+            android:background="@drawable/shape_drop_down_normal"
+            android:dropDownSelector="@color/color_white"
+
+            >
+
+        </Spinner>
+
+        <Spinner
+            android:id="@+id/Spinner3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:entries="@array/sex"
+            android:paddingBottom="0dp"
+            android:paddingTop="0dp"
+            android:background="@drawable/shape_drop_down_normal"
+            android:dropDownSelector="@color/color_white">
+
+        </Spinner>
+
+        <Spinner
+            android:id="@+id/Spinner4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:entries="@array/evaluation"
+            android:paddingBottom="0dp"
+            android:paddingTop="0dp"
+            android:background="@drawable/shape_drop_down_normal"
+            android:dropDownSelector="@color/color_white"
+            ></Spinner>
+
+
+    </LinearLayout>
 
         <ListView
             android:id="@+id/NurseListview"
