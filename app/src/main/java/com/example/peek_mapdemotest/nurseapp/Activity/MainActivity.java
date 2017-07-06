@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     ArrayList resp = UserOperation.UserLogin(account,password);
 
                     if(Integer.parseInt((String) resp.get(0))==200){
-                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(MainActivity.this, NewHomeActivity.class);
                         intent.putExtra("User",UserOperation.user);
                         startActivity(intent);
                     }else{
