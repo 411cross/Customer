@@ -19,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.Toast;
+
 import com.example.peek_mapdemotest.nurseapp.Operation.UserOperation;
 import com.example.peek_mapdemotest.nurseapp.R;
 
