@@ -12,33 +12,28 @@
         android:layout_height="74dp"
         app:srcCompat="@mipmap/ic_launcher"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-3dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        tools:layout_editor_absoluteY="-3dp" />
 
-    <ImageView
-        android:id="@+id/imageView9"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:scaleType="fitXY"
-        app:srcCompat="@mipmap/background"
+        android:layout_height="match_parent">
 
-        android:layout_below="@+id/imageButton"
-        />
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="1000dp"
+    >
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="240dp"
         android:layout_alignBottom="@+id/relativeLayout3"
         android:layout_alignParentTop="true"
-        android:layout_below="@+id/imageView9"></android.support.v4.view.ViewPager>
+        ></android.support.v4.view.ViewPager>
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView10"
+        android:layout_height="240dp"
         android:layout_alignParentTop="true"
         android:orientation="vertical">
 
@@ -50,7 +45,20 @@
             android:layout_marginBottom="20dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal"></LinearLayout>
+
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/type_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout3"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:text="省心预约" />
 
     <Button
         android:id="@+id/NurseListBt"
@@ -62,18 +70,6 @@
         android:textSize="20dp"
         android:layout_below="@+id/viewPager"
         android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_above="@+id/imageView12"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-
-        android:layout_marginBottom="178dp"
-        android:scaleType="fitXY"
-        app:srcCompat="@mipmap/background" />
 
     <Button
         android:id="@+id/button3"
@@ -120,9 +116,10 @@
         android:background="@mipmap/biaozhun"
         android:textColor="#ffffff"
         android:textSize="20dp"
-        android:layout_alignBottom="@+id/imageView12"
+        android:layout_below="@+id/button3"
         android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3" />
+        android:layout_alignStart="@+id/button3"
+        android:layout_marginTop="16dp"/>
 
     <Button
         android:id="@+id/serious_btn"
@@ -131,69 +128,64 @@
         android:background="@mipmap/zhongzheng"
         android:textColor="#ffffff"
         android:textSize="20dp"
-        android:layout_alignBottom="@+id/imageView12"
-        android:layout_alignRight="@+id/CheckOrder"
-        android:layout_alignEnd="@+id/CheckOrder" />
+        android:layout_alignBaseline="@+id/standard_btn"
+        android:layout_alignBottom="@+id/standard_btn"
+        android:layout_toLeftOf="@+id/button5"
+        android:layout_toStartOf="@+id/button5" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="28dp"
-        android:layout_toRightOf="@+id/imageButton"
-        android:text="用户编号" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginTop="28dp"-->
+        <!--android:layout_toRightOf="@+id/imageButton"-->
+        <!--android:text="用户编号" />-->
 
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_above="@+id/imageView11"
-        android:layout_marginBottom="10dp"
-        android:scaleType="fitXY"
-        app:srcCompat="@mipmap/background" />
 
     <ImageView
 
         android:id="@+id/imageView11"
         android:layout_width="280sp"
         android:layout_height="51sp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"
-        app:srcCompat="@mipmap/button1" />
+        app:srcCompat="@mipmap/button1"
+        android:layout_below="@+id/standard_btn"
+        android:layout_alignLeft="@+id/type_tag"
+        android:layout_alignStart="@+id/type_tag"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="18dp" />
 
     <Button
         android:id="@+id/CheckOrder"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_alignBottom="@+id/imageView11"
-        android:layout_alignLeft="@+id/imageView11"
-        android:layout_alignStart="@+id/imageView11"
-        android:layout_marginLeft="10dp"
 
-        android:layout_marginStart="10dp"
         android:background="#00b0ff"
         android:text="   查询订单   "
         android:textColor="#ffffff"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/imageView11"
+        android:layout_toLeftOf="@+id/NurseListBt"
+        android:layout_toStartOf="@+id/NurseListBt" />
 
     <Button
         android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_alignBottom="@+id/imageView11"
-        android:layout_alignEnd="@+id/imageView11"
-        android:layout_alignRight="@+id/imageView11"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
         android:background="#00b0ff00"
         android:text="   添加病人   "
         android:textColor="#ffffff"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/imageView11"
+        android:layout_alignRight="@+id/imageView11"
+        android:layout_alignEnd="@+id/imageView11"
+        android:layout_marginRight="14dp"
+        android:layout_marginEnd="14dp" />
 
+</RelativeLayout>
 
+    </ScrollView>
 </RelativeLayout>
