@@ -58,9 +58,6 @@
             android:theme="@style/NoBarAppTheme" />
         <activity android:name=".Activity.UserHomeActivity" />
         <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.InternalMedicineActivity" />
-        <activity android:name=".Activity.ChirurgeryActivity" />
-        <activity android:name=".Activity.GynaecologyActivity" />
         <activity android:name=".Activity.addPatientActivity" />
         <activity android:name=".Activity.ModifyMessageActivity" />
         <activity android:name=".Activity.ByAreaActivity"></activity>

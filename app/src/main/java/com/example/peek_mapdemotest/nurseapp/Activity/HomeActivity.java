@@ -76,7 +76,7 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
         tv1 = (TextView)findViewById(R.id.textView);
-        ib1 = (ImageView)findViewById(R.id.imageButton);
+//        ib1 = (ImageView)findViewById(R.id.imageButton);
         b1 = (Button)findViewById(R.id.button3);
         b2 = (Button)findViewById(R.id.button4);
         b3 = (Button)findViewById(R.id.button5);
@@ -85,7 +85,7 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
         b4 = (Button)findViewById(R.id.button6);
         NurseBt = (Button) findViewById(R.id.NurseListBt);
         OrderBt = (Button) findViewById(R.id.CheckOrder);
-        tv1.setText("用户名:"+ UserOperation.user.getName());
+//        tv1.setText("用户名:"+ UserOperation.user.getName());
 
 
         setView();
@@ -113,13 +113,13 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
             }
 
         });
-        ib1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, UserHomeActivity.class);
-                startActivity(intent);
-            }
-        });
+//        ib1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(HomeActivity.this, UserHomeActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         //点点
         tips = new ImageView[imgIdArray.length];
         for(int i=0; i<tips.length; i++){
@@ -323,7 +323,7 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
 
     protected void onRestart() {
         super.onRestart();
-        tv1.setText("用户名:"+ UserOperation.user.getName());
+//        tv1.setText("用户名:"+ UserOperation.user.getName());
 
     }
 
