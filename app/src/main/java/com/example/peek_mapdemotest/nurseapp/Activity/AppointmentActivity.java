@@ -96,8 +96,8 @@ public class AppointmentActivity extends AppCompatActivity {
         EvaluateTv.setText("好评率：" + bundle.getInt("Nurse_evaluate"));
         AppointmentConNameTv.setText(UserOperation.user.getName());
         AppointmentConPhoneTv.setText(UserOperation.user.getId());
-        AppiontmentMoneyTv.setText(bundle.getInt("Nurse_price")+"￥");
-        AppointmentMoney1Tv.setText(bundle.getInt("Nurse_price")+"￥");
+        AppiontmentMoneyTv.setText("￥" + bundle.getInt("Nurse_price"));
+        AppointmentMoney1Tv.setText("￥" + bundle.getInt("Nurse_price"));
 
 
         SimpleDateFormat formattery = new SimpleDateFormat("yyyy");
