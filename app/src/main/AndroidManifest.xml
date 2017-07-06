@@ -10,7 +10,7 @@
     <!-- 从SDCard读取数据权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -28,7 +28,7 @@
         </activity>
         <activity
             android:name=".Activity.CheckOrderActivity"
-            android:label="查询订单"></activity>
+            android:label="查询订单" />
         <activity
             android:name=".Activity.checkActivity"
             android:label="查询结果" />
@@ -60,8 +60,9 @@
         <activity android:name=".Activity.RegisterActivity" />
         <activity android:name=".Activity.addPatientActivity" />
         <activity android:name=".Activity.ModifyMessageActivity" />
-        <activity android:name=".Activity.ByAreaActivity"/>
-        <activity android:name=".Activity.NewHomeActivity"></activity>
+        <activity android:name=".Activity.ByAreaActivity" />
+        <activity android:name=".Activity.NewHomeActivity" />
+        <activity android:name=".Activity.NullAtivity"></activity>
     </application>
 
 </manifest>

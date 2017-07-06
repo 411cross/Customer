@@ -60,7 +60,6 @@ public class HomeFragment extends android.support.v4.app.Fragment {
     private Button standardBtn;
     private Button seriousBtn;
     private Button b4;
-    private Button NurseBt;
     private Button OrderBt;
     private boolean isLoop=true;
     private int itemnumber;
@@ -124,7 +123,6 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         standardBtn = (Button) view.findViewById(R.id.standard_btn);
         seriousBtn = (Button) view.findViewById(R.id.serious_btn);
         b4 = (Button) view.findViewById(R.id.button6);
-        NurseBt = (Button) view.findViewById(R.id.NurseListBt);
         OrderBt = (Button) view.findViewById(R.id.CheckOrder);
 //        tv1.setText("用户名:"+ UserOperation.user.getName());
 
@@ -257,13 +255,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
                 startActivity(intent);
             }
         });
-        NurseBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), NurseActivity.class);
-                startActivity(intent);
-            }
-        });
+
         OrderBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

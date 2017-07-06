@@ -63,6 +63,9 @@ public class ModifyMessageActivity extends AppCompatActivity {
         password = (EditText)findViewById(R.id.editText_password);
         name.setText(UserOperation.user.getName());
         HeadButton = (ImageView) findViewById(R.id.imageButton_head);
+        if(UserOperation.bitmap!=null){
+            HeadButton.setImageBitmap(UserOperation.bitmap);
+        }
 
         ensure = (Button)findViewById(R.id.ensure) ;
 
@@ -208,6 +211,7 @@ public class ModifyMessageActivity extends AppCompatActivity {
             if (data != null) {
 //                Bundle extras = data.getExtras();
                 final Bitmap bitmap = data.getParcelableExtra("data");
+                UserOperation.bitmap=bitmap;
 //                final Bitmap bitmap = extras.getParcelable("data");
                 HeadButton.setImageBitmap(bitmap);
 
@@ -263,5 +267,14 @@ public class ModifyMessageActivity extends AppCompatActivity {
         intent.putExtra("noFaceDetection", true);
         intent.putExtra("return-data", true);
         startActivityForResult(intent, PHOTO_REQUEST_CUT);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if(UserOperation.bitmap!=null){
+            HeadButton.setImageBitmap(UserOperation.bitmap);
+        }
+
     }
 }

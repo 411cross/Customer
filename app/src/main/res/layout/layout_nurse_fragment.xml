@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:background="@color/color_background"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/linearLayout_spinner"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/tipsTv"
+        android:text=""/>
+
     <LinearLayout
+        android:id="@+id/linearLayout_spinner"
         android:layout_width="match_parent"
         android:layout_height="36dp">
 
@@ -19,20 +28,20 @@
             android:paddingBottom="0dp"
             android:paddingTop="0dp"
 
-            ></Spinner>
+            android:textAlignment="center"></Spinner>
 
         <Spinner
             android:id="@+id/Spinner2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/shape_drop_down_normal"
+            android:dropDownSelector="@color/color_white"
             android:entries="@array/protectYear"
             android:paddingBottom="0dp"
             android:paddingTop="0dp"
-            android:background="@drawable/shape_drop_down_normal"
-            android:dropDownSelector="@color/color_white"
 
-            >
+            android:textAlignment="center">
 
         </Spinner>
 
@@ -41,11 +50,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/shape_drop_down_normal"
+            android:dropDownSelector="@color/color_white"
             android:entries="@array/sex"
             android:paddingBottom="0dp"
             android:paddingTop="0dp"
-            android:background="@drawable/shape_drop_down_normal"
-            android:dropDownSelector="@color/color_white">
+            android:textAlignment="center">
 
         </Spinner>
 
@@ -54,24 +64,32 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/shape_drop_down_normal"
+            android:dropDownSelector="@color/color_white"
             android:entries="@array/evaluation"
             android:paddingBottom="0dp"
             android:paddingTop="0dp"
-            android:background="@drawable/shape_drop_down_normal"
-            android:dropDownSelector="@color/color_white"
-            ></Spinner>
+            android:textAlignment="center"></Spinner>
 
 
     </LinearLayout>
 
+    <View
+        android:id="@+id/spread_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/linearLayout_spinner"
+        android:background="#202020">
+    </View>
+
 
     <ListView
         android:id="@+id/NurseListview"
+        android:layout_below="@+id/spread_line"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="4dp"
-        android:divider="@null"></ListView>
+        ></ListView>
 
-</LinearLayout>
+
+
+</RelativeLayout>

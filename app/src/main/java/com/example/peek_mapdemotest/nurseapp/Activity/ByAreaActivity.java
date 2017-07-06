@@ -4,9 +4,9 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -32,6 +32,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
+import static com.example.peek_mapdemotest.nurseapp.Operation.UserOperation.patient;
+
 public class ByAreaActivity extends AppCompatActivity {
 
     private TextView NameTv;
@@ -50,7 +52,7 @@ public class ByAreaActivity extends AppCompatActivity {
     private TextView AppointmentProtectAreaTv;
     private TextView areaTv;
     private TextView priceTv;
-
+    int totalPrice;
 
     private Button ConfirmButton;
     private RelativeLayout ChoosePatientLayout;
@@ -75,9 +77,14 @@ public class ByAreaActivity extends AppCompatActivity {
         ConfirmButton = (Button) findViewById(R.id.ConfirmButton);
         ChoosePatientLayout = (RelativeLayout) findViewById(R.id.relativeLayout4);
         AppointmentProtectAreaTv = (TextView) findViewById(R.id.AppointmentProtectArea);
+        protectedNameTv = (TextView) findViewById(R.id.protectedName);
+        ServerAreaTv = (TextView) findViewById(R.id.ServerArea);
 
         areaTv = (TextView) findViewById(R.id.type);
         priceTv = (TextView) findViewById(R.id.price);
+
+        AppointmentConNameTv.setText(UserOperation.user.getName());
+        AppointmentConPhoneTv.setText(UserOperation.user.getId());
 
         switch (area) {
             case 1:
@@ -85,30 +92,41 @@ public class ByAreaActivity extends AppCompatActivity {
                 priceTv.setText("¥ 220");
                 AppointmentMoneyTv.setText("¥ 220");
                 AppointmentMoney1Tv.setText("¥ 220");
+                type=area;
+                totalPrice=220;
+
                 break;
             case 2:
                 areaTv.setText("外科护理");
                 priceTv.setText("¥ 220");
                 AppointmentMoneyTv.setText("¥ 220");
                 AppointmentMoney1Tv.setText("¥ 220");
+                type=area;
+                totalPrice=220;
                 break;
             case 3:
                 areaTv.setText("临时护理");
                 priceTv.setText("¥ 150");
                 AppointmentMoneyTv.setText("¥ 150");
                 AppointmentMoney1Tv.setText("¥ 150");
+                type=area;
+                totalPrice=150;
                 break;
             case 4:
                 areaTv.setText("标准护理");
                 priceTv.setText("¥ 200");
                 AppointmentMoneyTv.setText("¥ 200");
                 AppointmentMoney1Tv.setText("¥ 200");
+                type=area;
+                totalPrice=200;
                 break;
             case 5:
                 areaTv.setText("重症护理");
                 priceTv.setText("¥ 350");
                 AppointmentMoneyTv.setText("¥ 350");
                 AppointmentMoney1Tv.setText("¥ 350");
+                type=area;
+                totalPrice=350;
                 break;
             default:
                 break;
@@ -176,9 +194,9 @@ public class ByAreaActivity extends AppCompatActivity {
 
                                 String str = single_list.get(which);
                                 Toast.makeText(ByAreaActivity.this, "成功选择" + str, Toast.LENGTH_SHORT).show();
-                                UserOperation.patient = UserOperation.patientList.get(which);
-                                protectedNameTv.setText(UserOperation.patient.getName());
-                                ServerAreaTv.setText(UserOperation.patient.getBedNumber());
+                                patient = UserOperation.patientList.get(which);
+                                protectedNameTv.setText(patient.getName());
+                                ServerAreaTv.setText(patient.getBedNumber());
 
                                 dialog.dismiss();
                             }
@@ -249,22 +267,38 @@ public class ByAreaActivity extends AppCompatActivity {
         ConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int totalPrice = bundle.getInt("Nurse_price");
+
                 SimpleDateFormat currentDateFormat = new SimpleDateFormat("yyyy-M-d");
                 String createTime = currentDateFormat.format(curDate);
                 int situation = 0; //订单状态: 0.未付款 1.已付款 2.已取消 3.已完成 4.进行中 5.已提醒付款
-                int choseNurse = 1;
+                int choseNurse = 0;
                 User user = UserOperation.user;
-                Nurse nurse = new Nurse(bundle.getString("Nurse_name"), bundle.getInt("Nurse_id"), bundle.getInt("Nurse_sex"), bundle.getInt("Nurse_age"), bundle.getInt("Nurse_work_age"), bundle.getString("Nurse_Area"), bundle.getInt("Nurse_evaluate"), bundle.getInt("Nurse_price"), bundle.getIntegerArrayList("nurseProtectArea"), bundle.getInt("Nurse_height"), bundle.getInt("Nurse_weight"), bundle.getString("Nurse_blood"), bundle.getString("Nurse_nation"), bundle.getString("Nurse_identity"), bundle.getString("Nurse_Constellation"), bundle.getString("Nurse_Animal"), bundle.getString("Nurse_Description"), bundle.getString("Nurse_phone"));
+                Nurse nurse = new Nurse();
+                nurse.setNurseId(1);
                 Patient patient = UserOperation.patient;
                 Order order = new Order(totalPrice, createTime, serviceTime, type, situation, choseNurse, nurse, patient, user);
                 try {
                     ArrayList resp = OrderOperation.createOrder(order);
                     if (Integer.parseInt((String) resp.get(0)) == 200) {
+                        String data = (String)  resp.get(1);
+                        JSONObject object = new JSONObject(data);
+                        int id =object.getInt("data");
+                        //开启支付宝
+                        Intent intent = new Intent(ByAreaActivity.this,payActivity.class);
+
+                        Bundle bundle = new Bundle();
+                        //获取订单金额
+
+
+                        bundle.putString("money",totalPrice+"");
+                        //模拟订单ID 201707050000
+                        bundle.putString("id",id+"");
+                        intent.putExtras(bundle);
+                        startActivityForResult(intent,0);
                         Toast.makeText(ByAreaActivity.this, "订单创建成功", Toast.LENGTH_SHORT).show();
                     } else {
                         JSONObject object = new JSONObject((String) resp.get(1));
-                        String message = object.getString("data");
+                        String message = object.getString("message");
                         Toast.makeText(ByAreaActivity.this, message, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
@@ -276,6 +310,36 @@ public class ByAreaActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    protected void onActivityResult( int requestCode, int resultCode, Intent data) {
+        Bundle bundle = data.getExtras();
+        //Button bt =(Button) findViewById(R.id.buttonPay);
+        String text = bundle.getString("Status");
+        //  bt.setText(text);
+        try {
+            if(text.equals("FAIL"))//支付失败
+            {
+                Toast.makeText(ByAreaActivity.this, "测试作为成功", Toast.LENGTH_SHORT).show();
+//                bt.setText("已付款");
+//                bt.setBackgroundColor(Color.parseColor("#cccccc"));
+//                bt.setEnabled(false);
+            }
+            if (text.equals("CANCEL"))//取消支付
+            {
+                Toast.makeText(ByAreaActivity.this, "支付取消", Toast.LENGTH_SHORT).show();
+            }
+            if (text.equals("SUCCESS"))//支付成功
+            {
+                Toast.makeText(ByAreaActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+//                bt.setText("已付款");
+//                bt.setBackgroundColor(Color.parseColor("#cccccc"));
+//                bt.setEnabled(false);
+            }
+        }
+        catch(Exception e)
+        {
+
+        }
     }
 
 }

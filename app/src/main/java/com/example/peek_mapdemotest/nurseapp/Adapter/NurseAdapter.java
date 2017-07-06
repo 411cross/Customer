@@ -43,7 +43,7 @@ public class NurseAdapter  extends ArrayAdapter<Nurse> {
         nurse_icon.setImageResource(R.mipmap.ic_launcher);
         nurse_age.setText(nurse.getNurseAge()+"岁");
         nurse_area.setText(nurse.getNurseArea());
-        avatar.setImageResource(R.mipmap.icon_full);
+        avatar.setImageResource(R.mipmap.avatar);
         if (nurse.getNurseSex() == 0) {
             nurse_Sex.setText("男");
         } else {

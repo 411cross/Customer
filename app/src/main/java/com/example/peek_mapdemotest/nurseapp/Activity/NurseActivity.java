@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.peek_mapdemotest.nurseapp.Adapter.NurseAdapter;
 import com.example.peek_mapdemotest.nurseapp.Adapter.TestArrayAdapter;
@@ -17,7 +17,6 @@ import com.example.peek_mapdemotest.nurseapp.Operation.UserOperation;
 import com.example.peek_mapdemotest.nurseapp.R;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -35,6 +34,8 @@ public class NurseActivity extends AppCompatActivity {
     private String[] spinner2Data;
     private String[] spinner3Data;
     private String[] spinner4Data;
+
+    private TextView tipsTv;
 
     private ArrayList<Nurse> list = new ArrayList<>();
 
@@ -69,12 +70,13 @@ public class NurseActivity extends AppCompatActivity {
                         list.clear();
                         list.addAll( UserOperation.nurseList);
                         NuAdapter.notifyDataSetChanged();
+                        tipsTv.setText("");
 
                     }else{
-                        String data = (String) resp.get(1);
-                        JSONObject object = new JSONObject(data);
-                        String respJsonObject = object.getString("message");
-                        Toast.makeText(NurseActivity.this,"筛选"+respJsonObject ,Toast.LENGTH_SHORT).show();
+                        list.clear();
+
+                        tipsTv.setText("暂无订单");
+                        NuAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -102,13 +104,14 @@ public class NurseActivity extends AppCompatActivity {
                     if(Integer.parseInt((String) resp.get(0))==200){
                         list.clear();
                         list.addAll( UserOperation.nurseList);
+                        tipsTv.setText("");
                         NuAdapter.notifyDataSetChanged();
 
                     }else{
-                        String data = (String) resp.get(1);
-                        JSONObject object = new JSONObject(data);
-                        String respJsonObject = object.getString("message");
-                        Toast.makeText(NurseActivity.this,"筛选"+respJsonObject ,Toast.LENGTH_SHORT).show();
+                        list.clear();
+
+                        tipsTv.setText("暂无订单");
+                        NuAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -134,14 +137,15 @@ public class NurseActivity extends AppCompatActivity {
                     if(Integer.parseInt((String) resp.get(0))==200){
                         list.clear();
                         list.addAll( UserOperation.nurseList);
+                        tipsTv.setText("");
                         NuAdapter.notifyDataSetChanged();
 
 
                     }else{
-                        String data = (String) resp.get(1);
-                        JSONObject object = new JSONObject(data);
-                        String respJsonObject = object.getString("message");
-                        Toast.makeText(NurseActivity.this,"筛选"+respJsonObject ,Toast.LENGTH_SHORT).show();
+                        list.clear();
+
+                        tipsTv.setText("暂无订单");
+                        NuAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -167,13 +171,14 @@ public class NurseActivity extends AppCompatActivity {
                     if(Integer.parseInt((String) resp.get(0))==200){
                         list.clear();
                         list.addAll( UserOperation.nurseList);
+                        tipsTv.setText("");
                         NuAdapter.notifyDataSetChanged();
 
                     }else{
-                        String data = (String) resp.get(1);
-                        JSONObject object = new JSONObject(data);
-                        String respJsonObject = object.getString("message");
-                        Toast.makeText(NurseActivity.this,"筛选"+respJsonObject ,Toast.LENGTH_SHORT).show();
+                        list.clear();
+
+                        tipsTv.setText("暂无订单");
+                        NuAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -192,9 +197,14 @@ public class NurseActivity extends AppCompatActivity {
         });
         list.clear();
         list.addAll( UserOperation.nurseListAll);
-        System.out.println(UserOperation.nurseListAll.get(1).getNurseId());
-        NuAdapter = new NurseAdapter(NurseActivity.this,R.layout.nurse_item,list);
-        NurseListView.setAdapter(NuAdapter);
+        if(list.size()==0){
+            tipsTv.setText("暂无订单");
+        }else{
+            tipsTv.setText("");
+            NuAdapter = new NurseAdapter(NurseActivity.this,R.layout.nurse_item,list);
+            NurseListView.setAdapter(NuAdapter);
+        }
+
         NurseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -253,6 +263,7 @@ public class NurseActivity extends AppCompatActivity {
         spinner2 = (Spinner) findViewById(R.id.Spinner2);
         spinner3 = (Spinner) findViewById(R.id.Spinner3);
         spinner4 = (Spinner) findViewById(R.id.Spinner4);
+        tipsTv = (TextView) findViewById(R.id.tipsTv);
 
         NurseListView = (ListView) findViewById(R.id.NurseListview);
     }

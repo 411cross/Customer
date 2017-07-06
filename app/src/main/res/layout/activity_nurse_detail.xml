@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_background"
     tools:context="com.example.peek_mapdemotest.nurseapp.Activity.NurseDetailActivity">
 
     <RelativeLayout
@@ -13,7 +14,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="#4fa645">
+        android:background="@color/color_white">
+        <!--android:background="#4fa645"-->
 
         <ImageView
             android:id="@+id/NurseIcon"
@@ -138,28 +140,33 @@
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ccc8c8"
-        android:layout_below="@+id/Relative1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="基本情况："
-            android:textSize="16dp" />
-    </LinearLayout>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/Relative1">
+        android:background="@color/color_white"
+        android:layout_below="@+id/Relative1"
+        android:layout_marginTop="8dp"
+        >
+        <TextView
+            android:id="@+id/basic_situation_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:text="基本情况"
+            android:textSize="16dp" />
+
+        <View
+            android:id="@+id/spread_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/basic_situation_tag"
+            android:layout_marginTop="8dp"
+            android:background="#202020">
+        </View>
+
 
         <LinearLayout
             android:id="@+id/linearLayout1"
@@ -240,6 +247,8 @@
 
         <LinearLayout
             android:id="@+id/linearLayout3"
+            android:layout_below="@+id/spread_line"
+            android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/imageView2"
@@ -289,13 +298,11 @@
             android:id="@+id/imageView"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="18dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="38dp"
-            android:background="@color/colorAccent" />
+            android:layout_marginTop="10dp"
+            android:background="@color/colorAccent"
+            android:layout_below="@+id/spread_line"
+            android:layout_alignLeft="@+id/basic_situation_tag"
+            android:layout_alignStart="@+id/basic_situation_tag" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -372,7 +379,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="#4fa645"
+        android:background="@color/color_blue"
+        android:textColor="@color/color_white"
         android:text="立即预约" />
 
 

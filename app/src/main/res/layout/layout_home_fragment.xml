@@ -60,28 +60,16 @@
                 android:text="省心预约" />
 
             <Button
-                android:id="@+id/NurseListBt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00b0ff"
-                android:text="护工"
-                android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:layout_below="@+id/viewPager"
-                android:layout_centerHorizontal="true" />
-
-            <Button
                 android:id="@+id/button3"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@mipmap/neike"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginEnd="24dp"
-                android:layout_below="@+id/NurseListBt"
-                android:layout_toLeftOf="@+id/button4"
-                android:layout_toStartOf="@+id/button4" />
+                android:layout_below="@+id/type_tag"
+                android:layout_alignLeft="@+id/imageView11"
+                android:layout_alignStart="@+id/imageView11"
+                android:layout_marginTop="30dp" />
 
             <Button
                 android:id="@+id/button4"
@@ -91,20 +79,20 @@
                 android:background="@mipmap/waike"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
-                android:layout_below="@+id/NurseListBt"
-                android:layout_alignRight="@+id/CheckOrder"
-                android:layout_alignEnd="@+id/CheckOrder" />
+                android:layout_alignBaseline="@+id/button3"
+                android:layout_alignBottom="@+id/button3"
+                android:layout_toRightOf="@+id/button3"
+                android:layout_toEndOf="@+id/button3" />
 
             <Button
                 android:id="@+id/button5"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="18dp"
                 android:background="@mipmap/linshi"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
-                android:layout_marginStart="18dp"
-                android:layout_below="@+id/NurseListBt"
+                android:layout_alignBaseline="@+id/button4"
+                android:layout_alignBottom="@+id/button4"
                 android:layout_toRightOf="@+id/button4"
                 android:layout_toEndOf="@+id/button4" />
 

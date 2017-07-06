@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.peek_mapdemotest.nurseapp.Activity.NurseActivity;
@@ -51,6 +52,8 @@ public class NurseFragment extends android.support.v4.app.Fragment {
     private String[] spinner2Data;
     private String[] spinner3Data;
     private String[] spinner4Data;
+
+    private TextView tipsTv;
 
     private View view;
 
@@ -96,17 +99,18 @@ public class NurseFragment extends android.support.v4.app.Fragment {
 
                 int filter = 1;
                 try {
-                    ArrayList resp = NurseOperation.filterNurseList(filter,position);
-                    if(Integer.parseInt((String) resp.get(0))==200){
+                    ArrayList resp = NurseOperation.filterNurseList(filter, position);
+                    if (Integer.parseInt((String) resp.get(0)) == 200) {
                         list.clear();
-                        list.addAll( UserOperation.nurseList);
+                        list.addAll(UserOperation.nurseList);
                         NuAdapter.notifyDataSetChanged();
+                        tipsTv.setText("");
 
-                    }else{
-                        String data = (String) resp.get(1);
-                        JSONObject object = new JSONObject(data);
-                        String respJsonObject = object.getString("message");
-                        Toast.makeText(getContext(),"筛选"+respJsonObject ,Toast.LENGTH_SHORT).show();
+                    } else {
+                        list.clear();
+
+                        tipsTv.setText("无符合条件的护工");
+                        NuAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -130,17 +134,18 @@ public class NurseFragment extends android.support.v4.app.Fragment {
 
                 int filter = 2;
                 try {
-                    ArrayList resp = NurseOperation.filterNurseList(filter,position);
-                    if(Integer.parseInt((String) resp.get(0))==200){
+                    ArrayList resp = NurseOperation.filterNurseList(filter, position);
+                    if (Integer.parseInt((String) resp.get(0)) == 200) {
                         list.clear();
-                        list.addAll( UserOperation.nurseList);
+                        list.addAll(UserOperation.nurseList);
+                        tipsTv.setText("");
                         NuAdapter.notifyDataSetChanged();
 
-                    }else{
-                        String data = (String) resp.get(1);
-                        JSONObject object = new JSONObject(data);
-                        String respJsonObject = object.getString("message");
-                        Toast.makeText(getContext(),"筛选"+respJsonObject ,Toast.LENGTH_SHORT).show();
+                    } else {
+                        list.clear();
+
+                        tipsTv.setText("无符合条件的护工");
+                        NuAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -162,18 +167,19 @@ public class NurseFragment extends android.support.v4.app.Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int filter = 3;
                 try {
-                    ArrayList resp = NurseOperation.filterNurseList(filter,position);
-                    if(Integer.parseInt((String) resp.get(0))==200){
+                    ArrayList resp = NurseOperation.filterNurseList(filter, position);
+                    if (Integer.parseInt((String) resp.get(0)) == 200) {
                         list.clear();
-                        list.addAll( UserOperation.nurseList);
+                        list.addAll(UserOperation.nurseList);
+                        tipsTv.setText("");
                         NuAdapter.notifyDataSetChanged();
 
 
-                    }else{
-                        String data = (String) resp.get(1);
-                        JSONObject object = new JSONObject(data);
-                        String respJsonObject = object.getString("message");
-                        Toast.makeText(getContext(),"筛选"+respJsonObject ,Toast.LENGTH_SHORT).show();
+                    } else {
+                        list.clear();
+
+                        tipsTv.setText("无符合条件的护工");
+                        NuAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -195,17 +201,18 @@ public class NurseFragment extends android.support.v4.app.Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int filter = 4;
                 try {
-                    ArrayList resp = NurseOperation.filterNurseList(filter,position);
-                    if(Integer.parseInt((String) resp.get(0))==200){
+                    ArrayList resp = NurseOperation.filterNurseList(filter, position);
+                    if (Integer.parseInt((String) resp.get(0)) == 200) {
                         list.clear();
-                        list.addAll( UserOperation.nurseList);
+                        list.addAll(UserOperation.nurseList);
+                        tipsTv.setText("");
                         NuAdapter.notifyDataSetChanged();
 
-                    }else{
-                        String data = (String) resp.get(1);
-                        JSONObject object = new JSONObject(data);
-                        String respJsonObject = object.getString("message");
-                        Toast.makeText(getContext(),"筛选"+respJsonObject ,Toast.LENGTH_SHORT).show();
+                    } else {
+                        list.clear();
+
+                        tipsTv.setText("无符合条件的护工");
+                        NuAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -223,10 +230,15 @@ public class NurseFragment extends android.support.v4.app.Fragment {
             }
         });
         list.clear();
-        list.addAll( UserOperation.nurseListAll);
-        System.out.println(UserOperation.nurseListAll.get(1).getNurseId());
-        NuAdapter = new NurseAdapter(getContext(),R.layout.nurse_item,list);
-        NurseListView.setAdapter(NuAdapter);
+        list.addAll(UserOperation.nurseListAll);
+        if (list.size() == 0) {
+            tipsTv.setText("无符合条件的护工");
+        } else {
+            tipsTv.setText("");
+            NuAdapter = new NurseAdapter(getContext(), R.layout.nurse_item, list);
+            NurseListView.setAdapter(NuAdapter);
+        }
+
         NurseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -250,8 +262,8 @@ public class NurseFragment extends android.support.v4.app.Fragment {
                 bundle.putString("Nurse_Constellation", nurse.getNurseConstellation());
                 bundle.putString("Nurse_Animal", nurse.getNurseAnimal());
                 bundle.putString("Nurse_Description", nurse.getNurseDescription());
-                bundle.putIntegerArrayList("nurseProtectArea",nurse.getNurseProtectArea());
-                Intent intent = new Intent(getContext(),NurseDetailActivity.class);
+                bundle.putIntegerArrayList("nurseProtectArea", nurse.getNurseProtectArea());
+                Intent intent = new Intent(getContext(), NurseDetailActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -261,18 +273,17 @@ public class NurseFragment extends android.support.v4.app.Fragment {
     }
 
 
-
     public void getdata() throws InterruptedException, ExecutionException, JSONException {
-        ArrayList resp =NurseOperation.getNurseList();
+        ArrayList resp = NurseOperation.getNurseList();
 
 
-        TestArrayAdapter adapter1=new TestArrayAdapter(getContext(),spinner1Data);
+        TestArrayAdapter adapter1 = new TestArrayAdapter(getContext(), spinner1Data);
         spinner1.setAdapter(adapter1);
-        TestArrayAdapter adapter2=new TestArrayAdapter(getContext(),spinner2Data);
+        TestArrayAdapter adapter2 = new TestArrayAdapter(getContext(), spinner2Data);
         spinner2.setAdapter(adapter2);
-        TestArrayAdapter adapter3=new TestArrayAdapter(getContext(),spinner3Data);
+        TestArrayAdapter adapter3 = new TestArrayAdapter(getContext(), spinner3Data);
         spinner3.setAdapter(adapter3);
-        TestArrayAdapter adapter4=new TestArrayAdapter(getContext(),spinner4Data);
+        TestArrayAdapter adapter4 = new TestArrayAdapter(getContext(), spinner4Data);
         spinner4.setAdapter(adapter4);
         spinner1.setSelection(0, true);
         spinner2.setSelection(0, true);
@@ -281,11 +292,13 @@ public class NurseFragment extends android.support.v4.app.Fragment {
 
     }
 
-    public void initFindByID(){
+
+    public void initFindByID() {
         spinner1 = (Spinner) view.findViewById(R.id.Spinner1);
         spinner2 = (Spinner) view.findViewById(R.id.Spinner2);
         spinner3 = (Spinner) view.findViewById(R.id.Spinner3);
         spinner4 = (Spinner) view.findViewById(R.id.Spinner4);
+        tipsTv = (TextView) view.findViewById(R.id.tipsTv);
 
         NurseListView = (ListView) view.findViewById(R.id.NurseListview);
     }
