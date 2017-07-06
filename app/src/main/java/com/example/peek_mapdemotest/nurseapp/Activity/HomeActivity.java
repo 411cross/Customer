@@ -7,23 +7,23 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+
 import com.example.peek_mapdemotest.nurseapp.Operation.UserOperation;
 import com.example.peek_mapdemotest.nurseapp.R;
 
 public class HomeActivity extends AppCompatActivity implements OnPageChangeListener {
 
     private TextView tv1;
-    private ImageButton ib1;
+    private ImageView ib1;
     private Button b1;
     private Button b2;
     private Button b3;
@@ -70,7 +70,7 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         tv1 = (TextView)findViewById(R.id.textView);
-        ib1 = (ImageButton)findViewById(R.id.imageButton);
+        ib1 = (ImageView) findViewById(R.id.imageButton);
         b1 = (Button)findViewById(R.id.button3);
         b2 = (Button)findViewById(R.id.button4);
         b3 = (Button)findViewById(R.id.button5);
@@ -80,6 +80,9 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
         NurseBt = (Button) findViewById(R.id.NurseListBt);
         OrderBt = (Button) findViewById(R.id.CheckOrder);
         tv1.setText("用户名:"+ UserOperation.user.getName());
+        if(UserOperation.bitmap!=null){
+            ib1.setImageBitmap(UserOperation.bitmap);
+        }
 
 
         setView();
@@ -318,6 +321,10 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
     protected void onRestart() {
         super.onRestart();
         tv1.setText("用户名:"+ UserOperation.user.getName());
+        if(UserOperation.bitmap!=null){
+            ib1.setImageBitmap(UserOperation.bitmap);
+        }
+
 
     }
 

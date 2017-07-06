@@ -36,7 +36,21 @@ public class CheckAdapter extends ArrayAdapter<Order> {
         textid.setText(to.getId()+"");
         textmoney.setText(to.getTotalPrice()+"元");
         textdate.setText(to.getCreateTime());
-        textstatus.setText(to.getSituation()+"状态");
+        if(to.getSituation()==0){
+            textstatus.setText("未付款");
+        }else if (to.getSituation()==1){
+            textstatus.setText("已付款");
+        }else if (to.getSituation()==2){
+            textstatus.setText("已取消");
+        }else if (to.getSituation()==3){
+            textstatus.setText("已完成");
+        }else if (to.getSituation()==4){
+            textstatus.setText("已进行中");
+        }
+        else if (to.getSituation()==5){
+            textstatus.setText("已提醒付款");
+        }
+
         return view;
     }
 }

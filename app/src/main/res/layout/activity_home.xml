@@ -6,13 +6,16 @@
     android:layout_height="match_parent"
     tools:context="com.example.peek_mapdemotest.nurseapp.Activity.HomeActivity">
 
-    <ImageButton
+    <ImageView
         android:id="@+id/imageButton"
         android:layout_width="66dp"
         android:layout_height="74dp"
         app:srcCompat="@mipmap/ic_launcher"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-3dp" />
+        tools:layout_editor_absoluteY="-3dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:id="@+id/imageView9"
