@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.peek_mapdemotest.nurseapp.Entity.Order;
 import com.example.peek_mapdemotest.nurseapp.R;
 
 public class OrderDetailActivity extends AppCompatActivity {
@@ -139,10 +138,10 @@ public class OrderDetailActivity extends AppCompatActivity {
                     typeTv.setText("临时看护");
                     break;
                 case 4:
-                    typeTv.setText("天天护（标准）");
+                    typeTv.setText("标准护理");
                     break;
                 case 5:
-                    typeTv.setText("天天护（严重）");
+                    typeTv.setText("严重护理");
                     break;
                 default:
                     break;
@@ -199,22 +198,21 @@ public class OrderDetailActivity extends AppCompatActivity {
                                      }
         );
 
-        //点击联系我们
+        //点击联系我们 1
         buttoncontact.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                //调用电话拨号功能
-                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "13071663867"));
-                try {
-                    startActivity(intent);
-                } catch (Exception e) {
 
-                    builder.setTitle("通话结束")
-                            .setMessage("&…%￥#@**&…%\n通话完成！\n感谢您的来电！")
-                            .setPositiveButton("确定", null)
-                            .show();
-                }
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+
+                Uri data = Uri.parse("tel:" + "15521107569");
+
+                intent.setData(data);
+
+                startActivity(intent);
+
+
 
             }
         });

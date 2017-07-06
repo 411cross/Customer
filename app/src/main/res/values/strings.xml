@@ -25,8 +25,8 @@
         <item>内科护理</item>
         <item>外科护理</item>
         <item>临时看护</item>
-        <item>天天护（标准）</item>
-        <item>天天护（重症）</item>
+        <item>标准护理</item>
+        <item>重症护理</item>
     </string-array>
 
 </resources>

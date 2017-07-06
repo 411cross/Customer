@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="ordersstatus">
-        <item> 新订单</item>
-        <item> 历史订单 </item>
-    </string-array>
+    <!--<string-array name="ordersstatus">-->
+        <!--<item> 新订单</item>-->
+        <!--<item> 历史订单 </item>-->
+    <!--</string-array>-->
 </resources>

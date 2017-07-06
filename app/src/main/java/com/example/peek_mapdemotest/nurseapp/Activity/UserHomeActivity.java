@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.peek_mapdemotest.nurseapp.Operation.UserOperation;
@@ -15,6 +16,7 @@ public class UserHomeActivity extends AppCompatActivity {
     private TextView tv1;
     private TextView tel;
     private Button modify;
+    private ImageView imgv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,11 @@ public class UserHomeActivity extends AppCompatActivity {
         modify = (Button)findViewById(R.id.modify);
         tv1.setText(UserOperation.user.getName());
         tel.setText(UserOperation.user.getId()+"");
+        imgv= (ImageView) findViewById(R.id.imageButton2);
+        if(UserOperation.bitmap!=null){
+            imgv.setImageBitmap(UserOperation.bitmap);
+        }
+
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,6 +46,10 @@ public class UserHomeActivity extends AppCompatActivity {
         super.onRestart();
         tv1.setText(UserOperation.user.getName());
         tel.setText(UserOperation.user.getId());
+        if(UserOperation.bitmap!=null){
+            imgv.setImageBitmap(UserOperation.bitmap);
+        }
+
     }
 
 }

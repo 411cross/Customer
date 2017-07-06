@@ -1,28 +1,46 @@
-package com.example.peek_mapdemotest.nurseapp.Activity;
+package com.example.peek_mapdemotest.nurseapp.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.peek_mapdemotest.nurseapp.Activity.NurseActivity;
+import com.example.peek_mapdemotest.nurseapp.Activity.NurseDetailActivity;
+import com.example.peek_mapdemotest.nurseapp.Activity.OrderDetailActivity;
+import com.example.peek_mapdemotest.nurseapp.Adapter.CheckAdapter;
 import com.example.peek_mapdemotest.nurseapp.Adapter.NurseAdapter;
 import com.example.peek_mapdemotest.nurseapp.Adapter.TestArrayAdapter;
 import com.example.peek_mapdemotest.nurseapp.Entity.Nurse;
+import com.example.peek_mapdemotest.nurseapp.Entity.Order;
 import com.example.peek_mapdemotest.nurseapp.Operation.NurseOperation;
+import com.example.peek_mapdemotest.nurseapp.Operation.OrderOperation;
 import com.example.peek_mapdemotest.nurseapp.Operation.UserOperation;
 import com.example.peek_mapdemotest.nurseapp.R;
+import com.google.gson.Gson;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Created by derrickJ on 2017/5/28.
+ */
 
-public class NurseActivity extends AppCompatActivity {
+public class NurseFragment extends android.support.v4.app.Fragment {
+
+    public static final String ARG_PAGE = "ARG_PAGE";
+    private int mPage;
     private NurseAdapter NuAdapter;
     private ListView NurseListView;
     private Spinner spinner1;
@@ -37,13 +55,29 @@ public class NurseActivity extends AppCompatActivity {
 
     private TextView tipsTv;
 
+    private View view;
+
     private ArrayList<Nurse> list = new ArrayList<>();
 
+    public static NurseFragment newInstance(int page) {
+        Bundle args = new Bundle();
+        args.putInt(ARG_PAGE, page);
+        NurseFragment newOrderFragment = new NurseFragment();
+        newOrderFragment.setArguments(args);
+        return newOrderFragment;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nurse_activity);
+        mPage = getArguments().getInt(ARG_PAGE);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.layout_nurse_fragment, container, false);
+
         initFindByID();
         spinner1Data = this.getResources().getStringArray(R.array.protectArea);
         spinner2Data = this.getResources().getStringArray(R.array.protectYear);
@@ -65,17 +99,17 @@ public class NurseActivity extends AppCompatActivity {
 
                 int filter = 1;
                 try {
-                    ArrayList resp = NurseOperation.filterNurseList(filter,position);
-                    if(Integer.parseInt((String) resp.get(0))==200){
+                    ArrayList resp = NurseOperation.filterNurseList(filter, position);
+                    if (Integer.parseInt((String) resp.get(0)) == 200) {
                         list.clear();
-                        list.addAll( UserOperation.nurseList);
+                        list.addAll(UserOperation.nurseList);
                         NuAdapter.notifyDataSetChanged();
                         tipsTv.setText("");
 
-                    }else{
+                    } else {
                         list.clear();
 
-                        tipsTv.setText("暂无订单");
+                        tipsTv.setText("无符合条件的护工");
                         NuAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -100,17 +134,17 @@ public class NurseActivity extends AppCompatActivity {
 
                 int filter = 2;
                 try {
-                    ArrayList resp = NurseOperation.filterNurseList(filter,position);
-                    if(Integer.parseInt((String) resp.get(0))==200){
+                    ArrayList resp = NurseOperation.filterNurseList(filter, position);
+                    if (Integer.parseInt((String) resp.get(0)) == 200) {
                         list.clear();
-                        list.addAll( UserOperation.nurseList);
+                        list.addAll(UserOperation.nurseList);
                         tipsTv.setText("");
                         NuAdapter.notifyDataSetChanged();
 
-                    }else{
+                    } else {
                         list.clear();
 
-                        tipsTv.setText("暂无订单");
+                        tipsTv.setText("无符合条件的护工");
                         NuAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -133,18 +167,18 @@ public class NurseActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int filter = 3;
                 try {
-                    ArrayList resp = NurseOperation.filterNurseList(filter,position);
-                    if(Integer.parseInt((String) resp.get(0))==200){
+                    ArrayList resp = NurseOperation.filterNurseList(filter, position);
+                    if (Integer.parseInt((String) resp.get(0)) == 200) {
                         list.clear();
-                        list.addAll( UserOperation.nurseList);
+                        list.addAll(UserOperation.nurseList);
                         tipsTv.setText("");
                         NuAdapter.notifyDataSetChanged();
 
 
-                    }else{
+                    } else {
                         list.clear();
 
-                        tipsTv.setText("暂无订单");
+                        tipsTv.setText("无符合条件的护工");
                         NuAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -167,17 +201,17 @@ public class NurseActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int filter = 4;
                 try {
-                    ArrayList resp = NurseOperation.filterNurseList(filter,position);
-                    if(Integer.parseInt((String) resp.get(0))==200){
+                    ArrayList resp = NurseOperation.filterNurseList(filter, position);
+                    if (Integer.parseInt((String) resp.get(0)) == 200) {
                         list.clear();
-                        list.addAll( UserOperation.nurseList);
+                        list.addAll(UserOperation.nurseList);
                         tipsTv.setText("");
                         NuAdapter.notifyDataSetChanged();
 
-                    }else{
+                    } else {
                         list.clear();
 
-                        tipsTv.setText("暂无订单");
+                        tipsTv.setText("无符合条件的护工");
                         NuAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -196,12 +230,12 @@ public class NurseActivity extends AppCompatActivity {
             }
         });
         list.clear();
-        list.addAll( UserOperation.nurseListAll);
-        if(list.size()==0){
-            tipsTv.setText("暂无订单");
-        }else{
+        list.addAll(UserOperation.nurseListAll);
+        if (list.size() == 0) {
+            tipsTv.setText("无符合条件的护工");
+        } else {
             tipsTv.setText("");
-            NuAdapter = new NurseAdapter(NurseActivity.this,R.layout.nurse_item,list);
+            NuAdapter = new NurseAdapter(getContext(), R.layout.nurse_item, list);
             NurseListView.setAdapter(NuAdapter);
         }
 
@@ -228,28 +262,28 @@ public class NurseActivity extends AppCompatActivity {
                 bundle.putString("Nurse_Constellation", nurse.getNurseConstellation());
                 bundle.putString("Nurse_Animal", nurse.getNurseAnimal());
                 bundle.putString("Nurse_Description", nurse.getNurseDescription());
-                bundle.putIntegerArrayList("nurseProtectArea",nurse.getNurseProtectArea());
-                Intent intent = new Intent(NurseActivity.this,NurseDetailActivity.class);
+                bundle.putIntegerArrayList("nurseProtectArea", nurse.getNurseProtectArea());
+                Intent intent = new Intent(getContext(), NurseDetailActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
 
+        return view;
     }
 
 
-
     public void getdata() throws InterruptedException, ExecutionException, JSONException {
-        ArrayList resp =NurseOperation.getNurseList();
+        ArrayList resp = NurseOperation.getNurseList();
 
 
-        TestArrayAdapter adapter1=new TestArrayAdapter(this,spinner1Data);
+        TestArrayAdapter adapter1 = new TestArrayAdapter(getContext(), spinner1Data);
         spinner1.setAdapter(adapter1);
-        TestArrayAdapter adapter2=new TestArrayAdapter(this,spinner2Data);
+        TestArrayAdapter adapter2 = new TestArrayAdapter(getContext(), spinner2Data);
         spinner2.setAdapter(adapter2);
-        TestArrayAdapter adapter3=new TestArrayAdapter(this,spinner3Data);
+        TestArrayAdapter adapter3 = new TestArrayAdapter(getContext(), spinner3Data);
         spinner3.setAdapter(adapter3);
-        TestArrayAdapter adapter4=new TestArrayAdapter(this,spinner4Data);
+        TestArrayAdapter adapter4 = new TestArrayAdapter(getContext(), spinner4Data);
         spinner4.setAdapter(adapter4);
         spinner1.setSelection(0, true);
         spinner2.setSelection(0, true);
@@ -258,13 +292,15 @@ public class NurseActivity extends AppCompatActivity {
 
     }
 
-    public void initFindByID(){
-        spinner1 = (Spinner) findViewById(R.id.Spinner1);
-        spinner2 = (Spinner) findViewById(R.id.Spinner2);
-        spinner3 = (Spinner) findViewById(R.id.Spinner3);
-        spinner4 = (Spinner) findViewById(R.id.Spinner4);
-        tipsTv = (TextView) findViewById(R.id.tipsTv);
 
-        NurseListView = (ListView) findViewById(R.id.NurseListview);
+    public void initFindByID() {
+        spinner1 = (Spinner) view.findViewById(R.id.Spinner1);
+        spinner2 = (Spinner) view.findViewById(R.id.Spinner2);
+        spinner3 = (Spinner) view.findViewById(R.id.Spinner3);
+        spinner4 = (Spinner) view.findViewById(R.id.Spinner4);
+        tipsTv = (TextView) view.findViewById(R.id.tipsTv);
+
+        NurseListView = (ListView) view.findViewById(R.id.NurseListview);
     }
+
 }

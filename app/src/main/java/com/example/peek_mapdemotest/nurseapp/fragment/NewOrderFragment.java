@@ -3,14 +3,12 @@ package com.example.peek_mapdemotest.nurseapp.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
-
+import android.widget.TextView;
 
 import com.example.peek_mapdemotest.nurseapp.Activity.OrderDetailActivity;
 import com.example.peek_mapdemotest.nurseapp.Adapter.CheckAdapter;
@@ -36,6 +34,7 @@ public class NewOrderFragment extends android.support.v4.app.Fragment {
     private int mPage;
     private ArrayList<Order> orderList = new ArrayList<>();
     Order tempOrder = new Order();
+    private TextView tips1Tv;
 
     public static NewOrderFragment newInstance(int page) {
         Bundle args = new Bundle();
@@ -56,6 +55,7 @@ public class NewOrderFragment extends android.support.v4.app.Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.checkorder, container, false);
 
+        tips1Tv = (TextView) view.findViewById(R.id.tips1Tv);
         try {
             ArrayList responseList = OrderOperation.getOrder("new");
             if (Integer.parseInt((String) responseList.get(0)) == 200) {
@@ -74,10 +74,11 @@ public class NewOrderFragment extends android.support.v4.app.Fragment {
                     System.out.println("new order id: " + tempOrder.getId());
                     orderList.add(tempOrder);
                 }
+                tips1Tv.setText("");
 
             } else {
                 if (orderList.size() == 0) {
-                    Toast.makeText(view.getContext(), "暂无分类", Toast.LENGTH_SHORT).show();
+                    tips1Tv.setText("暂无订单");
                 }
             }
         } catch (JSONException e) {

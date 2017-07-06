@@ -1,5 +1,6 @@
 package com.example.peek_mapdemotest.nurseapp.Operation;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.example.peek_mapdemotest.nurseapp.Entity.Nurse;
@@ -35,6 +36,7 @@ public class UserOperation {
     public static ArrayList<Order> orderList = new ArrayList<>();
 
     public static Patient patient = new Patient() ;
+    public static Bitmap bitmap= null;
 
 
     /**

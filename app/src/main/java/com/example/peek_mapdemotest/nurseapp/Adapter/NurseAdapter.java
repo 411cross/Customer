@@ -38,10 +38,12 @@ public class NurseAdapter  extends ArrayAdapter<Nurse> {
         TextView nurse_Sex = (TextView) view.findViewById(R.id.NurseSexI);
         TextView nurse_evaluate = (TextView) view.findViewById(R.id.NurseEvaluateI);
         TextView nurse_price = (TextView) view.findViewById(R.id.NursePriceI);
+        ImageView avatar = (ImageView) view.findViewById(R.id.NurseIcon);
         nurse_name.setText(nurse.getNurseName());
         nurse_icon.setImageResource(R.mipmap.ic_launcher);
         nurse_age.setText(nurse.getNurseAge()+"岁");
         nurse_area.setText(nurse.getNurseArea());
+        avatar.setImageResource(R.mipmap.avatar);
         if (nurse.getNurseSex() == 0) {
             nurse_Sex.setText("男");
         } else {

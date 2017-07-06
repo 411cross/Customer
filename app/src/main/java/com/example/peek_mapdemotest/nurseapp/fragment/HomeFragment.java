@@ -1,29 +1,56 @@
-package com.example.peek_mapdemotest.nurseapp.Activity;
+package com.example.peek_mapdemotest.nurseapp.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.widget.Toast;
 
-import com.example.peek_mapdemotest.nurseapp.Operation.UserOperation;
-import com.example.peek_mapdemotest.nurseapp.R;
+import com.example.peek_mapdemotest.nurseapp.Activity.ByAreaActivity;
+import com.example.peek_mapdemotest.nurseapp.Activity.CheckOrderActivity;
+import com.example.peek_mapdemotest.nurseapp.Activity.HomeActivity;
+import com.example.peek_mapdemotest.nurseapp.Activity.NurseActivity;
+import com.example.peek_mapdemotest.nurseapp.Activity.OrderDetailActivity;
+import com.example.peek_mapdemotest.nurseapp.Activity.addPatientActivity;
+import com.example.peek_mapdemotest.nurseapp.Adapter.CheckAdapter;
+import com.example.peek_mapdemotest.nurseapp.Entity.Order;
+import com.example.peek_mapdemotest.nurseapp.Operation.OrderOperation;
 
-public class HomeActivity extends AppCompatActivity implements OnPageChangeListener {
+import com.example.peek_mapdemotest.nurseapp.R;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
+/**
+ * Created by derrickJ on 2017/5/28.
+ */
+
+public class HomeFragment extends android.support.v4.app.Fragment {
+
+    public static final String ARG_PAGE = "ARG_PAGE";
+    private int mPage;
+    private ArrayList<Order> orderList = new ArrayList<>();
+    Order tempOrder = new Order();
 
     private TextView tv1;
     private ImageView ib1;
@@ -33,7 +60,6 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
     private Button standardBtn;
     private Button seriousBtn;
     private Button b4;
-    private Button NurseBt;
     private Button OrderBt;
     private boolean isLoop=true;
     private int itemnumber;
@@ -67,25 +93,37 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
 //           return false;
 //    }
 
+    public static HomeFragment newInstance(int page) {
+        Bundle args = new Bundle();
+        args.putInt(ARG_PAGE, page);
+        HomeFragment newOrderFragment = new HomeFragment();
+        newOrderFragment.setArguments(args);
+        return newOrderFragment;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        mPage = getArguments().getInt(ARG_PAGE);
+    }
 
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+    @Nullable
+    @Override
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.layout_home_fragment, container, false);
 
-        tv1 = (TextView)findViewById(R.id.textView);
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
+        tv1 = (TextView) view.findViewById(R.id.textView);
 //        ib1 = (ImageView)findViewById(R.id.imageButton);
-        b1 = (Button)findViewById(R.id.button3);
-        b2 = (Button)findViewById(R.id.button4);
-        b3 = (Button)findViewById(R.id.button5);
-        standardBtn = (Button) findViewById(R.id.standard_btn);
-        seriousBtn = (Button) findViewById(R.id.serious_btn);
-        b4 = (Button)findViewById(R.id.button6);
-        NurseBt = (Button) findViewById(R.id.NurseListBt);
-        OrderBt = (Button) findViewById(R.id.CheckOrder);
+        b1 = (Button) view.findViewById(R.id.button3);
+        b2 = (Button) view.findViewById(R.id.button4);
+        b3 = (Button) view.findViewById(R.id.button5);
+        standardBtn = (Button) view.findViewById(R.id.standard_btn);
+        seriousBtn = (Button) view.findViewById(R.id.serious_btn);
+        b4 = (Button) view.findViewById(R.id.button6);
+        OrderBt = (Button) view.findViewById(R.id.CheckOrder);
 //        tv1.setText("用户名:"+ UserOperation.user.getName());
 
 
@@ -94,8 +132,8 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
  *
  *
  */
-        ViewGroup group = (ViewGroup)findViewById(R.id.viewGroup);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        ViewGroup group = (ViewGroup) view.findViewById(R.id.viewGroup);
+        viewPager = (ViewPager) view.findViewById(R.id.viewPager);
         //载入图片资源ID
         imgIdArray = new int[]{R.mipmap.alipay, R.mipmap.button1, R.mipmap.hartbat, R.mipmap.background,
                 R.mipmap.blank,R.mipmap.lovelogo, R.mipmap.shenjingneike, R.mipmap.erbihouke};
@@ -124,8 +162,8 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
         //点点
         tips = new ImageView[imgIdArray.length];
         for(int i=0; i<tips.length; i++){
-            ImageView imageView = new ImageView(this);
-           // LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
+            ImageView imageView = new ImageView(getContext());
+            // LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
             LinearLayout.LayoutParams paramsarams = new LinearLayout.LayoutParams(10,10);
             imageView.setLayoutParams(paramsarams);
             tips[i] = imageView;
@@ -144,7 +182,7 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
         //将图片装载到数组中
         mImageViews = new ImageView[imgIdArray.length];
         for(int i=0; i<mImageViews.length; i++){
-            ImageView imageView = new ImageView(this);
+            ImageView imageView = new ImageView(getContext());
             mImageViews[i] = imageView;
             imageView.setBackgroundResource(imgIdArray[i]);
         }
@@ -152,20 +190,20 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
         //设置Adapter
         viewPager.setAdapter(new MyAdapter());
         //设置监听，主要是设置点点的背景
-        viewPager.setOnPageChangeListener(this);
+//        viewPager.setOnPageChangeListener(this);
         //设置ViewPager的默认项, 设置为长度的100倍，这样子开始就能往左滑动
         viewPager.setCurrentItem((mImageViews.length) * 100);
         /**
          *
          *
-*/
+         */
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("area", 1);
-                Intent intent = new Intent(HomeActivity.this, ByAreaActivity.class);
+                Intent intent = new Intent(getContext(), ByAreaActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -175,7 +213,7 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("area", 2);
-                Intent intent = new Intent(HomeActivity.this, ByAreaActivity.class);
+                Intent intent = new Intent(getContext(), ByAreaActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -185,7 +223,7 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("area", 3);
-                Intent intent = new Intent(HomeActivity.this, ByAreaActivity.class);
+                Intent intent = new Intent(getContext(), ByAreaActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -195,7 +233,7 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("area", 4);
-                Intent intent = new Intent(HomeActivity.this, ByAreaActivity.class);
+                Intent intent = new Intent(getContext(), ByAreaActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -205,7 +243,7 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("area", 5);
-                Intent intent = new Intent(HomeActivity.this, ByAreaActivity.class);
+                Intent intent = new Intent(getContext(), ByAreaActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -213,24 +251,19 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, addPatientActivity.class);
+                Intent intent = new Intent(getContext(), addPatientActivity.class);
                 startActivity(intent);
             }
         });
-        NurseBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, NurseActivity.class);
-                startActivity(intent);
-            }
-        });
+
         OrderBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, CheckOrderActivity.class);
+                Intent intent = new Intent(getContext(), CheckOrderActivity.class);
                 startActivityForResult(intent,1);
             }
         });
+    return view;
     }
     public class MyAdapter extends PagerAdapter {
 
@@ -263,25 +296,25 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
 
     }
 
-    @Override
-    public void onPageScrollStateChanged(int arg0) {
-
-    }
-
-    @Override
-    public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-    }
-
-    @Override
-    public void onPageSelected(int arg0) {
-
-        setImageBackground(arg0 % mImageViews.length);
-    }
+//    @Override
+//    public void onPageScrollStateChanged(int arg0) {
+//
+//    }
+//
+//    @Override
+//    public void onPageScrolled(int arg0, float arg1, int arg2) {
+//
+//    }
+//
+//    @Override
+//    public void onPageSelected(int arg0) {
+//
+//        setImageBackground(arg0 % mImageViews.length);
+//    }
 
     /**
      * 设置选中的tip的背景
-   //  * @param selectItems
+     //  * @param selectItems
      */
     private void setImageBackground(int selectItems){
         for(int i=0; i<tips.length; i++){
@@ -305,7 +338,7 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
     };
 
     public void setView() {
-       // setContentView(R.layout.activity_splash_viewpager);
+        // setContentView(R.layout.activity_splash_viewpager);
 
         // 自动切换页面功能
         new Thread(new Runnable() {
@@ -313,19 +346,19 @@ public class HomeActivity extends AppCompatActivity implements OnPageChangeListe
             public void run() {
 
                 while (isLoop) {
-              //  while (true) {
+                    //  while (true) {
                     SystemClock.sleep(4000);
                     handler.sendEmptyMessage(0);
-                  //  NurseBt.setText("true");
+                    //  NurseBt.setText("true");
                 }
             }
         }).start();
     }
 
-    protected void onRestart() {
-        super.onRestart();
-//        tv1.setText("用户名:"+ UserOperation.user.getName());
-
-    }
+//    protected void onRestart() {
+//        super.onRestart();
+////        tv1.setText("用户名:"+ UserOperation.user.getName());
+//
+//    }
 
 }
