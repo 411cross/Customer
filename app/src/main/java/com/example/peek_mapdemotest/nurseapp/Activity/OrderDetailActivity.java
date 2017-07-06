@@ -35,7 +35,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         int parentActivity = bundle.getInt("parentActivity");
         position = bundle.getInt("position");
         final int orderID = bundle.getInt("orderID");
-        int price = bundle.getInt("price");
+        final int price = bundle.getInt("price");
         String time = bundle.getString("time");
         final int type = bundle.getInt("type");
         final int situation = bundle.getInt("situation");
@@ -92,16 +92,16 @@ public class OrderDetailActivity extends AppCompatActivity {
 //            String str = "";
 
             IDTv.setText(orderID + "");
-            moneyTv.setText(price + "");
+            moneyTv.setText(price + "元");
             patientTv.setText(patient);
             bednumberTv.setText(bedNumber);
             connectTv.setText(contact);
             connectphone.setText(phone);
             caredate.setText(serviceTime);
             nurseNameTv.setText(nurseName);
-            heightTv.setText(height + "");
-            weightTv.setText(weight + "");
-            evaluationTv.setText(evaluation + "");
+            heightTv.setText(height + "cm");
+            weightTv.setText(weight + "kg");
+            evaluationTv.setText("评分："+evaluation );
             bloodTypeTv.setText(bloodType);
 
             switch (situation) {
@@ -189,9 +189,9 @@ public class OrderDetailActivity extends AppCompatActivity {
                                              Intent intent = new Intent();
                                              intent.setClass(OrderDetailActivity.this, payActivity.class);
                                              Bundle bundle = new Bundle();
-//                                             String Money = money.replace("订单金额：", "");
-//                                             bundle.putString("money", Money);
-//                                             bundle.putString("id", ID);
+
+                                             bundle.putString("money", price+"");
+                                             bundle.putString("id", orderID+"");
                                              intent.putExtras(bundle);
                                              startActivityForResult(intent, 0);
                                          }

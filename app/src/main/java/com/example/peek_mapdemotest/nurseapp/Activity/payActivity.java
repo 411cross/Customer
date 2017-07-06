@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
+import com.example.peek_mapdemotest.nurseapp.Operation.OrderOperation;
 import com.example.peek_mapdemotest.nurseapp.R;
 import com.example.peek_mapdemotest.nurseapp.alipayjar.OrderInfoUtil2_0;
 import com.example.peek_mapdemotest.nurseapp.alipayjar.PayResult;
@@ -20,10 +21,13 @@ import com.example.peek_mapdemotest.nurseapp.alipayjar.PayResult;
 import java.util.Map;
 
 
+
+
 public class payActivity extends AppCompatActivity implements View.OnClickListener  {
 
     Button btnPay;
     String money; //交易金额
+    int id1;
     String subject;//商品名称
     String body;//商品描述
     TextView textView;
@@ -51,7 +55,9 @@ public class payActivity extends AppCompatActivity implements View.OnClickListen
                         Toast.makeText(payActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
                         bundle.putString("Status","SUCCESS");
                     } else {
-                        Toast.makeText(payActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
+                        OrderOperation.changeSituation(id1,1);
+                        Intent intent1 = new Intent(payActivity.this,HomeActivity.class);
+                        startActivity(intent1);
                         bundle.putString("Status","FAIL");
                     }
                     intent.putExtras(bundle);
@@ -73,6 +79,7 @@ public class payActivity extends AppCompatActivity implements View.OnClickListen
         textView=(TextView) findViewById(R.id.textMoney);
         bundle = this.getIntent().getExtras();
         money= bundle.getString("money");
+        id1 = Integer.parseInt(bundle.getString("id"));
         textView.setText("¥ "+money);
         Button button5=(Button) findViewById(R.id.buttonCancel);
         button5.setOnClickListener( new View.OnClickListener()
@@ -80,7 +87,7 @@ public class payActivity extends AppCompatActivity implements View.OnClickListen
             public void onClick( View view)
             {
 
-                Toast.makeText(payActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
+
                 Intent intent =getIntent();
                 Bundle bundle = new Bundle();
                 bundle.putString("Status","CANCEL");

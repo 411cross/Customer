@@ -320,7 +320,8 @@ public class ByAreaActivity extends AppCompatActivity {
             if(text.equals("FAIL"))//支付失败
             {
                 Toast.makeText(ByAreaActivity.this, "测试作为成功", Toast.LENGTH_SHORT).show();
-//                bt.setText("已付款");
+
+// bt.setText("已付款");
 //                bt.setBackgroundColor(Color.parseColor("#cccccc"));
 //                bt.setEnabled(false);
             }

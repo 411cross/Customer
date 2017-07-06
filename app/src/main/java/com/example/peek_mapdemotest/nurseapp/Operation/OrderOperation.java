@@ -87,4 +87,21 @@ public class OrderOperation {
         return okhttpT.getResponse();
 
     }
+
+    /**
+     * 更改订单状态
+     * 输入  状态
+     * 输出 状态码和返回信息
+     */
+    public static ArrayList changeSituation(int id, int situation) throws JSONException, ExecutionException, InterruptedException {
+        okHttpTools okhttpT = new okHttpTools();
+        JSONObject jObject = new JSONObject();
+        jObject.put("id", id);
+        jObject.put("situation", situation);
+        String Json = jObject.toString();
+        String URL = "http://139.199.226.190:8888/NurseApp/changeordersituation";
+        okhttpT.postTools(URL, Json);
+        return okhttpT.getResponse();
+
+    }
 }
