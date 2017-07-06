@@ -1,69 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="36dp">
-    <Spinner
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:id="@+id/Spinner1"
-        android:entries="@array/protectArea"
-        android:paddingTop="0dp"
-        android:paddingBottom="0dp"
-        style="@android:style/Widget.Material.Spinner.Underlined"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-        >
-    </Spinner>
-    <Spinner
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:id="@+id/Spinner2"
-        android:paddingTop="0dp"
-        android:paddingBottom="0dp"
-        android:entries="@array/protectYear"
-        style="@android:style/Widget.Material.Spinner.Underlined"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp">
 
-        >
+        <Spinner
+            android:id="@+id/Spinner1"
+            style="@android:style/Widget.Material.Spinner.Underlined"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_drop_down_normal"
+            android:dropDownSelector="@color/color_white"
+            android:entries="@array/protectArea"
+            android:paddingBottom="0dp"
+            android:paddingTop="0dp"
 
-    </Spinner>
+            ></Spinner>
 
-    <Spinner
-        android:id="@+id/Spinner3"
-        style="@android:style/Widget.Material.Spinner.Underlined"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:entries="@array/sex"
-        android:paddingBottom="0dp"
-        android:paddingTop="0dp"
-        >
+        <Spinner
+            android:id="@+id/Spinner2"
+            style="@android:style/Widget.Material.Spinner.Underlined"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:entries="@array/protectYear"
+            android:paddingBottom="0dp"
+            android:paddingTop="0dp"
+            android:background="@drawable/shape_drop_down_normal"
+            android:dropDownSelector="@color/color_white"
 
-    </Spinner>
-    <Spinner
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:id="@+id/Spinner4"
-        android:paddingTop="0dp"
-        android:paddingBottom="0dp"
-        android:entries="@array/evaluation"
-        style="@android:style/Widget.Material.Spinner.Underlined"
+            >
 
-        >
-    </Spinner>
+        </Spinner>
+
+        <Spinner
+            android:id="@+id/Spinner3"
+            style="@android:style/Widget.Material.Spinner.Underlined"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:entries="@array/sex"
+            android:paddingBottom="0dp"
+            android:paddingTop="0dp"
+            android:background="@drawable/shape_drop_down_normal"
+            android:dropDownSelector="@color/color_white">
+
+        </Spinner>
+
+        <Spinner
+            android:id="@+id/Spinner4"
+            style="@android:style/Widget.Material.Spinner.Underlined"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:entries="@array/evaluation"
+            android:paddingBottom="0dp"
+            android:paddingTop="0dp"
+            android:background="@drawable/shape_drop_down_normal"
+            android:dropDownSelector="@color/color_white"
+            ></Spinner>
 
 
-</LinearLayout>
+    </LinearLayout>
 
 
     <ListView
         android:id="@+id/NurseListview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        ></ListView>
+        android:layout_height="match_parent"></ListView>
 
 </LinearLayout>

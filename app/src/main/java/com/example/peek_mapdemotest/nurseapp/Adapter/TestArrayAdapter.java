@@ -32,7 +32,7 @@ public class TestArrayAdapter extends ArrayAdapter<String> {
         //此处text1是Spinner默认的用来显示文字的TextView
         TextView tv = (TextView) convertView.findViewById(android.R.id.text1);
         tv.setText(mStringArray[position]);
-        tv.setTextSize(10);
+        tv.setTextSize(12);
         tv.setTextColor(Color.BLUE);
 
         return convertView;
@@ -50,7 +50,7 @@ public class TestArrayAdapter extends ArrayAdapter<String> {
         //此处text1是Spinner默认的用来显示文字的TextView
         TextView tv = (TextView) convertView.findViewById(android.R.id.text1);
         tv.setText(mStringArray[position]);
-        tv.setTextSize(10);
+        tv.setTextSize(12);
         tv.setTextColor(Color.BLUE);
         return convertView;
     }

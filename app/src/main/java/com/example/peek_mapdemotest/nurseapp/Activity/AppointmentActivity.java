@@ -3,6 +3,7 @@ package com.example.peek_mapdemotest.nurseapp.Activity;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -85,7 +86,11 @@ public class AppointmentActivity extends AppCompatActivity {
         final Bundle bundle = this.getIntent().getExtras();
         NameTv.setText(bundle.getString("Nurse_name"));
         AgeTv.setText(bundle.getInt("Nurse_age") + "岁");
-        SexTv.setText(bundle.getInt("Nurse_sex") + "");
+        if (bundle.getInt("Nurse_sex") == 0) {
+            SexTv.setText("男");
+        } else {
+            SexTv.setText("女");
+        }
         AreaTv.setText(bundle.getString("Nurse_Area"));
         PriceTv.setText(bundle.getInt("Nurse_price") + "元/天");
         EvaluateTv.setText("好评率：" + bundle.getInt("Nurse_evaluate"));
@@ -253,9 +258,55 @@ public class AppointmentActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
+
+                //开启支付宝
+                Intent intent = new Intent(AppointmentActivity.this,payActivity.class);
+
+                Bundle bundle = new Bundle();
+                //获取订单金额
+                String Money ="88";
+
+                bundle.putString("money",Money);
+                //模拟订单ID 201707050000
+                bundle.putString("id","201707050000");
+                intent.putExtras(bundle);
+                startActivityForResult(intent,0);
             }
         });
     }
+
+    protected void onActivityResult( int requestCode, int resultCode, Intent data) {
+        Bundle bundle = data.getExtras();
+        //Button bt =(Button) findViewById(R.id.buttonPay);
+        String text = bundle.getString("Status");
+      //  bt.setText(text);
+        try {
+            if(text.equals("FAIL"))//支付失败
+            {
+                Toast.makeText(AppointmentActivity.this, "测试作为成功", Toast.LENGTH_SHORT).show();
+//                bt.setText("已付款");
+//                bt.setBackgroundColor(Color.parseColor("#cccccc"));
+//                bt.setEnabled(false);
+            }
+            if (text.equals("CANCEL"))//取消支付
+            {
+                Toast.makeText(AppointmentActivity.this, "支付取消", Toast.LENGTH_SHORT).show();
+            }
+            if (text.equals("SUCCESS"))//支付成功
+            {
+                Toast.makeText(AppointmentActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+//                bt.setText("已付款");
+//                bt.setBackgroundColor(Color.parseColor("#cccccc"));
+//                bt.setEnabled(false);
+            }
+        }
+        catch(Exception e)
+        {
+
+        }
+    }
+
 
 
 }
