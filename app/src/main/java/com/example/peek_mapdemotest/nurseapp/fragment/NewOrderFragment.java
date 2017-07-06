@@ -131,4 +131,5 @@ public class NewOrderFragment extends android.support.v4.app.Fragment {
         return view;
     }
 
+
 }
