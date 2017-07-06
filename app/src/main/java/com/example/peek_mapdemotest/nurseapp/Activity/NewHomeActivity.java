@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.peek_mapdemotest.nurseapp.R;
 import com.example.peek_mapdemotest.nurseapp.fragment.HomeFragment;
+import com.example.peek_mapdemotest.nurseapp.fragment.MyFragment;
 import com.example.peek_mapdemotest.nurseapp.fragment.MyFragmentPagerAdapter;
 import com.example.peek_mapdemotest.nurseapp.fragment.NurseFragment;
 
@@ -124,7 +125,7 @@ public class NewHomeActivity extends AppCompatActivity {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(HomeFragment.newInstance(1));
         fragments.add(NurseFragment.newInstance(2));
-        fragments.add(HomeFragment.newInstance(3));
+        fragments.add(MyFragment.newInstance(3));
 
 
         MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(),fragments, Arrays.asList(tabTitles));
