@@ -46,9 +46,8 @@ public class PatientAdapter extends ArrayAdapter<Patient> {
         final View view = LayoutInflater.from(getContext()).inflate(resource, parent, false);
         TextView name = (TextView)view.findViewById(R.id.textView7);
         TextView no = (TextView)view.findViewById(R.id.textView4);
-        name.setText(pt.getName());
-        no.setText(pt.getId()+"");
-        final String fuck = pt.getName();
+        name.setText("姓名:" + pt.getName());
+        no.setText("编号:" + pt.getId());
 
         Button untie = (Button)view.findViewById(R.id.button_untie);
         untie.setOnClickListener(new View.OnClickListener() {
