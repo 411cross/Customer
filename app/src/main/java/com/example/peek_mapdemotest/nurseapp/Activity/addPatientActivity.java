@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,43 +29,20 @@ import java.util.concurrent.ExecutionException;
 
 public class addPatientActivity extends AppCompatActivity {
 
-    private ListView listview;
-    private Button add_Button;
     private ArrayList<Patient> patientList = new ArrayList<>();
-    private PatientList p = new PatientList();
     private ArrayAdapter PatientAdapter;
+    private ImageButton extra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_patient);
 
-
-        add_Button = (Button)findViewById(R.id.button12);
-
-        try {
-            ArrayList resp = PatientOperation.getFamilyRelation();
-            if (Integer.parseInt((String) resp.get(0)) == 200) {
-                patientList = UserOperation.patientList;
-
-                PatientAdapter = new PatientAdapter(addPatientActivity.this, R.layout.patient_item,patientList);
-                ListView listView1 = (ListView) findViewById(R.id.listview_patient);
-                listView1.setAdapter(PatientAdapter);            } else {
-                JSONObject object = new JSONObject((String) resp.get(1));
-                String message = object.getString("message");
-                Toast.makeText(addPatientActivity.this, message, Toast.LENGTH_SHORT).show();
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        add_Button.setOnClickListener(new View.OnClickListener() {
+        extra = (ImageButton)findViewById(R.id.extra);
+        extra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                extra.setImageDrawable(getResources().getDrawable(R.drawable.add_2));
                 LayoutInflater layoutInflater = LayoutInflater.from(addPatientActivity.this);
                 final View myLoginView = layoutInflater.inflate(R.layout.addpatient, null);
                 AlertDialog alertDialog = new AlertDialog.Builder(addPatientActivity.this).
@@ -73,6 +51,7 @@ public class addPatientActivity extends AppCompatActivity {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                extra.setImageDrawable(getResources().getDrawable(R.drawable.add));
                                 EditText ED1 = (EditText) myLoginView.findViewById(R.id.patient_no);
                                 int n = Integer.valueOf(ED1.getText().toString());
                                 System.out.println("病人编号: " + n);
@@ -118,12 +97,37 @@ public class addPatientActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        extra.setImageDrawable(getResources().getDrawable(R.drawable.add));
                         //取消操作
                     }
-                }).
-                        create();
+                }).setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        extra.setImageDrawable(getResources().getDrawable(R.drawable.add));
+                    }
+                }).create();
                 alertDialog.show();
             }
         });
+        try {
+            ArrayList resp = PatientOperation.getFamilyRelation();
+            if (Integer.parseInt((String) resp.get(0)) == 200) {
+                patientList = UserOperation.patientList;
+
+                PatientAdapter = new PatientAdapter(addPatientActivity.this, R.layout.patient_item,patientList);
+                ListView listView1 = (ListView) findViewById(R.id.listview_patient);
+                listView1.setAdapter(PatientAdapter);            } else {
+                JSONObject object = new JSONObject((String) resp.get(1));
+                String message = object.getString("message");
+                Toast.makeText(addPatientActivity.this, message, Toast.LENGTH_SHORT).show();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 }
