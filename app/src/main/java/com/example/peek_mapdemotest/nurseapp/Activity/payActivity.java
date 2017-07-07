@@ -56,6 +56,7 @@ public class payActivity extends AppCompatActivity implements View.OnClickListen
                         bundle.putString("Status","SUCCESS");
                     } else {
                         OrderOperation.changeSituation(id1,1);
+                        Toast.makeText(payActivity.this,"付款成功",Toast.LENGTH_SHORT).show();
                         Intent intent1 = new Intent(payActivity.this,NewHomeActivity.class);
                         startActivity(intent1);
                         bundle.putString("Status","FAIL");
