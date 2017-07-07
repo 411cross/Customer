@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,28 +9,47 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/user_icon"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            app:srcCompat="@mipmap/icon_full"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="38dp" />
+
         <Button
             android:id="@+id/CheckOrder_btn"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:layout_below="@+id/user_icon"
+            android:layout_marginEnd="47dp"
+            android:layout_marginRight="47dp"
+            android:layout_marginTop="45dp"
+            android:layout_toLeftOf="@+id/add_Patient_Btn"
+            android:layout_toStartOf="@+id/add_Patient_Btn"
             android:background="#00b0ff"
             android:text="   查询订单   "
             android:textColor="#ffffff"
-            android:textSize="20dp"
-            />
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/add_Patient_Btn"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:layout_alignBaseline="@+id/CheckOrder_btn"
+            android:layout_alignBottom="@+id/CheckOrder_btn"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="57dp"
+            android:layout_marginRight="57dp"
             android:background="#00b0ff"
             android:text="   添加病人   "
             android:textColor="#ffffff"
-            android:textSize="20dp"
-            android:layout_marginRight="14dp"
-            android:layout_marginEnd="14dp"
-            android:layout_toRightOf="@+id/CheckOrder_btn"
-            />
+            android:textSize="20dp" />
+
+
     </RelativeLayout>
 
 

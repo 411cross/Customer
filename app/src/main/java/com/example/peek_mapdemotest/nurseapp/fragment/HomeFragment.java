@@ -61,7 +61,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
     private Button seriousBtn;
     private Button b4;
     private Button OrderBt;
-    private boolean isLoop=true;
+    private boolean isLoop = true;
     private int itemnumber;
     /**
      * ViewPager
@@ -81,7 +81,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
     /**
      * 图片资源id
      */
-    private int[] imgIdArray ;
+    private int[] imgIdArray;
 
 //    public boolean dispatchTouchEvent(MotionEvent ev) {
 //           switch (ev.getAction())
@@ -122,8 +122,6 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         b3 = (Button) view.findViewById(R.id.button5);
         standardBtn = (Button) view.findViewById(R.id.standard_btn);
         seriousBtn = (Button) view.findViewById(R.id.serious_btn);
-        b4 = (Button) view.findViewById(R.id.button6);
-        OrderBt = (Button) view.findViewById(R.id.CheckOrder);
 //        tv1.setText("用户名:"+ UserOperation.user.getName());
 
 
@@ -136,16 +134,17 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         viewPager = (ViewPager) view.findViewById(R.id.viewPager);
         //载入图片资源ID
         imgIdArray = new int[]{R.mipmap.alipay, R.mipmap.button1, R.mipmap.hartbat, R.mipmap.background,
-                R.mipmap.blank,R.mipmap.lovelogo, R.mipmap.shenjingneike, R.mipmap.erbihouke};
+                R.mipmap.blank, R.mipmap.lovelogo, R.mipmap.shenjingneike, R.mipmap.erbihouke};
 
 //获得选择第几幅图
         viewPager.setOnTouchListener(new View.OnTouchListener() {
-            int flage =0;
+            int flage = 0;
+
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                switch(event.getAction()){
+                switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        tv1.setText(""+itemnumber);
+                        tv1.setText("" + itemnumber);
                         break;
                 }
                 return true;
@@ -161,15 +160,15 @@ public class HomeFragment extends android.support.v4.app.Fragment {
 //        });
         //点点
         tips = new ImageView[imgIdArray.length];
-        for(int i=0; i<tips.length; i++){
+        for (int i = 0; i < tips.length; i++) {
             ImageView imageView = new ImageView(getContext());
             // LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
-            LinearLayout.LayoutParams paramsarams = new LinearLayout.LayoutParams(10,10);
+            LinearLayout.LayoutParams paramsarams = new LinearLayout.LayoutParams(10, 10);
             imageView.setLayoutParams(paramsarams);
             tips[i] = imageView;
-            if(i == 0){
+            if (i == 0) {
                 tips[i].setBackgroundResource(R.mipmap.focused1);
-            }else{
+            } else {
                 tips[i].setBackgroundResource(R.mipmap.unfocused1);
             }
 
@@ -181,7 +180,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         }
         //将图片装载到数组中
         mImageViews = new ImageView[imgIdArray.length];
-        for(int i=0; i<mImageViews.length; i++){
+        for (int i = 0; i < mImageViews.length; i++) {
             ImageView imageView = new ImageView(getContext());
             mImageViews[i] = imageView;
             imageView.setBackgroundResource(imgIdArray[i]);
@@ -248,23 +247,10 @@ public class HomeFragment extends android.support.v4.app.Fragment {
                 startActivity(intent);
             }
         });
-        b4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), addPatientActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        OrderBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), CheckOrderActivity.class);
-                startActivityForResult(intent,1);
-            }
-        });
-    return view;
+        return view;
     }
+
     public class MyAdapter extends PagerAdapter {
 
         @Override
@@ -279,7 +265,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
 
         @Override
         public void destroyItem(View container, int position, Object object) {
-            ((ViewPager)container).removeView(mImageViews[position % mImageViews.length]);
+            ((ViewPager) container).removeView(mImageViews[position % mImageViews.length]);
 
         }
 
@@ -288,10 +274,9 @@ public class HomeFragment extends android.support.v4.app.Fragment {
          */
         @Override
         public Object instantiateItem(View container, int position) {
-            ((ViewPager)container).addView(mImageViews[position % mImageViews.length], 0);
+            ((ViewPager) container).addView(mImageViews[position % mImageViews.length], 0);
             return mImageViews[position % mImageViews.length];
         }
-
 
 
     }
@@ -314,14 +299,14 @@ public class HomeFragment extends android.support.v4.app.Fragment {
 
     /**
      * 设置选中的tip的背景
-     //  * @param selectItems
+     * //  * @param selectItems
      */
-    private void setImageBackground(int selectItems){
-        for(int i=0; i<tips.length; i++){
-            itemnumber =selectItems;
-            if(i == selectItems){
+    private void setImageBackground(int selectItems) {
+        for (int i = 0; i < tips.length; i++) {
+            itemnumber = selectItems;
+            if (i == selectItems) {
                 tips[i].setBackgroundResource(R.mipmap.focused1);
-            }else{
+            } else {
                 tips[i].setBackgroundResource(R.mipmap.unfocused1);
             }
         }

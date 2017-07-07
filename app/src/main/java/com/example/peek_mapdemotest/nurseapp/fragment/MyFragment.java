@@ -13,8 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.peek_mapdemotest.nurseapp.Activity.CheckOrderActivity;
+import com.example.peek_mapdemotest.nurseapp.Activity.UserHomeActivity;
 import com.example.peek_mapdemotest.nurseapp.Activity.addPatientActivity;
 import com.example.peek_mapdemotest.nurseapp.Okhttp_tools.handler;
 import com.example.peek_mapdemotest.nurseapp.R;
@@ -59,6 +61,7 @@ public class MyFragment extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_my, container, false);
         Button CheckOrder_btn = (Button)view.findViewById(R.id.CheckOrder_btn);
         Button add_Patient_Btn = (Button)view.findViewById(R.id.add_Patient_Btn);
+        ImageView userIconBtn = (ImageView) view.findViewById(R.id.user_icon);
         // Inflate the layout for this fragment
 
         CheckOrder_btn.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +75,13 @@ public class MyFragment extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), addPatientActivity.class);
+                startActivity(intent);
+            }
+        });
+        userIconBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), UserHomeActivity.class);
                 startActivity(intent);
             }
         });

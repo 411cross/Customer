@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_background"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/color_background">
 
     <!--<ImageView-->
     <!--android:id="@+id/imageButton"-->
@@ -19,15 +19,209 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="1000dp"
-            >
+            android:layout_height="1000dp">
+
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="240dp"
                 android:layout_alignBottom="@+id/relativeLayout3"
-                android:layout_alignParentTop="true"
-                ></android.support.v4.view.ViewPager>
+                android:layout_alignParentTop="true"></android.support.v4.view.ViewPager>
+
+            <LinearLayout
+                android:id="@+id/bottom_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spread_line_3"
+                android:layout_marginTop="12dp">
+
+
+                <LinearLayout
+                    android:id="@+id/biaozhun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/standard_btn"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_alignLeft="@+id/button3"
+                        android:layout_alignStart="@+id/button3"
+                        android:layout_below="@+id/button3"
+                        android:background="@mipmap/biaozhun"
+                        android:textColor="#ffffff"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/biaozhun_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/button3"
+                        android:layout_marginLeft="8dp"
+                        android:text="标准护理" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/spread_line_v_3"
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/top_linear"
+                    android:layout_marginTop="12dp"
+                    android:background="#bbbbbb"></View>
+
+                <LinearLayout
+                    android:id="@+id/zhongzheng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/serious_btn"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_alignBaseline="@+id/standard_btn"
+                        android:layout_alignBottom="@+id/standard_btn"
+                        android:layout_toLeftOf="@+id/button5"
+                        android:layout_toStartOf="@+id/button5"
+                        android:background="@mipmap/zhongzheng"
+                        android:textColor="#ffffff"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/zhongzheng_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/button3"
+                        android:layout_marginLeft="8dp"
+                        android:text="重症护理" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/top_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/spread_line_2"
+                android:layout_marginTop="12dp">
+
+
+                <LinearLayout
+                    android:id="@+id/neike"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_alignLeft="@+id/imageView11"
+                        android:layout_alignStart="@+id/imageView11"
+                        android:layout_below="@+id/type_tag"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@mipmap/neike"
+                        android:textColor="#ffffff"
+
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/neike_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/button3"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+
+                        android:text="内科护理" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/spread_line_v_1"
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/top_linear"
+                    android:layout_marginTop="12dp"
+                    android:background="#bbbbbb"></View>
+
+                <LinearLayout
+                    android:id="@+id/waike"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/button4"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_alignBaseline="@+id/button3"
+                        android:layout_alignBottom="@+id/button3"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_toEndOf="@+id/button3"
+                        android:layout_toRightOf="@+id/button3"
+                        android:background="@mipmap/waike"
+                        android:textColor="#ffffff"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/waike_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/button3"
+                        android:layout_below="@+id/button4"
+                        android:layout_gravity="center_horizontal"
+
+                        android:layout_marginTop="8dp"
+
+                        android:text="外科护理" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/spread_line_v_2"
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="12dp"
+                    android:background="#bbbbbb"></View>
+
+                <LinearLayout
+                    android:id="@+id/linshi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/button5"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@mipmap/linshi"
+
+                        android:textColor="#ffffff"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/linshi_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/button3"
+                        android:layout_below="@+id/button5"
+                        android:layout_gravity="center_horizontal"
+
+                        android:layout_marginTop="8dp"
+                        android:text="临时护理" />
+                </LinearLayout>
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/relativeLayout3"
@@ -47,6 +241,15 @@
 
             </RelativeLayout>
 
+            <View
+                android:id="@+id/spread_line_1"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_above="@+id/type_tag"
+                android:layout_marginBottom="8dp"
+                android:background="#bbbbbb"></View>
+
+
             <TextView
                 android:id="@+id/type_tag"
                 android:layout_width="wrap_content"
@@ -56,69 +259,33 @@
                 android:layout_below="@+id/relativeLayout3"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="12dp"
                 android:text="省心预约" />
 
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@mipmap/neike"
-                android:textColor="#ffffff"
-                android:textSize="20dp"
+            <View
+                android:id="@+id/spread_line_2"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
                 android:layout_below="@+id/type_tag"
-                android:layout_alignLeft="@+id/imageView11"
-                android:layout_alignStart="@+id/imageView11"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="8dp"
+                android:background="#bbbbbb"></View>
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
 
-                android:background="@mipmap/waike"
-                android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:layout_alignBaseline="@+id/button3"
-                android:layout_alignBottom="@+id/button3"
-                android:layout_toRightOf="@+id/button3"
-                android:layout_toEndOf="@+id/button3" />
+            <View
+                android:id="@+id/spread_line_3"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/top_linear"
+                android:layout_marginTop="12dp"
+                android:background="#bbbbbb"></View>
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@mipmap/linshi"
-                android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:layout_alignBaseline="@+id/button4"
-                android:layout_alignBottom="@+id/button4"
-                android:layout_toRightOf="@+id/button4"
-                android:layout_toEndOf="@+id/button4" />
 
-            <Button
-                android:id="@+id/standard_btn"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@mipmap/biaozhun"
-                android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:layout_below="@+id/button3"
-                android:layout_alignLeft="@+id/button3"
-                android:layout_alignStart="@+id/button3"
-                android:layout_marginTop="16dp"/>
-
-            <Button
-                android:id="@+id/serious_btn"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@mipmap/zhongzheng"
-                android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:layout_alignBaseline="@+id/standard_btn"
-                android:layout_alignBottom="@+id/standard_btn"
-                android:layout_toLeftOf="@+id/button5"
-                android:layout_toStartOf="@+id/button5" />
+            <View
+                android:id="@+id/spread_line_4"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/bottom_linear"
+                android:layout_marginTop="12dp"
+                android:background="#bbbbbb"></View>
 
             <!--<TextView-->
             <!--android:id="@+id/textView"-->
@@ -131,46 +298,6 @@
             <!--android:layout_toRightOf="@+id/imageButton"-->
             <!--android:text="用户编号" />-->
 
-
-            <ImageView
-
-                android:id="@+id/imageView11"
-                android:layout_width="280sp"
-                android:layout_height="51sp"
-                app:srcCompat="@mipmap/button1"
-                android:layout_below="@+id/standard_btn"
-                android:layout_alignLeft="@+id/type_tag"
-                android:layout_alignStart="@+id/type_tag"
-                android:layout_marginLeft="12dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="18dp" />
-
-            <Button
-                android:id="@+id/CheckOrder"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-
-                android:background="#00b0ff"
-                android:text="   查询订单   "
-                android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:layout_alignTop="@+id/imageView11"
-                android:layout_toLeftOf="@+id/NurseListBt"
-                android:layout_toStartOf="@+id/NurseListBt" />
-
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:background="#00b0ff00"
-                android:text="   添加病人   "
-                android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:layout_alignTop="@+id/imageView11"
-                android:layout_alignRight="@+id/imageView11"
-                android:layout_alignEnd="@+id/imageView11"
-                android:layout_marginRight="14dp"
-                android:layout_marginEnd="14dp" />
 
         </RelativeLayout>
 

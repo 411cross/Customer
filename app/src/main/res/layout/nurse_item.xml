@@ -21,128 +21,128 @@
         <!--app:cardUseCompatPadding="true"-->
         <!--tools:targetApi="lollipop">-->
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp">
+
+        <ImageView
+            android:id="@+id/NurseIcon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/NurseNameI"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp">
+            android:layout_alignTop="@+id/NurseIcon"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/NurseIcon"
+            android:layout_toRightOf="@+id/NurseIcon"
+            android:text="名字"
+            android:textColor="@color/color_blue"
+            android:textSize="24sp" />
 
-            <ImageView
-                android:id="@+id/NurseIcon"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:src="@mipmap/ic_launcher" />
-
-            <TextView
-                android:id="@+id/NurseNameI"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/NurseIcon"
-                android:layout_marginLeft="11dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/NurseIcon"
-                android:layout_toRightOf="@+id/NurseIcon"
-                android:text="名字"
-                android:textColor="@color/color_blue"
-                android:textSize="24sp" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/NurseNameI"
-                android:layout_alignStart="@+id/NurseNameI"
-                android:layout_below="@+id/NursePriceI"
-                android:layout_marginTop="11dp">
-
-                <TextView
-                    android:id="@+id/NurseSexI"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="性别" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginTop="2dp"
-                    android:src="#909090" />
-
-                <TextView
-                    android:id="@+id/NurseAgeI"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="年龄" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginTop="2dp"
-                    android:src="#909090" />
-
-                <TextView
-                    android:id="@+id/NurseAreaI"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="地区" />
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/NurseNameI"
+            android:layout_alignStart="@+id/NurseNameI"
+            android:layout_below="@+id/NursePriceI"
+            android:layout_marginTop="11dp">
 
             <TextView
-                android:id="@+id/NursePriceI"
+                android:id="@+id/NurseSexI"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="性别" />
 
-                android:text="价格"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_alignBottom="@+id/NurseNameI"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="96dp" />
-
-            <TextView
-                android:id="@+id/NurseEvaluateI"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="好评率"
-                android:layout_below="@+id/linearLayout"
-                android:layout_alignLeft="@+id/linearLayout"
-                android:layout_alignStart="@+id/linearLayout"
-                android:layout_marginTop="8dp"/>
-
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/NurseEvaluateI"
-                android:layout_alignLeft="@+id/linearLayout"
-                android:layout_alignStart="@+id/linearLayout"
-                android:layout_marginTop="8dp"
-                android:text="1234" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/textView21"
-                android:layout_toRightOf="@id/textView21"
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
                 android:layout_marginLeft="4dp"
-                android:text="1234" />
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="2dp"
+                android:src="#909090" />
 
-            <Space
+            <TextView
+                android:id="@+id/NurseAgeI"
                 android:layout_width="wrap_content"
-                android:layout_height="8dp"
-                android:layout_alignLeft="@+id/textView21"
-                android:layout_alignStart="@+id/textView21"
-                android:layout_below="@+id/textView21" />
+                android:layout_height="wrap_content"
+                android:text="年龄" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="2dp"
+                android:src="#909090" />
+
+            <TextView
+                android:id="@+id/NurseAreaI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地区" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/NursePriceI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignBottom="@+id/NurseNameI"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="96dp"
+            android:text="价格"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/NurseEvaluateI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/linearLayout"
+            android:layout_alignStart="@+id/linearLayout"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginTop="8dp"
+            android:text="好评率" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/linearLayout"
+            android:layout_alignStart="@+id/linearLayout"
+            android:layout_below="@+id/NurseEvaluateI"
+            android:layout_marginTop="8dp"
+            android:text="1234" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView21"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@id/textView21"
+            android:text="1234" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            android:layout_alignLeft="@+id/textView21"
+            android:layout_alignStart="@+id/textView21"
+            android:layout_below="@+id/textView21" />
 
 
-        </RelativeLayout>
+    </RelativeLayout>
     <!--</android.support.v7.widget.CardView>-->
 </FrameLayout>

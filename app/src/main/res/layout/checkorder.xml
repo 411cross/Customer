@@ -4,11 +4,12 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/tips1Tv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:id="@+id/tips1Tv"
-        android:text=""/>
+        android:text=""
+        android:textSize="24sp" />
     <ListView
         android:id="@+id/new_order_list"
         android:layout_width="match_parent"

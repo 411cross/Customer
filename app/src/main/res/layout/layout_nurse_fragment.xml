@@ -5,12 +5,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_below="@+id/linearLayout_spinner"
-        android:layout_height="match_parent"
-        android:gravity="center"
         android:id="@+id/tipsTv"
-        android:text=""/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linearLayout_spinner"
+        android:gravity="center"
+        android:text=""
+        android:textSize="24sp" />
 
     <LinearLayout
         android:id="@+id/linearLayout_spinner"

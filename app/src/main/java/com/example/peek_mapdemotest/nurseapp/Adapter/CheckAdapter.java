@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.peek_mapdemotest.nurseapp.Entity.Order;
@@ -32,7 +33,7 @@ public class CheckAdapter extends ArrayAdapter<Order> {
         TextView textmoney =(TextView)view.findViewById(R.id.textViewMoney);
         TextView textdate=(TextView)view.findViewById(R.id.textViewDate);
         TextView textstatus=(TextView)view.findViewById(R.id.textViewStatus);
-      //  ImageView image=(ImageView) view.findViewById(R.id.imageView1);
+        ImageView image=(ImageView) view.findViewById(R.id.imageView1);
         textid.setText(to.getId()+"");
         textmoney.setText(to.getTotalPrice()+"元");
         textdate.setText(to.getCreateTime());
@@ -45,12 +46,34 @@ public class CheckAdapter extends ArrayAdapter<Order> {
         }else if (to.getSituation()==3){
             textstatus.setText("已完成");
         }else if (to.getSituation()==4){
-            textstatus.setText("已进行中");
+            textstatus.setText("进行中");
         }
         else if (to.getSituation()==5){
-            textstatus.setText("已提醒付款");
+            textstatus.setText("医院提醒您付款");
         }
 
+        int image_id;
+        switch (to.getType()) {
+            case 1:
+                image_id = R.mipmap.neike;
+                break;
+            case 2:
+                image_id = R.mipmap.waike;
+                break;
+            case 3:
+                image_id = R.mipmap.linshi;
+                break;
+            case 4:
+                image_id = R.mipmap.biaozhun;
+                break;
+            case 5:
+                image_id = R.mipmap.zhongzheng;
+                break;
+            default:
+                image_id = R.mipmap.ic_launcher_round;
+                break;
+        }
+        image.setImageResource(image_id);
         return view;
     }
 }
